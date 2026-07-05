@@ -175,13 +175,13 @@
     "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
   },
   "D:\\Local_AI\\src\\main\\agent\\prompts\\system.ts": {
-    "mtime": 1783285679.4593396,
-    "ast_hash": "b65fd15da15251840fba79a03d19a330",
+    "mtime": 1783289147.263489,
+    "ast_hash": "833100a105fbc36f90ed8b0fd6daec86",
     "semantic_hash": ""
   },
   "D:\\Local_AI\\src\\main\\agent\\prompts\\tool-use.ts": {
-    "mtime": 1783283050.5032458,
-    "ast_hash": "1be4530a407116fe726c66209bfa1cba",
+    "mtime": 1783289080.8173833,
+    "ast_hash": "0222896c8d76e3db1984056c51aeba2f",
     "semantic_hash": ""
   },
   "D:\\Local_AI\\src\\main\\agent\\react-loop.ts": {
@@ -225,8 +225,8 @@
     "semantic_hash": "b331e196dd1f669fc2d59ec8b6a4a79b"
   },
   "D:\\Local_AI\\src\\main\\agent\\tools\\intent.ts": {
-    "mtime": 1783285047.403632,
-    "ast_hash": "cac99282c88b1048dd0fb413a1bbe64e",
+    "mtime": 1783289157.378732,
+    "ast_hash": "c283c040e92e0b2cac772296de04921d",
     "semantic_hash": ""
   },
   "D:\\Local_AI\\src\\main\\agent\\tools\\network.tool.ts": {
@@ -600,8 +600,8 @@
     "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
   },
   "D:\\Local_AI\\src\\main\\sandbox\\sandbox-executor.ts": {
-    "mtime": 1783282008.7300575,
-    "ast_hash": "736a403996f40061e66b685ad87c531d",
+    "mtime": 1783289157.4197326,
+    "ast_hash": "ded86d4129200dfca087205b9a09ee01",
     "semantic_hash": ""
   },
   "D:\\Local_AI\\src\\main\\sandbox\\watchdog.ts": {
@@ -1305,8 +1305,8 @@
     "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
   },
   "D:\\Local_AI\\src\\shared\\types\\sandbox.types.ts": {
-    "mtime": 1783278742.4507856,
-    "ast_hash": "9be832698cc91c64d7de2d41134c4a48",
+    "mtime": 1783289157.4287326,
+    "ast_hash": "bbc6031ea837d8f97a838dcee6b69c96",
     "semantic_hash": ""
   },
   "D:\\Local_AI\\src\\shared\\types\\settings.types.ts": {
@@ -1425,8 +1425,8 @@
     "semantic_hash": ""
   },
   "D:\\Local_AI\\tests\\unit\\tool-intent-boundary.test.ts": {
-    "mtime": 1783285047.4356325,
-    "ast_hash": "0401c5d14db49f77a0e84689ec8b3424",
+    "mtime": 1783289116.67284,
+    "ast_hash": "ff0ae51f433967ec8f34cea66d0a7722",
     "semantic_hash": ""
   },
   "D:\\Local_AI\\tsconfig.json": {
@@ -1640,13 +1640,13 @@
     "semantic_hash": ""
   },
   "D:\\Local_AI\\tests\\unit\\sandbox-runners.test.ts": {
-    "mtime": 1783282156.2747326,
-    "ast_hash": "c0255adde260d794f4d74add29c09776",
+    "mtime": 1783289157.4516094,
+    "ast_hash": "7451629e5b3bf7cb24878b1553bc453e",
     "semantic_hash": ""
   },
   "D:\\Local_AI\\src\\main\\agent\\prompts\\environment.ts": {
-    "mtime": 1783281072.7648106,
-    "ast_hash": "59ddf9eda0c52bdb5a0fb6562584e57f",
+    "mtime": 1783289157.3421752,
+    "ast_hash": "a8609638c67d7857d21ac5c0a96ff17e",
     "semantic_hash": ""
   },
   "D:\\Local_AI\\src\\main\\sandbox\\parsers\\netstat.parser.ts": {
@@ -1765,8 +1765,8 @@
     "semantic_hash": ""
   },
   "D:\\Local_AI\\tests\\unit\\tool-availability.test.ts": {
-    "mtime": 1783279288.8708918,
-    "ast_hash": "bf0a64046d019a5c45e4f7d9acb64926",
+    "mtime": 1783289157.4347322,
+    "ast_hash": "92a6d5eb75547da3aa1e95d1a4841944",
     "semantic_hash": ""
   },
   "D:\\Local_AI\\src\\main\\sandbox\\parsers\\windows-version.parser.ts": {
