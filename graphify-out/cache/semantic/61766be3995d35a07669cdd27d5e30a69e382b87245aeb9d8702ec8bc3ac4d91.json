@@ -1,0 +1,1 @@
+{"nodes": [{"id": "0011_local_models_local_models_table", "label": "local_models Table", "file_type": "sql", "source_file": "src/main/storage/migrations/0011_local_models.sql", "source_location": null, "source_url": null, "captured_at": null, "author": null, "contributor": null}], "edges": [], "hyperedges": []}

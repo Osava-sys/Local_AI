@@ -1,0 +1,2071 @@
+{
+  "communities": {
+    "0": [
+      "agent_memory_manager",
+      "agent_memory_manager_memorymanager",
+      "agent_memory_manager_memorymanager_add",
+      "agent_memory_manager_memorymanager_clear",
+      "agent_memory_manager_memorymanager_snapshot",
+      "agent_memory_manager_memorymanager_transcript",
+      "agent_memory_manager_memorymessage",
+      "agent_orchestrator",
+      "agent_orchestrator_activerun",
+      "agent_orchestrator_agentorchestrator",
+      "agent_orchestrator_agentorchestrator_constructor",
+      "agent_orchestrator_agentorchestrator_emiterror",
+      "agent_orchestrator_agentorchestrator_emitstate",
+      "agent_orchestrator_agentorchestrator_emitstep",
+      "agent_orchestrator_agentorchestrator_executerun",
+      "agent_orchestrator_agentorchestrator_getrunstatus",
+      "agent_orchestrator_agentorchestrator_resolvemodelconfig",
+      "agent_orchestrator_agentorchestrator_startrun",
+      "agent_orchestrator_agentorchestrator_stoprun",
+      "agent_orchestrator_agentorchestratoroptions",
+      "agent_orchestrator_default_run_options",
+      "agent_orchestrator_topublicstatus",
+      "agent_react_loop",
+      "agent_react_loop_buildprompt",
+      "agent_react_loop_collectproviderresponse",
+      "agent_react_loop_default_options",
+      "agent_react_loop_extractjsonobject",
+      "agent_react_loop_inferconfidence",
+      "agent_react_loop_parsetoolcall",
+      "agent_react_loop_runreactloopoptions",
+      "agent_react_loop_shouldstop",
+      "models_model_runtime_getactiveruntimemodelconfig",
+      "prompts_system",
+      "prompts_tool_use",
+      "prompts_tool_use_tool_use_prompts",
+      "repositories_agent_run_state_repository",
+      "repositories_agent_run_state_repository_agentrunstaterepository",
+      "repositories_agent_run_state_repository_agentrunstaterepository_constructor",
+      "repositories_agent_run_state_repository_agentrunstaterepository_get",
+      "repositories_agent_run_state_repository_agentrunstaterepository_save",
+      "repositories_agent_run_steps_repository",
+      "repositories_agent_run_steps_repository_agentrunstepsrepository",
+      "repositories_agent_run_steps_repository_agentrunstepsrepository_append",
+      "repositories_agent_run_steps_repository_agentrunstepsrepository_constructor",
+      "repositories_agent_run_steps_repository_agentrunstepsrepository_findbyid",
+      "repositories_agent_run_steps_repository_agentrunstepsrepository_listbyrunid",
+      "repositories_agent_run_steps_repository_dbsteptype",
+      "repositories_agent_runs_repository",
+      "repositories_agent_runs_repository_agentrunrecord",
+      "repositories_agent_runs_repository_agentrunsrepository",
+      "repositories_agent_runs_repository_agentrunsrepository_constructor",
+      "repositories_agent_runs_repository_agentrunsrepository_create",
+      "repositories_agent_runs_repository_agentrunsrepository_findbyid",
+      "repositories_agent_runs_repository_agentrunsrepository_updatestate",
+      "types_agent_types",
+      "types_agent_types_agentgetpayload",
+      "types_agent_types_agentrun",
+      "types_agent_types_agentrunstep",
+      "types_agent_types_agentstate",
+      "types_agent_types_agentstoppayload",
+      "types_agent_types_reactloopoptions",
+      "types_agent_types_reasoningstep",
+      "types_model_types_modelconfiginput",
+      "types_model_types_modelprovider"
+    ],
+    "1": [
+      "models_downloader",
+      "models_downloader_modeldownloader",
+      "models_downloader_modeldownloader_constructor",
+      "models_downloader_modeldownloader_download",
+      "models_downloader_modeldownloader_emit",
+      "models_downloader_safefilename",
+      "models_model_runtime",
+      "models_model_runtime_llamacppruntime",
+      "models_model_runtime_llamacppruntime_constructor",
+      "models_model_runtime_llamacppruntime_emit",
+      "models_model_runtime_llamacppruntime_getstatus",
+      "models_model_runtime_llamacppruntime_load",
+      "models_model_runtime_llamacppruntime_resolveexecutable",
+      "models_model_runtime_llamacppruntime_unload",
+      "models_model_runtime_llamacppruntime_waitforserver",
+      "models_model_runtime_sleep",
+      "models_registry",
+      "models_registry_localmodelregistry",
+      "models_registry_localmodelregistry_active",
+      "models_registry_localmodelregistry_constructor",
+      "models_registry_localmodelregistry_findbyid",
+      "models_registry_localmodelregistry_list",
+      "models_registry_localmodelregistry_markactive",
+      "models_registry_localmodelregistry_registerlocal",
+      "models_resources",
+      "models_resources_defaultllamaservercandidates",
+      "models_resources_getmodelfileinfo",
+      "models_resources_inferquantization",
+      "models_resources_isgguffile",
+      "preload_index",
+      "preload_index_api",
+      "repositories_models_repository",
+      "repositories_models_repository_localmodelrow",
+      "repositories_models_repository_maprow",
+      "repositories_models_repository_modelsrepository",
+      "repositories_models_repository_modelsrepository_active",
+      "repositories_models_repository_modelsrepository_constructor",
+      "repositories_models_repository_modelsrepository_findbyid",
+      "repositories_models_repository_modelsrepository_list",
+      "repositories_models_repository_modelsrepository_markactive",
+      "repositories_models_repository_modelsrepository_upsert",
+      "repositories_models_repository_upsertlocalmodelinput",
+      "src_app",
+      "src_app_app",
+      "src_main",
+      "src_main_window",
+      "types_agent_types_agentstartpayload",
+      "types_ipc_types",
+      "types_ipc_types_agenteventmap",
+      "types_ipc_types_exposedapi",
+      "types_ipc_types_ipcchannel",
+      "types_ipc_types_ipcrequest",
+      "types_ipc_types_ipcresult",
+      "types_ipc_types_modeleventmap",
+      "types_ipc_types_result",
+      "types_model_types",
+      "types_model_types_localmodelrecord",
+      "types_model_types_modeldownloadprogress",
+      "types_model_types_modeldownloadrequest",
+      "types_model_types_modelloadoptions",
+      "types_model_types_modelquantization",
+      "types_model_types_modelruntimedevice",
+      "types_model_types_modelruntimestate",
+      "types_model_types_modelruntimestatus"
+    ],
+    "2": [
+      "agent_types_AgentRun",
+      "agent_types_AgentRunStep",
+      "agent_types_AgentStartPayload",
+      "agent_types_AgentState",
+      "agent_types_ReactLoopOptions",
+      "agent_types_ReasoningStep",
+      "agent_types_ToolCall",
+      "app_store_AppStore",
+      "approval_store_ApprovalStore",
+      "approval_types_ApprovalDecision",
+      "approval_types_ApprovalEvaluation",
+      "approval_types_ApprovalPolicyConfig",
+      "approval_types_ApprovalRule",
+      "chat_store_ChatStore",
+      "chat_types_Chat",
+      "chat_types_ChatRole",
+      "chat_types_CreateMessagePayload",
+      "chat_types_Message",
+      "ipc_types_AgentEventMap",
+      "ipc_types_ExposedApi",
+      "ipc_types_ModelEventMap",
+      "model_store_ModelStore",
+      "model_types_ChatChunk",
+      "model_types_LocalModelRecord",
+      "model_types_ModelCatalogEntry",
+      "model_types_ModelConfig",
+      "model_types_ModelDownloadProgress",
+      "model_types_ModelDownloadRequest",
+      "model_types_ModelInfo",
+      "model_types_ModelLoadOptions",
+      "model_types_ModelProvider",
+      "model_types_ModelProviderType",
+      "model_types_ModelQuantization",
+      "model_types_ModelRuntimeDevice",
+      "model_types_ModelRuntimeState",
+      "model_types_ModelRuntimeStatus",
+      "sandbox_store_SandboxStore",
+      "sandbox_types_BaseToolIntent",
+      "sandbox_types_BrowserToolIntent",
+      "sandbox_types_FilesystemToolIntent",
+      "sandbox_types_GenericToolIntent",
+      "sandbox_types_NetworkToolIntent",
+      "sandbox_types_ShellToolIntent",
+      "sandbox_types_ToolIntent",
+      "sandbox_types_ToolIntentKind",
+      "sandbox_types_ToolResult",
+      "sandbox_types_ToolResultStatus",
+      "settings_store_SettingsStore"
+    ],
+    "3": [
+      "approvals_approval_policy",
+      "approvals_approval_policy_approvalpolicy",
+      "approvals_approval_policy_approvalpolicy_constructor",
+      "approvals_approval_policy_approvalpolicy_evaluate",
+      "approvals_approval_policy_commandtext",
+      "approvals_approval_policy_default_policy",
+      "approvals_approval_policy_dirnamefallback",
+      "approvals_approval_policy_islocaltarget",
+      "approvals_approval_policy_isprivateipv4",
+      "approvals_approval_policy_loadjsonconfig",
+      "approvals_approval_policy_matchesany",
+      "sandbox_approval_gate",
+      "sandbox_approval_gate_approvalgate",
+      "sandbox_approval_gate_approvalgate_constructor",
+      "sandbox_approval_gate_approvalgate_evaluate",
+      "sandbox_child_runner",
+      "sandbox_child_runner_childprocessrunner",
+      "sandbox_child_runner_childprocessrunner_run",
+      "sandbox_child_runner_summarize",
+      "sandbox_command_normalizer",
+      "sandbox_command_normalizer_normalizecommand",
+      "sandbox_command_normalizer_normalizedcommand",
+      "sandbox_command_normalizer_splitcommandline",
+      "sandbox_sandbox_executor",
+      "sandbox_sandbox_executor_sandboxexecutor",
+      "sandbox_sandbox_executor_sandboxexecutor_constructor",
+      "sandbox_sandbox_executor_sandboxexecutor_execute",
+      "sandbox_sandbox_executor_sandboxexecutor_executefilesystem",
+      "sandbox_sandbox_executor_sandboxexecutor_executenetwork",
+      "sandbox_sandbox_executor_sandboxexecutor_makeimmediateresult",
+      "types_approval_types",
+      "types_approval_types_approvaldecision",
+      "types_approval_types_approvalevaluation",
+      "types_approval_types_approvalpolicyconfig",
+      "types_approval_types_approvalrule",
+      "types_sandbox_types",
+      "types_sandbox_types_basetoolintent",
+      "types_sandbox_types_browsertoolintent",
+      "types_sandbox_types_filesystemtoolintent",
+      "types_sandbox_types_generictoolintent",
+      "types_sandbox_types_networktoolintent",
+      "types_sandbox_types_shelltoolintent",
+      "types_sandbox_types_toolintent",
+      "types_sandbox_types_toolintentkind",
+      "types_sandbox_types_toolresult",
+      "types_sandbox_types_toolresultstatus"
+    ],
+    "4": [
+      "dep_better_sqlite3",
+      "dep_yaml",
+      "dep_zod",
+      "dep_zustand",
+      "electron_vite_config",
+      "electron_vite_config_dirname",
+      "eslint_config",
+      "hook_use_chat",
+      "hook_use_documents",
+      "hook_use_models",
+      "hook_use_sandbox",
+      "hook_use_settings",
+      "lib_api",
+      "lib_constants",
+      "lib_format",
+      "lib_ipc",
+      "lib_validators",
+      "package_json_manifest",
+      "page_agent_runs",
+      "page_approvals",
+      "page_audit_log",
+      "page_chat",
+      "page_documents",
+      "page_models",
+      "page_sandbox",
+      "page_settings",
+      "page_workspaces",
+      "prettier_config",
+      "renderer_main",
+      "renderer_routes",
+      "script_build",
+      "script_dev",
+      "script_migrate",
+      "script_package",
+      "script_reset_db",
+      "script_seed",
+      "shared_src_module",
+      "storage_migrations_module",
+      "store_agent"
+    ],
+    "5": [
+      "tools_analysis_tool",
+      "tools_analysis_tool_analysistool",
+      "tools_browser_tool",
+      "tools_browser_tool_browsertool",
+      "tools_document_tool",
+      "tools_document_tool_documenttool",
+      "tools_filesystem_tool",
+      "tools_filesystem_tool_filesystemtool",
+      "tools_intent",
+      "tools_intent_boolarg",
+      "tools_intent_browserintent",
+      "tools_intent_filesystemintent",
+      "tools_intent_genericintent",
+      "tools_intent_networkintent",
+      "tools_intent_numberarrayarg",
+      "tools_intent_shellintent",
+      "tools_intent_textarg",
+      "tools_network_tool",
+      "tools_network_tool_networktool",
+      "tools_rag_tool",
+      "tools_rag_tool_ragtool",
+      "tools_registry",
+      "tools_registry_aliasesfor",
+      "tools_registry_toolregistry",
+      "tools_registry_toolregistry_constructor",
+      "tools_registry_toolregistry_execute",
+      "tools_registry_toolregistry_has",
+      "tools_registry_toolregistry_list",
+      "tools_registry_toolregistry_register",
+      "tools_registry_toolregistry_registermany",
+      "tools_shell_tool",
+      "tools_shell_tool_shelltool",
+      "tools_tool",
+      "tools_tool_agenttool",
+      "tools_tool_toolexecution",
+      "tools_workspace_tool",
+      "tools_workspace_tool_workspacetool",
+      "types_agent_types_toolcall"
+    ],
+    "6": [
+      "package",
+      "package_dependencies",
+      "package_dependencies_better_sqlite3",
+      "package_dependencies_yaml",
+      "package_dependencies_zod",
+      "package_dependencies_zustand",
+      "package_devdependencies",
+      "package_devdependencies_electron",
+      "package_devdependencies_electron_builder",
+      "package_devdependencies_electron_rebuild",
+      "package_devdependencies_electron_vite",
+      "package_devdependencies_eslint",
+      "package_devdependencies_prettier",
+      "package_devdependencies_react",
+      "package_devdependencies_react_dom",
+      "package_devdependencies_types_better_sqlite3",
+      "package_devdependencies_types_node",
+      "package_devdependencies_types_react",
+      "package_devdependencies_types_react_dom",
+      "package_devdependencies_typescript",
+      "package_devdependencies_typescript_eslint",
+      "package_devdependencies_vite",
+      "package_devdependencies_vitejs_plugin_react",
+      "package_main",
+      "package_name",
+      "package_scripts",
+      "package_scripts_build",
+      "package_scripts_dev",
+      "package_scripts_format",
+      "package_scripts_lint",
+      "package_scripts_package",
+      "package_scripts_postinstall",
+      "package_scripts_start",
+      "package_scripts_typecheck",
+      "package_type",
+      "package_version"
+    ],
+    "7": [
+      "agenthandlers_handleAgentGet",
+      "agenthandlers_handleAgentStart",
+      "agenthandlers_handleAgentStop",
+      "agenthandlers_orchestratorSingleton",
+      "catalog_MODEL_CATALOG",
+      "catalog_listCatalogModels",
+      "chathandlers_handleChatCreate",
+      "chathandlers_handleChatDelete",
+      "chathandlers_handleChatList",
+      "chathandlers_handleMessageCreate",
+      "chathandlers_handleMessageList",
+      "downloader_ModelDownloader",
+      "index_mainEntryPoint",
+      "localhttpprovider_LlamaCppHttpProvider",
+      "modelhandlers_handleModelCatalog",
+      "modelhandlers_handleModelDownload",
+      "modelhandlers_handleModelList",
+      "modelhandlers_handleModelLoad",
+      "modelhandlers_handleModelRegisterLocal",
+      "modelhandlers_handleModelSelectGguf",
+      "modelhandlers_handleModelStatus",
+      "modelhandlers_handleModelUnload",
+      "modelhandlers_runtimeSingleton",
+      "paths_getDbPath",
+      "paths_getMigrationsDir",
+      "router_registerIpcHandlers",
+      "settings_initSettingsService",
+      "settings_settingsService",
+      "settingshandlers_handleSettingsGet",
+      "settingshandlers_handleSettingsGetAll",
+      "settingshandlers_handleSettingsSet"
+    ],
+    "8": [
+      "models_local_http_provider",
+      "models_local_http_provider_buildchatendpoint",
+      "models_local_http_provider_buildembeddingendpoint",
+      "models_local_http_provider_extractembedding",
+      "models_local_http_provider_extracttextfromstreamingjson",
+      "models_local_http_provider_httpmode",
+      "models_local_http_provider_infermode",
+      "models_local_http_provider_llamacpphttpprovider",
+      "models_local_http_provider_llamacpphttpprovider_buildchatbody",
+      "models_local_http_provider_llamacpphttpprovider_chatstream",
+      "models_local_http_provider_llamacpphttpprovider_embed",
+      "models_local_http_provider_llamacpphttpprovider_fetchembeddings",
+      "models_local_http_provider_llamacpphttpprovider_getmetadata",
+      "models_local_http_provider_llamacpphttpprovider_healthcheck",
+      "models_local_http_provider_llamacpphttpprovider_init",
+      "models_local_http_provider_llamacpphttpprovider_safeerrorbody",
+      "models_local_http_provider_llamacpphttpprovider_streamlines",
+      "models_local_http_provider_makestablefallbackembedding",
+      "models_local_http_provider_providerresponseerror",
+      "models_local_http_provider_sleep",
+      "models_local_http_provider_trimtrailingslash",
+      "models_provider",
+      "models_provider_default_model_config",
+      "models_provider_normalizemodelconfig",
+      "types_model_types_chatchunk",
+      "types_model_types_modelconfig",
+      "types_model_types_modelinfo",
+      "types_model_types_modelprovidertype"
+    ],
+    "9": [
+      "analysistool_analysisTool",
+      "approvalclassifier_ApprovalClassifier",
+      "browsertool_browserTool",
+      "documenttool_documentTool",
+      "inputfilter_InputFilter",
+      "memorymanager_MemoryManager",
+      "observationparser_ObservationParser",
+      "orchestrator_AgentOrchestrator",
+      "outputfilter_OutputFilter",
+      "planner_Planner",
+      "policy_Policy",
+      "promptapproval_approvalPrompt",
+      "promptplanner_plannerPrompt",
+      "promptreact_reactPrompt",
+      "reactloop_buildPrompt",
+      "reactloop_collectProviderResponse",
+      "reactloop_inferConfidence",
+      "reactloop_parseToolCall",
+      "reactloop_runReactLoop",
+      "reactloop_shouldStop",
+      "reasoningsteprunner_ReasoningStepRunner",
+      "riskclassifier_RiskClassifier",
+      "runmanager_RunManager",
+      "scopevalidator_ScopeValidator",
+      "stopconditions_StopConditions",
+      "system_SYSTEM_PROMPT",
+      "tooluse_TOOL_USE_PROMPTS"
+    ],
+    "10": [
+      "agentstepcard_AgentStepCard",
+      "approvaldialog_ApprovalDialog",
+      "approvalqueue_ApprovalQueue",
+      "appshell_AppShell",
+      "chatthread_ChatThread",
+      "chatview_ChatView",
+      "composer_Composer",
+      "contextpanel_ContextPanel",
+      "documentdetails_DocumentDetails",
+      "documentlist_DocumentList",
+      "documentuploader_DocumentUploader",
+      "header_Header",
+      "ingestionstatus_IngestionStatus",
+      "messagebubble_MessageBubble",
+      "messagelist_MessageList",
+      "observationview_ObservationView",
+      "reasoningpanel_ReasoningPanel",
+      "riskbadge_RiskBadge",
+      "sidebar_Sidebar",
+      "statusbar_StatusBar",
+      "terminalview_TerminalView",
+      "toolcallcard_ToolCallCard"
+    ],
+    "11": [
+      "audittrail_AuditTrail",
+      "badge_Badge",
+      "button_Button",
+      "dialog_Dialog",
+      "input_Input",
+      "limitseditor_LimitsEditor",
+      "modelcatalog_ModelCatalog",
+      "modeldownloadprogress_ModelDownloadProgress",
+      "modelprovidercard_ModelProviderCard",
+      "modelsettingsform_ModelSettingsForm",
+      "policyeditor_PolicyEditor",
+      "providerhealthbadge_ProviderHealthBadge",
+      "runnerselector_RunnerSelector",
+      "sandboxstatus_SandboxStatus",
+      "select_Select",
+      "spinner_Spinner",
+      "switch_Switch",
+      "tabs_Tabs",
+      "toast_Toast",
+      "tooltip_Tooltip",
+      "useagent_useAgent",
+      "useapproval_useApproval"
+    ],
+    "12": [
+      "0002_chats_chats_table",
+      "0002_chats_messages_table",
+      "0003_agent_runs_agent_runs_table",
+      "0004_agent_run_steps_agent_run_steps_table",
+      "0005_agent_run_state_agent_run_state_table",
+      "0006_approvals_approvals_table",
+      "0009_audit_log_audit_log_table",
+      "agent_run_state_repository_AgentRunStateRepository",
+      "agent_run_steps_repository_AgentRunStepsRepository",
+      "agent_runs_repository_AgentRunRecord",
+      "agent_runs_repository_AgentRunsRepository",
+      "audit_repository_AuditEntry",
+      "audit_repository_AuditRepository",
+      "chats_repository_ChatsRepository",
+      "messages_repository_MessagesRepository",
+      "shared_agent_types_AgentRunStep",
+      "shared_agent_types_AgentState",
+      "shared_agent_types_ReasoningStep",
+      "shared_chat_types_Chat",
+      "shared_chat_types_Message"
+    ],
+    "13": [
+      "ipc_model_handlers",
+      "ipc_model_handlers_getruntime",
+      "ipc_model_handlers_handlemodelcatalog",
+      "ipc_model_handlers_handlemodeldownload",
+      "ipc_model_handlers_handlemodellist",
+      "ipc_model_handlers_handlemodelload",
+      "ipc_model_handlers_handlemodelregisterlocal",
+      "ipc_model_handlers_handlemodelselectgguf",
+      "ipc_model_handlers_handlemodelstatus",
+      "ipc_model_handlers_handlemodelunload",
+      "ipc_model_handlers_registry",
+      "models_catalog",
+      "models_catalog_listcatalogmodels",
+      "models_catalog_model_catalog",
+      "types_model_types_modelcatalogentry",
+      "validation_model_schema",
+      "validation_model_schema_modeldownloadpayloadschema",
+      "validation_model_schema_modelloadpayloadschema",
+      "validation_model_schema_modelregisterlocalpayloadschema"
+    ],
+    "14": [
+      "approval_policy_ApprovalPolicy",
+      "approval_policy_DEFAULT_POLICY",
+      "approval_policy_approvalPolicy",
+      "filesystem_tool_FilesystemTool",
+      "intent_browserIntent",
+      "intent_filesystemIntent",
+      "intent_genericIntent",
+      "intent_networkIntent",
+      "intent_shellIntent",
+      "network_tool_NetworkTool",
+      "rag_tool_RagTool",
+      "registry_ToolRegistry",
+      "sandbox_executor_SandboxExecutor",
+      "shell_tool_ShellTool",
+      "tool_AgentTool",
+      "tool_ToolExecution",
+      "window_manager_createMainWindow",
+      "workspace_tool_WorkspaceTool"
+    ],
+    "15": [
+      "repositories_chats_repository",
+      "repositories_chats_repository_chatsrepository",
+      "repositories_chats_repository_chatsrepository_constructor",
+      "repositories_chats_repository_chatsrepository_create",
+      "repositories_chats_repository_chatsrepository_delete",
+      "repositories_chats_repository_chatsrepository_findbyid",
+      "repositories_chats_repository_chatsrepository_list",
+      "repositories_messages_repository",
+      "repositories_messages_repository_messagesrepository",
+      "repositories_messages_repository_messagesrepository_constructor",
+      "repositories_messages_repository_messagesrepository_create",
+      "repositories_messages_repository_messagesrepository_listbychatid",
+      "types_chat_types",
+      "types_chat_types_chat",
+      "types_chat_types_chatrole",
+      "types_chat_types_createchatpayload",
+      "types_chat_types_createmessagepayload",
+      "types_chat_types_message"
+    ],
+    "16": [
+      "config_config_loader",
+      "config_config_loader_deepmerge",
+      "config_config_loader_getconfig",
+      "config_config_loader_loadconfig",
+      "config_config_loader_loadyaml",
+      "ipc_settings_handlers",
+      "ipc_settings_handlers_handlesettingsget",
+      "ipc_settings_handlers_handlesettingsgetall",
+      "ipc_settings_handlers_handlesettingsset",
+      "validation_settings_schema",
+      "validation_settings_schema_appconfig",
+      "validation_settings_schema_appconfigschema",
+      "validation_settings_schema_chatcreatepayloadschema",
+      "validation_settings_schema_chatdeletepayloadschema",
+      "validation_settings_schema_messagecreatepayloadschema",
+      "validation_settings_schema_messagelistpayloadschema",
+      "validation_settings_schema_settingsgetpayloadschema",
+      "validation_settings_schema_settingssetpayloadschema"
+    ],
+    "17": [
+      "ipc_agent_handlers",
+      "ipc_agent_handlers_getorchestrator",
+      "ipc_agent_handlers_handleagentget",
+      "ipc_agent_handlers_handleagentstart",
+      "ipc_agent_handlers_handleagentstop",
+      "ipc_router",
+      "ipc_router_handlers",
+      "shared_ipc_channels",
+      "shared_ipc_channels_anychannel",
+      "shared_ipc_channels_eventchannel",
+      "shared_ipc_channels_eventchannels",
+      "shared_ipc_channels_invokechannel",
+      "shared_ipc_channels_invokechannels",
+      "validation_agent_schema",
+      "validation_agent_schema_agentgetpayloadschema",
+      "validation_agent_schema_agentstartpayloadschema",
+      "validation_agent_schema_agentstoppayloadschema",
+      "validation_agent_schema_reactloopoptionsschema"
+    ],
+    "18": [
+      "approvalgate_ApprovalGate",
+      "audit_Audit",
+      "auditlog_AuditLog",
+      "browserrunner_BrowserRunner",
+      "childrunner_ChildProcessRunner",
+      "commandnormalizer_normalizeCommand",
+      "commandnormalizer_splitCommandLine",
+      "dockerrunner_DockerRunner",
+      "environment_EnvironmentModule",
+      "filesystemscope_FilesystemScope",
+      "limits_LimitsModule",
+      "networkscope_NetworkScope",
+      "runnerregistry_RunnerRegistry",
+      "safepath_SafePathModule",
+      "sandboxexecutor_SandboxExecutor",
+      "watchdog_WatchdogModule"
+    ],
+    "19": [
+      "localtelemetry_LocalTelemetry",
+      "telemetryevents_TelemetryEvents",
+      "telemetrypolicy_TelemetryPolicy",
+      "toolcallsrepository_ToolCallsRepository",
+      "utils_errors_Errors",
+      "utils_events_Events",
+      "utils_logger_Logger",
+      "utils_result_Result",
+      "utils_time_Time",
+      "workspaceevents_WorkspaceEvents",
+      "workspacepolicy_WorkspacePolicy",
+      "workspacescanner_WorkspaceScanner",
+      "workspaceservice_WorkspaceService",
+      "workspacesrepository_WorkspacesRepository"
+    ],
+    "20": [
+      "tsconfig",
+      "tsconfig_compileroptions",
+      "tsconfig_compileroptions_baseurl",
+      "tsconfig_compileroptions_esmoduleinterop",
+      "tsconfig_compileroptions_module",
+      "tsconfig_compileroptions_moduleresolution",
+      "tsconfig_compileroptions_paths",
+      "tsconfig_compileroptions_resolvejsonmodule",
+      "tsconfig_compileroptions_skiplibcheck",
+      "tsconfig_compileroptions_strict",
+      "tsconfig_compileroptions_target",
+      "tsconfig_files",
+      "tsconfig_paths_shared",
+      "tsconfig_references"
+    ],
+    "21": [
+      "app_window_manager",
+      "app_window_manager_createmainwindow",
+      "config_paths",
+      "config_paths_getdbpath",
+      "config_paths_getmigrationsdir",
+      "ipc_router_registeripchandlers",
+      "main_index",
+      "main_index_config",
+      "main_index_configdir",
+      "main_index_db",
+      "storage_db_client",
+      "storage_db_client_setdb"
+    ],
+    "22": [
+      "architecture_md_stub",
+      "concept_environment_config_layering",
+      "concept_llamacpp_provider",
+      "concept_local_first_architecture",
+      "concept_ollama_provider",
+      "config_default_yaml",
+      "config_development_yaml",
+      "config_models_yaml",
+      "config_production_yaml",
+      "docs_architecture_md_stub",
+      "docs_model_providers_md_stub"
+    ],
+    "23": [
+      "chunker_Chunker",
+      "codeloader_CodeLoader",
+      "embeddings_Embeddings",
+      "htmlloader_HTMLLoader",
+      "ingest_Ingest",
+      "mdloader_MarkdownLoader",
+      "pdfloader_PDFLoader",
+      "reranker_Reranker",
+      "retriever_Retriever",
+      "txtloader_TextLoader",
+      "vectorindex_VectorIndex"
+    ],
+    "24": [
+      "config_sandbox_policy_json_sandbox_policy",
+      "sandbox_policy_allowbrowserautomation",
+      "sandbox_policy_allowchildprocess",
+      "sandbox_policy_allowdocker",
+      "sandbox_policy_defaulttimeoutms",
+      "sandbox_policy_maxdirectorydepth",
+      "sandbox_policy_maxfilesizemb",
+      "sandbox_policy_maxoutputbytes",
+      "sandbox_policy_runner",
+      "sandbox_policy_workspaceroot"
+    ],
+    "25": [
+      "concept_approval_workflow",
+      "concept_browser_tool",
+      "concept_filesystem_tool",
+      "concept_shell_tool",
+      "config_tools_yaml",
+      "docs_approvals_md_stub",
+      "docs_sandboxing_md_stub",
+      "docs_threat_model_md_stub",
+      "resources_docker_compose_sandbox_stub",
+      "security_md_stub"
+    ],
+    "26": [
+      "config_settings",
+      "config_settings_initsettingsservice",
+      "config_settings_repo",
+      "config_settings_settingsservice",
+      "repositories_settings_repository",
+      "repositories_settings_repository_settingsrepository",
+      "repositories_settings_repository_settingsrepository_constructor",
+      "repositories_settings_repository_settingsrepository_get",
+      "repositories_settings_repository_settingsrepository_getall",
+      "repositories_settings_repository_settingsrepository_set"
+    ],
+    "27": [
+      "approval_rules_sandbox",
+      "d_local_ai_resources_docker_entrypoint_sh__entry",
+      "docker_entrypoint",
+      "docker_seccomp_profile",
+      "limits_sandbox",
+      "policy_default",
+      "policy_lab",
+      "policy_restricted",
+      "policy_sandbox"
+    ],
+    "28": [
+      "ipc_channels_AnyChannel",
+      "ipc_channels_EventChannel",
+      "ipc_channels_EventChannels",
+      "ipc_channels_InvokeChannel",
+      "ipc_channels_InvokeChannels",
+      "ipc_types_IpcChannel",
+      "ipc_types_IpcRequest",
+      "ipc_types_IpcResult",
+      "ipc_types_Result"
+    ],
+    "29": [
+      "electronviteconfig_electronViteConfig",
+      "main_mainProcess",
+      "preload_preloadScripts",
+      "renderer_reactApp",
+      "shared_sharedModule",
+      "tsconfig_rootConfig",
+      "tsconfignode_nodeConfig",
+      "tsconfigweb_webConfig",
+      "viteconfig_viteConfig"
+    ],
+    "30": [
+      "tsconfig_node",
+      "tsconfig_node_compileroptions",
+      "tsconfig_node_compileroptions_lib",
+      "tsconfig_node_compileroptions_module",
+      "tsconfig_node_compileroptions_moduleresolution",
+      "tsconfig_node_compileroptions_outdir",
+      "tsconfig_node_compileroptions_types",
+      "tsconfig_node_extends",
+      "tsconfig_node_include"
+    ],
+    "31": [
+      "tsconfig_web",
+      "tsconfig_web_compileroptions",
+      "tsconfig_web_compileroptions_jsx",
+      "tsconfig_web_compileroptions_lib",
+      "tsconfig_web_compileroptions_module",
+      "tsconfig_web_compileroptions_moduleresolution",
+      "tsconfig_web_compileroptions_types",
+      "tsconfig_web_extends",
+      "tsconfig_web_include"
+    ],
+    "32": [
+      "ipc_chat_handlers",
+      "ipc_chat_handlers_chatsrepo",
+      "ipc_chat_handlers_handlechatcreate",
+      "ipc_chat_handlers_handlechatdelete",
+      "ipc_chat_handlers_handlechatlist",
+      "ipc_chat_handlers_handlemessagecreate",
+      "ipc_chat_handlers_handlemessagelist",
+      "ipc_chat_handlers_messagesrepo",
+      "storage_db_client_getdb"
+    ],
+    "33": [
+      "chatschema_ChatSchemaModule",
+      "e2echat_ChatE2ESuite",
+      "settingsschema_AppConfig",
+      "settingsschema_AppConfigSchema",
+      "settingsschema_ChatCreatePayloadSchema",
+      "settingsschema_ChatDeletePayloadSchema",
+      "settingsschema_MessageCreatePayloadSchema",
+      "settingsschema_MessageListPayloadSchema"
+    ],
+    "34": [
+      "scripts_migrate",
+      "scripts_migrate_db",
+      "scripts_migrate_migrationsdir",
+      "storage_db",
+      "storage_db_initdb",
+      "storage_migrations",
+      "storage_migrations_runmigrations"
+    ],
+    "35": [
+      "agentschema_AgentStartPayloadSchema",
+      "agentschema_ReactLoopOptionsSchema",
+      "integrationipc_IPCIntegrationTest",
+      "settingsschema_SettingsGetPayloadSchema",
+      "unitagentloop_AgentLoopTest",
+      "unittoolintentboundary_ToolIntentBoundaryTest",
+      "workspacetypes_WorkspaceTypesModule"
+    ],
+    "36": [
+      "repositories_audit_repository",
+      "repositories_audit_repository_auditentry",
+      "repositories_audit_repository_auditrepository",
+      "repositories_audit_repository_auditrepository_append",
+      "repositories_audit_repository_auditrepository_constructor",
+      "repositories_audit_repository_auditrepository_recent"
+    ],
+    "37": [
+      "modelruntime_LlamaCppRuntime",
+      "ollamaprovider_OllamaProvider",
+      "openaicompatibleprovider_OpenAICompatibleProvider",
+      "provider_normalizeModelConfig",
+      "providerfactory_ProviderFactory",
+      "resources_defaultLlamaServerCandidates"
+    ],
+    "38": [
+      "sandbox_approval_rules",
+      "sandbox_approval_rules_criticalpatterns",
+      "sandbox_approval_rules_defaultdecision",
+      "sandbox_approval_rules_deniedpatterns",
+      "sandbox_approval_rules_highrisktools",
+      "sandbox_approval_rules_localtargets"
+    ],
+    "39": [
+      "config_sandbox_limits_json_sandbox_limits",
+      "sandbox_limits_defaulttimeoutms",
+      "sandbox_limits_maxdirectorydepth",
+      "sandbox_limits_maxfilesizemb",
+      "sandbox_limits_maxoutputbytes",
+      "sandbox_limits_maxtimeoutms"
+    ],
+    "40": [
+      "e2esandbox_SandboxE2ESuite",
+      "integrationsandboxrunner_SandboxRunnerIntegrationTest",
+      "sandboxschema_SandboxSchemaModule",
+      "unitbrowsersandboxrouting_BrowserSandboxRoutingTest",
+      "unitsandboxpolicy_SandboxPolicyTest"
+    ],
+    "41": [
+      "agentruntime_AgentRunTimeline",
+      "exposedapi_ExposedApi",
+      "ipcclient_IpcClient",
+      "preloadindex_IpcBridge",
+      "renderer_app_App"
+    ],
+    "42": [
+      "0011_local_models_local_models_table",
+      "models_repository_ModelsRepository",
+      "models_repository_UpsertLocalModelInput",
+      "shared_model_types_LocalModelRecord",
+      "shared_model_types_ModelQuantization"
+    ],
+    "43": [
+      "db_initDb",
+      "dbclient_getDb",
+      "dbclient_setDb",
+      "migrations_runMigrations"
+    ],
+    "44": [
+      "approvalschema_ApprovalSchemaModule",
+      "e2eapprovals_ApprovalsE2ESuite",
+      "unitapprovalgate_ApprovalGateTest",
+      "unitapprovalpolicysource_ApprovalPolicySourceTest"
+    ],
+    "45": [
+      "registry_LocalModelRegistry",
+      "resources_getModelFileInfo",
+      "resources_inferQuantization",
+      "resources_isGgufFile"
+    ],
+    "46": [
+      "agent_action_parser",
+      "agent_context_builder",
+      "agent_loop"
+    ],
+    "47": [
+      "claude_settings_local",
+      "claude_settings_local_permissions",
+      "claude_settings_local_permissions_allow"
+    ],
+    "48": [
+      "document_store_DocumentStore",
+      "document_types_DocumentTypes",
+      "rag_types_RagTypes"
+    ],
+    "49": [
+      "permissions_PermissionsModule",
+      "policy_PolicyModule",
+      "policyloader_PolicyLoader"
+    ],
+    "50": [
+      "shared_constants_Constants",
+      "shared_errors_Errors",
+      "shared_schemas_Schemas"
+    ],
+    "51": [
+      "modelschema_ModelLoadPayloadSchema",
+      "modelschema_ModelRegisterLocalPayloadSchema",
+      "unitmodelregistry_ModelRegistryTest"
+    ],
+    "52": [
+      "config_loader_getConfig",
+      "config_loader_loadConfig"
+    ],
+    "53": [
+      "encryption_EncryptionModule",
+      "keychain_KeychainModule"
+    ],
+    "54": [
+      "concept_react_renderer_entry",
+      "renderer_index_html"
+    ],
+    "55": [
+      "0001_init_settings_table",
+      "settings_repository_SettingsRepository"
+    ],
+    "56": [
+      "provider_DEFAULT_MODEL_CONFIG",
+      "tokenizer_Tokenizer"
+    ],
+    "57": [
+      "sqlitevecstore_SqliteVecStore",
+      "vectorstore_VectorStore"
+    ],
+    "58": [
+      "policies_default_policy"
+    ],
+    "59": [
+      "policies_lab_policy"
+    ],
+    "60": [
+      "policies_restricted_policy"
+    ],
+    "61": [
+      "scripts_build"
+    ],
+    "62": [
+      "scripts_dev"
+    ],
+    "63": [
+      "scripts_package"
+    ],
+    "64": [
+      "scripts_reset_db"
+    ],
+    "65": [
+      "scripts_seed"
+    ],
+    "66": [
+      "agent_agent_loop"
+    ],
+    "67": [
+      "guardrails_approval_classifier"
+    ],
+    "68": [
+      "guardrails_input_filter"
+    ],
+    "69": [
+      "guardrails_output_filter"
+    ],
+    "70": [
+      "guardrails_policy"
+    ],
+    "71": [
+      "guardrails_risk_classifier"
+    ],
+    "72": [
+      "guardrails_scope_validator"
+    ],
+    "73": [
+      "agent_observation_parser"
+    ],
+    "74": [
+      "agent_planner"
+    ],
+    "75": [
+      "prompts_approval"
+    ],
+    "76": [
+      "prompts_planner"
+    ],
+    "77": [
+      "prompts_react"
+    ],
+    "78": [
+      "agent_reasoning_step_runner"
+    ],
+    "79": [
+      "agent_run_manager"
+    ],
+    "80": [
+      "agent_stop_conditions"
+    ],
+    "81": [
+      "tools_permissions"
+    ],
+    "82": [
+      "app_bootstrap"
+    ],
+    "83": [
+      "app_lifecycle"
+    ],
+    "84": [
+      "app_menu"
+    ],
+    "85": [
+      "app_tray"
+    ],
+    "86": [
+      "app_updater"
+    ],
+    "87": [
+      "approvals_approval_events"
+    ],
+    "88": [
+      "approvals_approval_queue"
+    ],
+    "89": [
+      "approvals_approval_service"
+    ],
+    "90": [
+      "approvals_approval_timeouts"
+    ],
+    "91": [
+      "config_env"
+    ],
+    "92": [
+      "documents_document_events"
+    ],
+    "93": [
+      "documents_document_indexer"
+    ],
+    "94": [
+      "documents_document_parser"
+    ],
+    "95": [
+      "documents_document_service"
+    ],
+    "96": [
+      "ipc_approval_handlers"
+    ],
+    "97": [
+      "ipc_document_handlers"
+    ],
+    "98": [
+      "ipc_ipc_context"
+    ],
+    "99": [
+      "ipc_sandbox_handlers"
+    ],
+    "100": [
+      "ipc_telemetry_handlers"
+    ],
+    "101": [
+      "ipc_workspace_handlers"
+    ],
+    "102": [
+      "models_llamacpp_provider"
+    ],
+    "103": [
+      "models_ollama_provider"
+    ],
+    "104": [
+      "models_openai_compatible_provider"
+    ],
+    "105": [
+      "models_provider_factory"
+    ],
+    "106": [
+      "models_tokenizer"
+    ],
+    "107": [
+      "rag_chunker"
+    ],
+    "108": [
+      "rag_embeddings"
+    ],
+    "109": [
+      "rag_ingest"
+    ],
+    "110": [
+      "loaders_code_loader"
+    ],
+    "111": [
+      "loaders_html_loader"
+    ],
+    "112": [
+      "loaders_md_loader"
+    ],
+    "113": [
+      "loaders_pdf_loader"
+    ],
+    "114": [
+      "loaders_txt_loader"
+    ],
+    "115": [
+      "rag_reranker"
+    ],
+    "116": [
+      "rag_retriever"
+    ],
+    "117": [
+      "rag_vector_index"
+    ],
+    "118": [
+      "sandbox_audit"
+    ],
+    "119": [
+      "sandbox_browser_runner"
+    ],
+    "120": [
+      "sandbox_docker_runner"
+    ],
+    "121": [
+      "sandbox_environment"
+    ],
+    "122": [
+      "sandbox_filesystem_scope"
+    ],
+    "123": [
+      "src_main_sandbox_limits_ts_sandbox_limits"
+    ],
+    "124": [
+      "sandbox_network_scope"
+    ],
+    "125": [
+      "sandbox_policy_loader"
+    ],
+    "126": [
+      "src_main_sandbox_policy_ts_sandbox_policy"
+    ],
+    "127": [
+      "sandbox_runner_registry"
+    ],
+    "128": [
+      "sandbox_watchdog"
+    ],
+    "129": [
+      "security_audit_log"
+    ],
+    "130": [
+      "security_csp"
+    ],
+    "131": [
+      "security_encryption"
+    ],
+    "132": [
+      "security_keychain"
+    ],
+    "133": [
+      "security_permissions"
+    ],
+    "134": [
+      "security_safe_path"
+    ],
+    "135": [
+      "storage_lancedb_store"
+    ],
+    "136": [
+      "repositories_approvals_repository"
+    ],
+    "137": [
+      "repositories_documents_repository"
+    ],
+    "138": [
+      "repositories_embeddings_repository"
+    ],
+    "139": [
+      "repositories_tool_calls_repository"
+    ],
+    "140": [
+      "repositories_workspaces_repository"
+    ],
+    "141": [
+      "storage_sqlite_vec_store"
+    ],
+    "142": [
+      "storage_vector_store"
+    ],
+    "143": [
+      "telemetry_local_telemetry"
+    ],
+    "144": [
+      "telemetry_telemetry_events"
+    ],
+    "145": [
+      "telemetry_telemetry_policy"
+    ],
+    "146": [
+      "utils_errors"
+    ],
+    "147": [
+      "utils_events"
+    ],
+    "148": [
+      "utils_logger"
+    ],
+    "149": [
+      "utils_result"
+    ],
+    "150": [
+      "utils_time"
+    ],
+    "151": [
+      "workspaces_workspace_events"
+    ],
+    "152": [
+      "workspaces_workspace_policy"
+    ],
+    "153": [
+      "workspaces_workspace_scanner"
+    ],
+    "154": [
+      "workspaces_workspace_service"
+    ],
+    "155": [
+      "preload_api"
+    ],
+    "156": [
+      "preload_exposed_api"
+    ],
+    "157": [
+      "preload_ipc_client"
+    ],
+    "158": [
+      "agent_agentruntimeline"
+    ],
+    "159": [
+      "agent_agentstepcard"
+    ],
+    "160": [
+      "agent_approvaldialog"
+    ],
+    "161": [
+      "agent_approvalqueue"
+    ],
+    "162": [
+      "agent_observationview"
+    ],
+    "163": [
+      "agent_reasoningpanel"
+    ],
+    "164": [
+      "agent_riskbadge"
+    ],
+    "165": [
+      "agent_terminalview"
+    ],
+    "166": [
+      "agent_toolcallcard"
+    ],
+    "167": [
+      "chat_chatthread"
+    ],
+    "168": [
+      "chat_chatview"
+    ],
+    "169": [
+      "chat_composer"
+    ],
+    "170": [
+      "chat_contextpanel"
+    ],
+    "171": [
+      "chat_messagebubble"
+    ],
+    "172": [
+      "chat_messagelist"
+    ],
+    "173": [
+      "documents_documentdetails"
+    ],
+    "174": [
+      "documents_documentlist"
+    ],
+    "175": [
+      "documents_documentuploader"
+    ],
+    "176": [
+      "documents_ingestionstatus"
+    ],
+    "177": [
+      "layout_appshell"
+    ],
+    "178": [
+      "layout_header"
+    ],
+    "179": [
+      "layout_sidebar"
+    ],
+    "180": [
+      "layout_statusbar"
+    ],
+    "181": [
+      "models_modelcatalog"
+    ],
+    "182": [
+      "models_modeldownloadprogress"
+    ],
+    "183": [
+      "models_modelprovidercard"
+    ],
+    "184": [
+      "models_modelsettingsform"
+    ],
+    "185": [
+      "models_providerhealthbadge"
+    ],
+    "186": [
+      "sandbox_audittrail"
+    ],
+    "187": [
+      "sandbox_limitseditor"
+    ],
+    "188": [
+      "sandbox_policyeditor"
+    ],
+    "189": [
+      "sandbox_runnerselector"
+    ],
+    "190": [
+      "sandbox_sandboxstatus"
+    ],
+    "191": [
+      "ui_badge"
+    ],
+    "192": [
+      "ui_button"
+    ],
+    "193": [
+      "ui_dialog"
+    ],
+    "194": [
+      "ui_input"
+    ],
+    "195": [
+      "ui_select"
+    ],
+    "196": [
+      "ui_spinner"
+    ],
+    "197": [
+      "ui_switch"
+    ],
+    "198": [
+      "ui_tabs"
+    ],
+    "199": [
+      "ui_toast"
+    ],
+    "200": [
+      "ui_tooltip"
+    ],
+    "201": [
+      "hooks_use_agent"
+    ],
+    "202": [
+      "hooks_use_approval"
+    ],
+    "203": [
+      "hooks_use_chat"
+    ],
+    "204": [
+      "hooks_use_documents"
+    ],
+    "205": [
+      "hooks_use_models"
+    ],
+    "206": [
+      "hooks_use_sandbox"
+    ],
+    "207": [
+      "hooks_use_settings"
+    ],
+    "208": [
+      "pages_agentruns"
+    ],
+    "209": [
+      "pages_approvals"
+    ],
+    "210": [
+      "pages_auditlog"
+    ],
+    "211": [
+      "pages_chat"
+    ],
+    "212": [
+      "pages_documents"
+    ],
+    "213": [
+      "pages_models"
+    ],
+    "214": [
+      "pages_sandbox"
+    ],
+    "215": [
+      "pages_settings"
+    ],
+    "216": [
+      "pages_workspaces"
+    ],
+    "217": [
+      "src_routes"
+    ],
+    "218": [
+      "stores_agent_store"
+    ],
+    "219": [
+      "stores_app_store"
+    ],
+    "220": [
+      "stores_approval_store"
+    ],
+    "221": [
+      "stores_chat_store"
+    ],
+    "222": [
+      "stores_document_store"
+    ],
+    "223": [
+      "stores_model_store"
+    ],
+    "224": [
+      "stores_sandbox_store"
+    ],
+    "225": [
+      "stores_settings_store"
+    ],
+    "226": [
+      "shared_constants"
+    ],
+    "227": [
+      "shared_errors"
+    ],
+    "228": [
+      "shared_schemas"
+    ],
+    "229": [
+      "types_audit_types"
+    ],
+    "230": [
+      "types_document_types"
+    ],
+    "231": [
+      "types_rag_types"
+    ],
+    "232": [
+      "types_settings_types"
+    ],
+    "233": [
+      "types_storage_types"
+    ],
+    "234": [
+      "types_workspace_types"
+    ],
+    "235": [
+      "validation_approval_schema"
+    ],
+    "236": [
+      "validation_chat_schema"
+    ],
+    "237": [
+      "validation_sandbox_schema"
+    ],
+    "238": [
+      "e2e_app_e2e"
+    ],
+    "239": [
+      "e2e_approvals_e2e"
+    ],
+    "240": [
+      "e2e_chat_e2e"
+    ],
+    "241": [
+      "e2e_sandbox_e2e"
+    ],
+    "242": [
+      "integration_ipc_test"
+    ],
+    "243": [
+      "integration_rag_test"
+    ],
+    "244": [
+      "integration_sandbox_runner_test"
+    ],
+    "245": [
+      "integration_storage_test"
+    ],
+    "246": [
+      "unit_agent_loop_test"
+    ],
+    "247": [
+      "unit_approval_gate_test"
+    ],
+    "248": [
+      "unit_approval_policy_source_test"
+    ],
+    "249": [
+      "unit_browser_sandbox_routing_test"
+    ],
+    "250": [
+      "unit_model_registry_test"
+    ],
+    "251": [
+      "unit_sandbox_policy_test"
+    ],
+    "252": [
+      "unit_tool_intent_boundary_test"
+    ],
+    "253": [
+      "vite_config"
+    ],
+    "254": [
+      "settings_local_permissions"
+    ],
+    "255": [
+      "memorymanager_MemoryMessage"
+    ],
+    "256": [
+      "orchestrator_AgentOrchestratorOptions"
+    ],
+    "257": [
+      "orchestrator_ActiveRun"
+    ],
+    "258": [
+      "orchestrator_toPublicStatus"
+    ],
+    "259": [
+      "reactloop_RunReactLoopOptions"
+    ],
+    "260": [
+      "modelruntime_getActiveRuntimeModelConfig"
+    ],
+    "261": [
+      "commandnormalizer_NormalizedCommand"
+    ],
+    "262": [
+      "csp_CSPModule"
+    ],
+    "263": [
+      "lancedbstore_LanceDbStore"
+    ],
+    "264": [
+      "0001_init_migrations_table"
+    ],
+    "265": [
+      "preloadapi_PreloadApi"
+    ],
+    "266": [
+      "agent_types_AgentStopPayload"
+    ],
+    "267": [
+      "agent_types_AgentGetPayload"
+    ],
+    "268": [
+      "chat_types_CreateChatPayload"
+    ],
+    "269": [
+      "audit_types_AuditTypes"
+    ],
+    "270": [
+      "settings_types_SettingsTypes"
+    ],
+    "271": [
+      "storage_types_StorageTypes"
+    ],
+    "272": [
+      "agentschema_AgentStopPayloadSchema"
+    ],
+    "273": [
+      "agentschema_AgentGetPayloadSchema"
+    ],
+    "274": [
+      "modelschema_ModelDownloadPayloadSchema"
+    ],
+    "275": [
+      "settingsschema_SettingsSetPayloadSchema"
+    ],
+    "276": [
+      "e2eapp_AppE2ESuite"
+    ],
+    "277": [
+      "integrationrag_RAGIntegrationTest"
+    ],
+    "278": [
+      "integrationstorage_StorageIntegrationTest"
+    ],
+    "279": [
+      "readme_project_documentation"
+    ],
+    "280": [
+      "docs_development_md_stub"
+    ],
+    "281": [
+      "docs_storage_md_stub"
+    ],
+    "282": [
+      "resources_bin_readme_stub"
+    ],
+    "283": [
+      "app_icon"
+    ]
+  },
+  "cohesion": {
+    "0": 0.059027777777777776,
+    "1": 0.0679563492063492,
+    "2": 0.05585106382978723,
+    "3": 0.0966183574879227,
+    "4": 0.06882591093117409,
+    "5": 0.1337126600284495,
+    "6": 0.05555555555555555,
+    "7": 0.09247311827956989,
+    "8": 0.14285714285714285,
+    "9": 0.08262108262108261,
+    "10": 0.12554112554112554,
+    "11": 0.18181818181818182,
+    "12": 0.12105263157894737,
+    "13": 0.18128654970760233,
+    "14": 0.17647058823529413,
+    "15": 0.16339869281045752,
+    "16": 0.1503267973856209,
+    "17": 0.17647058823529413,
+    "18": 0.13333333333333333,
+    "19": 0.18681318681318682,
+    "20": 0.14285714285714285,
+    "21": 0.22727272727272727,
+    "22": 0.2545454545454545,
+    "23": 0.3090909090909091,
+    "24": 0.2,
+    "25": 0.3111111111111111,
+    "26": 0.2222222222222222,
+    "27": 0.3333333333333333,
+    "28": 0.2222222222222222,
+    "29": 0.3888888888888889,
+    "30": 0.2222222222222222,
+    "31": 0.2222222222222222,
+    "32": 0.4166666666666667,
+    "33": 0.25,
+    "34": 0.42857142857142855,
+    "35": 0.2857142857142857,
+    "36": 0.3333333333333333,
+    "37": 0.4666666666666667,
+    "38": 0.3333333333333333,
+    "39": 0.3333333333333333,
+    "40": 0.4,
+    "41": 0.5,
+    "42": 0.4,
+    "43": 0.5,
+    "44": 0.5,
+    "45": 0.5,
+    "46": 1.0,
+    "47": 0.6666666666666666,
+    "48": 0.6666666666666666,
+    "49": 0.6666666666666666,
+    "50": 0.6666666666666666,
+    "51": 1.0,
+    "52": 1.0,
+    "53": 1.0,
+    "54": 1.0,
+    "55": 1.0,
+    "56": 1.0,
+    "57": 1.0,
+    "58": 1.0,
+    "59": 1.0,
+    "60": 1.0,
+    "61": 1.0,
+    "62": 1.0,
+    "63": 1.0,
+    "64": 1.0,
+    "65": 1.0,
+    "66": 1.0,
+    "67": 1.0,
+    "68": 1.0,
+    "69": 1.0,
+    "70": 1.0,
+    "71": 1.0,
+    "72": 1.0,
+    "73": 1.0,
+    "74": 1.0,
+    "75": 1.0,
+    "76": 1.0,
+    "77": 1.0,
+    "78": 1.0,
+    "79": 1.0,
+    "80": 1.0,
+    "81": 1.0,
+    "82": 1.0,
+    "83": 1.0,
+    "84": 1.0,
+    "85": 1.0,
+    "86": 1.0,
+    "87": 1.0,
+    "88": 1.0,
+    "89": 1.0,
+    "90": 1.0,
+    "91": 1.0,
+    "92": 1.0,
+    "93": 1.0,
+    "94": 1.0,
+    "95": 1.0,
+    "96": 1.0,
+    "97": 1.0,
+    "98": 1.0,
+    "99": 1.0,
+    "100": 1.0,
+    "101": 1.0,
+    "102": 1.0,
+    "103": 1.0,
+    "104": 1.0,
+    "105": 1.0,
+    "106": 1.0,
+    "107": 1.0,
+    "108": 1.0,
+    "109": 1.0,
+    "110": 1.0,
+    "111": 1.0,
+    "112": 1.0,
+    "113": 1.0,
+    "114": 1.0,
+    "115": 1.0,
+    "116": 1.0,
+    "117": 1.0,
+    "118": 1.0,
+    "119": 1.0,
+    "120": 1.0,
+    "121": 1.0,
+    "122": 1.0,
+    "123": 1.0,
+    "124": 1.0,
+    "125": 1.0,
+    "126": 1.0,
+    "127": 1.0,
+    "128": 1.0,
+    "129": 1.0,
+    "130": 1.0,
+    "131": 1.0,
+    "132": 1.0,
+    "133": 1.0,
+    "134": 1.0,
+    "135": 1.0,
+    "136": 1.0,
+    "137": 1.0,
+    "138": 1.0,
+    "139": 1.0,
+    "140": 1.0,
+    "141": 1.0,
+    "142": 1.0,
+    "143": 1.0,
+    "144": 1.0,
+    "145": 1.0,
+    "146": 1.0,
+    "147": 1.0,
+    "148": 1.0,
+    "149": 1.0,
+    "150": 1.0,
+    "151": 1.0,
+    "152": 1.0,
+    "153": 1.0,
+    "154": 1.0,
+    "155": 1.0,
+    "156": 1.0,
+    "157": 1.0,
+    "158": 1.0,
+    "159": 1.0,
+    "160": 1.0,
+    "161": 1.0,
+    "162": 1.0,
+    "163": 1.0,
+    "164": 1.0,
+    "165": 1.0,
+    "166": 1.0,
+    "167": 1.0,
+    "168": 1.0,
+    "169": 1.0,
+    "170": 1.0,
+    "171": 1.0,
+    "172": 1.0,
+    "173": 1.0,
+    "174": 1.0,
+    "175": 1.0,
+    "176": 1.0,
+    "177": 1.0,
+    "178": 1.0,
+    "179": 1.0,
+    "180": 1.0,
+    "181": 1.0,
+    "182": 1.0,
+    "183": 1.0,
+    "184": 1.0,
+    "185": 1.0,
+    "186": 1.0,
+    "187": 1.0,
+    "188": 1.0,
+    "189": 1.0,
+    "190": 1.0,
+    "191": 1.0,
+    "192": 1.0,
+    "193": 1.0,
+    "194": 1.0,
+    "195": 1.0,
+    "196": 1.0,
+    "197": 1.0,
+    "198": 1.0,
+    "199": 1.0,
+    "200": 1.0,
+    "201": 1.0,
+    "202": 1.0,
+    "203": 1.0,
+    "204": 1.0,
+    "205": 1.0,
+    "206": 1.0,
+    "207": 1.0,
+    "208": 1.0,
+    "209": 1.0,
+    "210": 1.0,
+    "211": 1.0,
+    "212": 1.0,
+    "213": 1.0,
+    "214": 1.0,
+    "215": 1.0,
+    "216": 1.0,
+    "217": 1.0,
+    "218": 1.0,
+    "219": 1.0,
+    "220": 1.0,
+    "221": 1.0,
+    "222": 1.0,
+    "223": 1.0,
+    "224": 1.0,
+    "225": 1.0,
+    "226": 1.0,
+    "227": 1.0,
+    "228": 1.0,
+    "229": 1.0,
+    "230": 1.0,
+    "231": 1.0,
+    "232": 1.0,
+    "233": 1.0,
+    "234": 1.0,
+    "235": 1.0,
+    "236": 1.0,
+    "237": 1.0,
+    "238": 1.0,
+    "239": 1.0,
+    "240": 1.0,
+    "241": 1.0,
+    "242": 1.0,
+    "243": 1.0,
+    "244": 1.0,
+    "245": 1.0,
+    "246": 1.0,
+    "247": 1.0,
+    "248": 1.0,
+    "249": 1.0,
+    "250": 1.0,
+    "251": 1.0,
+    "252": 1.0,
+    "253": 1.0,
+    "254": 1.0,
+    "255": 1.0,
+    "256": 1.0,
+    "257": 1.0,
+    "258": 1.0,
+    "259": 1.0,
+    "260": 1.0,
+    "261": 1.0,
+    "262": 1.0,
+    "263": 1.0,
+    "264": 1.0,
+    "265": 1.0,
+    "266": 1.0,
+    "267": 1.0,
+    "268": 1.0,
+    "269": 1.0,
+    "270": 1.0,
+    "271": 1.0,
+    "272": 1.0,
+    "273": 1.0,
+    "274": 1.0,
+    "275": 1.0,
+    "276": 1.0,
+    "277": 1.0,
+    "278": 1.0,
+    "279": 1.0,
+    "280": 1.0,
+    "281": 1.0,
+    "282": 1.0,
+    "283": 1.0
+  },
+  "gods": [
+    {
+      "id": "router_registerIpcHandlers",
+      "label": "registerIpcHandlers (IPC dispatch hub)",
+      "degree": 20
+    },
+    {
+      "id": "types_model_types_localmodelrecord",
+      "label": "LocalModelRecord",
+      "degree": 19
+    },
+    {
+      "id": "agent_orchestrator_agentorchestrator",
+      "label": "AgentOrchestrator",
+      "degree": 18
+    },
+    {
+      "id": "ipc_types_ExposedApi",
+      "label": "ExposedApi",
+      "degree": 15
+    },
+    {
+      "id": "tools_tool_agenttool",
+      "label": "AgentTool",
+      "degree": 13
+    },
+    {
+      "id": "models_local_http_provider_llamacpphttpprovider",
+      "label": "LlamaCppHttpProvider",
+      "degree": 13
+    },
+    {
+      "id": "types_ipc_types_exposedapi",
+      "label": "ExposedApi",
+      "degree": 13
+    },
+    {
+      "id": "types_sandbox_types_toolintent",
+      "label": "ToolIntent",
+      "degree": 12
+    },
+    {
+      "id": "tools_registry_toolregistry",
+      "label": "ToolRegistry",
+      "degree": 11
+    },
+    {
+      "id": "models_registry_localmodelregistry",
+      "label": "LocalModelRegistry",
+      "degree": 11
+    }
+  ],
+  "surprises": [
+    {
+      "source": "IPC Integration Test Suite",
+      "target": "AgentStartPayload Schema",
+      "source_files": [
+        "tests/integration/ipc.test.ts",
+        "src/shared/validation/agent.schema.ts"
+      ],
+      "confidence": "INFERRED",
+      "relation": "references",
+      "why": "inferred connection - not explicitly stated in source; connects across different repos/directories; peripheral node `IPC Integration Test Suite` unexpectedly reaches hub `AgentStartPayload Schema`"
+    },
+    {
+      "source": "AgentLoop Unit Test Suite",
+      "target": "AgentStartPayload Schema",
+      "source_files": [
+        "tests/unit/agent-loop.test.ts",
+        "src/shared/validation/agent.schema.ts"
+      ],
+      "confidence": "INFERRED",
+      "relation": "references",
+      "why": "inferred connection - not explicitly stated in source; connects across different repos/directories; peripheral node `AgentLoop Unit Test Suite` unexpectedly reaches hub `AgentStartPayload Schema`"
+    },
+    {
+      "source": "ToolIntentBoundary Unit Test Suite",
+      "target": "AgentStartPayload Schema",
+      "source_files": [
+        "tests/unit/tool-intent-boundary.test.ts",
+        "src/shared/validation/agent.schema.ts"
+      ],
+      "confidence": "INFERRED",
+      "relation": "references",
+      "why": "inferred connection - not explicitly stated in source; connects across different repos/directories; peripheral node `ToolIntentBoundary Unit Test Suite` unexpectedly reaches hub `AgentStartPayload Schema`"
+    },
+    {
+      "source": "Chat E2E Test Suite",
+      "target": "ChatCreatePayload Schema",
+      "source_files": [
+        "tests/e2e/chat.e2e.ts",
+        "src/shared/validation/settings.schema.ts"
+      ],
+      "confidence": "INFERRED",
+      "relation": "references",
+      "why": "inferred connection - not explicitly stated in source; connects across different repos/directories; peripheral node `Chat E2E Test Suite` unexpectedly reaches hub `ChatCreatePayload Schema`"
+    },
+    {
+      "source": "Electron Vite Config",
+      "target": "Node Process TypeScript Config",
+      "source_files": [
+        "electron.vite.config.ts",
+        "tsconfig.node.json"
+      ],
+      "confidence": "INFERRED",
+      "relation": "references",
+      "why": "inferred connection - not explicitly stated in source; connects across different repos/directories; peripheral node `Electron Vite Config` unexpectedly reaches hub `Node Process TypeScript Config`"
+    }
+  ],
+  "questions": [
+    {
+      "type": "ambiguous_edge",
+      "question": "What is the exact relationship between `AppConfig Schema` and `Chat Schema Module`?",
+      "why": "Edge tagged AMBIGUOUS (relation: semantically_similar_to) - confidence is low."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `LocalModelRecord` connect `Community 1` to `Community 13`?",
+      "why": "High betweenness centrality (0.008) - this node is a cross-community bridge."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `ToolIntent` connect `Community 3` to `Community 5`?",
+      "why": "High betweenness centrality (0.006) - this node is a cross-community bridge."
+    },
+    {
+      "type": "bridge_node",
+      "question": "Why does `LlamaCppRuntime` connect `Community 1` to `Community 13`?",
+      "why": "High betweenness centrality (0.005) - this node is a cross-community bridge."
+    },
+    {
+      "type": "verify_inferred",
+      "question": "Are the 4 inferred relationships involving `ExposedApi` (e.g. with `App Store` and `Chat Store`) actually correct?",
+      "why": "`ExposedApi` has 4 INFERRED edges - model-reasoned connections that need verification."
+    },
+    {
+      "type": "isolated_nodes",
+      "question": "What connects `allow`, `defaultDecision`, `criticalPatterns` to the rest of the system?",
+      "why": "275 weakly-connected nodes found - possible documentation gaps or missing edges."
+    },
+    {
+      "type": "low_cohesion",
+      "question": "Should `Community 0` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.059027777777777776 - nodes in this community are weakly interconnected."
+    }
+  ]
+}

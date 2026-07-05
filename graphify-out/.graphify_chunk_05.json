@@ -1,0 +1,606 @@
+{
+  "nodes": [
+    {
+      "id": "modelruntime_LlamaCppRuntime",
+      "label": "LlamaCpp Runtime",
+      "file_type": "code",
+      "source_file": "src/main/models/model-runtime.ts",
+      "source_location": "class LlamaCppRuntime",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "modelruntime_getActiveRuntimeModelConfig",
+      "label": "Get Active Runtime Model Config",
+      "file_type": "code",
+      "source_file": "src/main/models/model-runtime.ts",
+      "source_location": "function getActiveRuntimeModelConfig",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "provider_DEFAULT_MODEL_CONFIG",
+      "label": "Default Model Config",
+      "file_type": "code",
+      "source_file": "src/main/models/provider.ts",
+      "source_location": "const DEFAULT_MODEL_CONFIG",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "provider_normalizeModelConfig",
+      "label": "Normalize Model Config",
+      "file_type": "code",
+      "source_file": "src/main/models/provider.ts",
+      "source_location": "function normalizeModelConfig",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "registry_LocalModelRegistry",
+      "label": "Local Model Registry",
+      "file_type": "code",
+      "source_file": "src/main/models/registry.ts",
+      "source_location": "class LocalModelRegistry",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "resources_inferQuantization",
+      "label": "Infer Quantization",
+      "file_type": "code",
+      "source_file": "src/main/models/resources.ts",
+      "source_location": "function inferQuantization",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "resources_isGgufFile",
+      "label": "Is GGUF File",
+      "file_type": "code",
+      "source_file": "src/main/models/resources.ts",
+      "source_location": "function isGgufFile",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "resources_getModelFileInfo",
+      "label": "Get Model File Info",
+      "file_type": "code",
+      "source_file": "src/main/models/resources.ts",
+      "source_location": "function getModelFileInfo",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "resources_defaultLlamaServerCandidates",
+      "label": "Default Llama Server Candidates",
+      "file_type": "code",
+      "source_file": "src/main/models/resources.ts",
+      "source_location": "function defaultLlamaServerCandidates",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "approvalgate_ApprovalGate",
+      "label": "Approval Gate",
+      "file_type": "code",
+      "source_file": "src/main/sandbox/approval-gate.ts",
+      "source_location": "class ApprovalGate",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "ollamaprovider_OllamaProvider",
+      "label": "Ollama Provider",
+      "file_type": "code",
+      "source_file": "src/main/models/ollama.provider.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "openaicompatibleprovider_OpenAICompatibleProvider",
+      "label": "OpenAI-Compatible Provider",
+      "file_type": "code",
+      "source_file": "src/main/models/openai-compatible.provider.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "providerfactory_ProviderFactory",
+      "label": "Provider Factory",
+      "file_type": "code",
+      "source_file": "src/main/models/provider-factory.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "tokenizer_Tokenizer",
+      "label": "Tokenizer",
+      "file_type": "code",
+      "source_file": "src/main/models/tokenizer.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "chunker_Chunker",
+      "label": "RAG Chunker",
+      "file_type": "code",
+      "source_file": "src/main/rag/chunker.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "embeddings_Embeddings",
+      "label": "RAG Embeddings",
+      "file_type": "code",
+      "source_file": "src/main/rag/embeddings.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "ingest_Ingest",
+      "label": "RAG Ingest Pipeline",
+      "file_type": "code",
+      "source_file": "src/main/rag/ingest.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "codeloader_CodeLoader",
+      "label": "Code Document Loader",
+      "file_type": "code",
+      "source_file": "src/main/rag/loaders/code.loader.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "htmlloader_HTMLLoader",
+      "label": "HTML Document Loader",
+      "file_type": "code",
+      "source_file": "src/main/rag/loaders/html.loader.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "mdloader_MarkdownLoader",
+      "label": "Markdown Document Loader",
+      "file_type": "code",
+      "source_file": "src/main/rag/loaders/md.loader.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "pdfloader_PDFLoader",
+      "label": "PDF Document Loader",
+      "file_type": "code",
+      "source_file": "src/main/rag/loaders/pdf.loader.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "txtloader_TextLoader",
+      "label": "Plain Text Document Loader",
+      "file_type": "code",
+      "source_file": "src/main/rag/loaders/txt.loader.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "reranker_Reranker",
+      "label": "RAG Reranker",
+      "file_type": "code",
+      "source_file": "src/main/rag/reranker.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "retriever_Retriever",
+      "label": "RAG Retriever",
+      "file_type": "code",
+      "source_file": "src/main/rag/retriever.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "vectorindex_VectorIndex",
+      "label": "Vector Index",
+      "file_type": "code",
+      "source_file": "src/main/rag/vector-index.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "audit_Audit",
+      "label": "Sandbox Audit Logger",
+      "file_type": "code",
+      "source_file": "src/main/sandbox/audit.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "browserrunner_BrowserRunner",
+      "label": "Sandbox Browser Runner",
+      "file_type": "code",
+      "source_file": "src/main/sandbox/browser-runner.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "modelruntime_LlamaCppRuntime",
+      "target": "resources_defaultLlamaServerCandidates",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/models/model-runtime.ts",
+      "source_location": "resolveExecutable method",
+      "weight": 1.0
+    },
+    {
+      "source": "registry_LocalModelRegistry",
+      "target": "resources_getModelFileInfo",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/models/registry.ts",
+      "source_location": "registerLocal method",
+      "weight": 1.0
+    },
+    {
+      "source": "resources_getModelFileInfo",
+      "target": "resources_inferQuantization",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/models/resources.ts",
+      "source_location": "function getModelFileInfo",
+      "weight": 1.0
+    },
+    {
+      "source": "resources_getModelFileInfo",
+      "target": "resources_isGgufFile",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/models/resources.ts",
+      "source_location": "function getModelFileInfo",
+      "weight": 1.0
+    },
+    {
+      "source": "providerfactory_ProviderFactory",
+      "target": "ollamaprovider_OllamaProvider",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "src/main/models/provider-factory.ts",
+      "source_location": null,
+      "weight": 0.85
+    },
+    {
+      "source": "providerfactory_ProviderFactory",
+      "target": "openaicompatibleprovider_OpenAICompatibleProvider",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "src/main/models/provider-factory.ts",
+      "source_location": null,
+      "weight": 0.85
+    },
+    {
+      "source": "ollamaprovider_OllamaProvider",
+      "target": "provider_normalizeModelConfig",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "src/main/models/ollama.provider.ts",
+      "source_location": null,
+      "weight": 0.75
+    },
+    {
+      "source": "openaicompatibleprovider_OpenAICompatibleProvider",
+      "target": "provider_normalizeModelConfig",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "src/main/models/openai-compatible.provider.ts",
+      "source_location": null,
+      "weight": 0.75
+    },
+    {
+      "source": "ollamaprovider_OllamaProvider",
+      "target": "openaicompatibleprovider_OpenAICompatibleProvider",
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "src/main/models/ollama.provider.ts",
+      "source_location": null,
+      "weight": 0.85
+    },
+    {
+      "source": "modelruntime_LlamaCppRuntime",
+      "target": "openaicompatibleprovider_OpenAICompatibleProvider",
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "src/main/models/model-runtime.ts",
+      "source_location": "endpoint field set to /v1/chat/completions",
+      "weight": 0.75
+    },
+    {
+      "source": "ingest_Ingest",
+      "target": "chunker_Chunker",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "src/main/rag/ingest.ts",
+      "source_location": null,
+      "weight": 0.85
+    },
+    {
+      "source": "ingest_Ingest",
+      "target": "embeddings_Embeddings",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "src/main/rag/ingest.ts",
+      "source_location": null,
+      "weight": 0.85
+    },
+    {
+      "source": "ingest_Ingest",
+      "target": "vectorindex_VectorIndex",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "src/main/rag/ingest.ts",
+      "source_location": null,
+      "weight": 0.85
+    },
+    {
+      "source": "ingest_Ingest",
+      "target": "codeloader_CodeLoader",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "src/main/rag/ingest.ts",
+      "source_location": null,
+      "weight": 0.85
+    },
+    {
+      "source": "ingest_Ingest",
+      "target": "htmlloader_HTMLLoader",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "src/main/rag/ingest.ts",
+      "source_location": null,
+      "weight": 0.85
+    },
+    {
+      "source": "ingest_Ingest",
+      "target": "mdloader_MarkdownLoader",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "src/main/rag/ingest.ts",
+      "source_location": null,
+      "weight": 0.85
+    },
+    {
+      "source": "ingest_Ingest",
+      "target": "pdfloader_PDFLoader",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "src/main/rag/ingest.ts",
+      "source_location": null,
+      "weight": 0.85
+    },
+    {
+      "source": "ingest_Ingest",
+      "target": "txtloader_TextLoader",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "src/main/rag/ingest.ts",
+      "source_location": null,
+      "weight": 0.85
+    },
+    {
+      "source": "retriever_Retriever",
+      "target": "vectorindex_VectorIndex",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "src/main/rag/retriever.ts",
+      "source_location": null,
+      "weight": 0.85
+    },
+    {
+      "source": "retriever_Retriever",
+      "target": "embeddings_Embeddings",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "src/main/rag/retriever.ts",
+      "source_location": null,
+      "weight": 0.85
+    },
+    {
+      "source": "retriever_Retriever",
+      "target": "reranker_Reranker",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "src/main/rag/retriever.ts",
+      "source_location": null,
+      "weight": 0.85
+    },
+    {
+      "source": "vectorindex_VectorIndex",
+      "target": "embeddings_Embeddings",
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "src/main/rag/vector-index.ts",
+      "source_location": null,
+      "weight": 0.85
+    },
+    {
+      "source": "approvalgate_ApprovalGate",
+      "target": "audit_Audit",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.65,
+      "source_file": "src/main/sandbox/approval-gate.ts",
+      "source_location": null,
+      "weight": 0.65
+    },
+    {
+      "source": "approvalgate_ApprovalGate",
+      "target": "browserrunner_BrowserRunner",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.65,
+      "source_file": "src/main/sandbox/approval-gate.ts",
+      "source_location": null,
+      "weight": 0.65
+    },
+    {
+      "source": "tokenizer_Tokenizer",
+      "target": "provider_DEFAULT_MODEL_CONFIG",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.65,
+      "source_file": "src/main/models/tokenizer.ts",
+      "source_location": null,
+      "weight": 0.65
+    },
+    {
+      "source": "codeloader_CodeLoader",
+      "target": "chunker_Chunker",
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "src/main/rag/loaders/code.loader.ts",
+      "source_location": null,
+      "weight": 0.75
+    },
+    {
+      "source": "htmlloader_HTMLLoader",
+      "target": "chunker_Chunker",
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "src/main/rag/loaders/html.loader.ts",
+      "source_location": null,
+      "weight": 0.75
+    },
+    {
+      "source": "mdloader_MarkdownLoader",
+      "target": "chunker_Chunker",
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "src/main/rag/loaders/md.loader.ts",
+      "source_location": null,
+      "weight": 0.75
+    },
+    {
+      "source": "pdfloader_PDFLoader",
+      "target": "chunker_Chunker",
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "src/main/rag/loaders/pdf.loader.ts",
+      "source_location": null,
+      "weight": 0.75
+    },
+    {
+      "source": "txtloader_TextLoader",
+      "target": "chunker_Chunker",
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "src/main/rag/loaders/txt.loader.ts",
+      "source_location": null,
+      "weight": 0.75
+    }
+  ],
+  "hyperedges": [],
+  "input_tokens": 0,
+  "output_tokens": 0
+}

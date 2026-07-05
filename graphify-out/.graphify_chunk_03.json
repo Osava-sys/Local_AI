@@ -1,0 +1,509 @@
+{
+  "nodes": [
+    {
+      "id": "filesystem_tool_FilesystemTool",
+      "label": "FilesystemTool (AgentTool)",
+      "file_type": "code",
+      "source_file": "src/main/agent/tools/filesystem.tool.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "intent_filesystemIntent",
+      "label": "filesystemIntent Factory",
+      "file_type": "code",
+      "source_file": "src/main/agent/tools/intent.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "intent_shellIntent",
+      "label": "shellIntent Factory",
+      "file_type": "code",
+      "source_file": "src/main/agent/tools/intent.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "intent_networkIntent",
+      "label": "networkIntent Factory",
+      "file_type": "code",
+      "source_file": "src/main/agent/tools/intent.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "intent_browserIntent",
+      "label": "browserIntent Factory",
+      "file_type": "code",
+      "source_file": "src/main/agent/tools/intent.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "intent_genericIntent",
+      "label": "genericIntent Factory",
+      "file_type": "code",
+      "source_file": "src/main/agent/tools/intent.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "network_tool_NetworkTool",
+      "label": "NetworkTool (AgentTool)",
+      "file_type": "code",
+      "source_file": "src/main/agent/tools/network.tool.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "rag_tool_RagTool",
+      "label": "RagTool (AgentTool)",
+      "file_type": "code",
+      "source_file": "src/main/agent/tools/rag.tool.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "registry_ToolRegistry",
+      "label": "ToolRegistry Class",
+      "file_type": "code",
+      "source_file": "src/main/agent/tools/registry.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "shell_tool_ShellTool",
+      "label": "ShellTool (AgentTool)",
+      "file_type": "code",
+      "source_file": "src/main/agent/tools/shell.tool.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "tool_AgentTool",
+      "label": "AgentTool Interface",
+      "file_type": "code",
+      "source_file": "src/main/agent/tools/tool.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "tool_ToolExecution",
+      "label": "ToolExecution Interface",
+      "file_type": "code",
+      "source_file": "src/main/agent/tools/tool.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "workspace_tool_WorkspaceTool",
+      "label": "WorkspaceTool (AgentTool)",
+      "file_type": "code",
+      "source_file": "src/main/agent/tools/workspace.tool.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "window_manager_createMainWindow",
+      "label": "createMainWindow (Electron BrowserWindow)",
+      "file_type": "code",
+      "source_file": "src/main/app/window-manager.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "approval_policy_ApprovalPolicy",
+      "label": "ApprovalPolicy Class",
+      "file_type": "code",
+      "source_file": "src/main/approvals/approval-policy.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "approval_policy_approvalPolicy",
+      "label": "approvalPolicy Singleton",
+      "file_type": "code",
+      "source_file": "src/main/approvals/approval-policy.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "approval_policy_DEFAULT_POLICY",
+      "label": "DEFAULT_POLICY (Sandbox Rules Config)",
+      "file_type": "code",
+      "source_file": "src/main/approvals/approval-policy.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "config_loader_loadConfig",
+      "label": "loadConfig (YAML + Schema Validation)",
+      "file_type": "code",
+      "source_file": "src/main/config/config-loader.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "config_loader_getConfig",
+      "label": "getConfig (Config Accessor)",
+      "file_type": "code",
+      "source_file": "src/main/config/config-loader.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "sandbox_executor_SandboxExecutor",
+      "label": "SandboxExecutor (referenced by ToolRegistry)",
+      "file_type": "code",
+      "source_file": "src/main/sandbox/sandbox-executor.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "filesystem_tool_FilesystemTool",
+      "target": "tool_AgentTool",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/agent/tools/filesystem.tool.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "filesystem_tool_FilesystemTool",
+      "target": "intent_filesystemIntent",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/agent/tools/filesystem.tool.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "network_tool_NetworkTool",
+      "target": "tool_AgentTool",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/agent/tools/network.tool.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "network_tool_NetworkTool",
+      "target": "intent_networkIntent",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/agent/tools/network.tool.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "shell_tool_ShellTool",
+      "target": "tool_AgentTool",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/agent/tools/shell.tool.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "shell_tool_ShellTool",
+      "target": "intent_shellIntent",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/agent/tools/shell.tool.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "rag_tool_RagTool",
+      "target": "tool_AgentTool",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/agent/tools/rag.tool.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "rag_tool_RagTool",
+      "target": "intent_genericIntent",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/agent/tools/rag.tool.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "workspace_tool_WorkspaceTool",
+      "target": "tool_AgentTool",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/agent/tools/workspace.tool.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "workspace_tool_WorkspaceTool",
+      "target": "intent_genericIntent",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/agent/tools/workspace.tool.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "registry_ToolRegistry",
+      "target": "tool_AgentTool",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/agent/tools/registry.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "registry_ToolRegistry",
+      "target": "tool_ToolExecution",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/agent/tools/registry.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "registry_ToolRegistry",
+      "target": "sandbox_executor_SandboxExecutor",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/agent/tools/registry.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "registry_ToolRegistry",
+      "target": "shell_tool_ShellTool",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/agent/tools/registry.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "registry_ToolRegistry",
+      "target": "network_tool_NetworkTool",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/agent/tools/registry.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "registry_ToolRegistry",
+      "target": "filesystem_tool_FilesystemTool",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/agent/tools/registry.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "registry_ToolRegistry",
+      "target": "rag_tool_RagTool",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/agent/tools/registry.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "registry_ToolRegistry",
+      "target": "workspace_tool_WorkspaceTool",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/agent/tools/registry.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "approval_policy_approvalPolicy",
+      "target": "approval_policy_ApprovalPolicy",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/approvals/approval-policy.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "approval_policy_ApprovalPolicy",
+      "target": "approval_policy_DEFAULT_POLICY",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/approvals/approval-policy.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "config_loader_getConfig",
+      "target": "config_loader_loadConfig",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/config/config-loader.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "approval_policy_ApprovalPolicy",
+      "target": "intent_shellIntent",
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "src/main/approvals/approval-policy.ts",
+      "source_location": null,
+      "weight": 0.85
+    },
+    {
+      "source": "approval_policy_ApprovalPolicy",
+      "target": "intent_networkIntent",
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "src/main/approvals/approval-policy.ts",
+      "source_location": null,
+      "weight": 0.85
+    },
+    {
+      "source": "approval_policy_ApprovalPolicy",
+      "target": "intent_filesystemIntent",
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "src/main/approvals/approval-policy.ts",
+      "source_location": null,
+      "weight": 0.85
+    },
+    {
+      "source": "approval_policy_ApprovalPolicy",
+      "target": "intent_browserIntent",
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "src/main/approvals/approval-policy.ts",
+      "source_location": null,
+      "weight": 0.85
+    },
+    {
+      "source": "registry_ToolRegistry",
+      "target": "approval_policy_ApprovalPolicy",
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "src/main/agent/tools/registry.ts",
+      "source_location": null,
+      "weight": 0.85
+    },
+    {
+      "source": "window_manager_createMainWindow",
+      "target": "approval_policy_ApprovalPolicy",
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.65,
+      "source_file": "src/main/app/window-manager.ts",
+      "source_location": null,
+      "weight": 0.65
+    },
+    {
+      "source": "tool_ToolExecution",
+      "target": "tool_AgentTool",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "src/main/agent/tools/tool.ts",
+      "source_location": null,
+      "weight": 0.85
+    }
+  ],
+  "hyperedges": [],
+  "input_tokens": 0,
+  "output_tokens": 0
+}

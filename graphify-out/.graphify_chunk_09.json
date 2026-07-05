@@ -1,0 +1,551 @@
+{
+  "nodes": [
+    {
+      "id": "agentstepcard_AgentStepCard",
+      "label": "Agent Step Card",
+      "file_type": "code",
+      "source_file": "src/renderer/src/components/agent/AgentStepCard.tsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "approvaldialog_ApprovalDialog",
+      "label": "Approval Dialog",
+      "file_type": "code",
+      "source_file": "src/renderer/src/components/agent/ApprovalDialog.tsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "approvalqueue_ApprovalQueue",
+      "label": "Approval Queue",
+      "file_type": "code",
+      "source_file": "src/renderer/src/components/agent/ApprovalQueue.tsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "observationview_ObservationView",
+      "label": "Observation View",
+      "file_type": "code",
+      "source_file": "src/renderer/src/components/agent/ObservationView.tsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "reasoningpanel_ReasoningPanel",
+      "label": "Reasoning Panel",
+      "file_type": "code",
+      "source_file": "src/renderer/src/components/agent/ReasoningPanel.tsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "riskbadge_RiskBadge",
+      "label": "Risk Badge",
+      "file_type": "code",
+      "source_file": "src/renderer/src/components/agent/RiskBadge.tsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "terminalview_TerminalView",
+      "label": "Terminal View",
+      "file_type": "code",
+      "source_file": "src/renderer/src/components/agent/TerminalView.tsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "toolcallcard_ToolCallCard",
+      "label": "Tool Call Card",
+      "file_type": "code",
+      "source_file": "src/renderer/src/components/agent/ToolCallCard.tsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "chatthread_ChatThread",
+      "label": "Chat Thread",
+      "file_type": "code",
+      "source_file": "src/renderer/src/components/chat/ChatThread.tsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "chatview_ChatView",
+      "label": "Chat View",
+      "file_type": "code",
+      "source_file": "src/renderer/src/components/chat/ChatView.tsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "composer_Composer",
+      "label": "Composer",
+      "file_type": "code",
+      "source_file": "src/renderer/src/components/chat/Composer.tsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "contextpanel_ContextPanel",
+      "label": "Context Panel",
+      "file_type": "code",
+      "source_file": "src/renderer/src/components/chat/ContextPanel.tsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "messagebubble_MessageBubble",
+      "label": "Message Bubble",
+      "file_type": "code",
+      "source_file": "src/renderer/src/components/chat/MessageBubble.tsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "messagelist_MessageList",
+      "label": "Message List",
+      "file_type": "code",
+      "source_file": "src/renderer/src/components/chat/MessageList.tsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "documentdetails_DocumentDetails",
+      "label": "Document Details",
+      "file_type": "code",
+      "source_file": "src/renderer/src/components/documents/DocumentDetails.tsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "documentlist_DocumentList",
+      "label": "Document List",
+      "file_type": "code",
+      "source_file": "src/renderer/src/components/documents/DocumentList.tsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "documentuploader_DocumentUploader",
+      "label": "Document Uploader",
+      "file_type": "code",
+      "source_file": "src/renderer/src/components/documents/DocumentUploader.tsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "ingestionstatus_IngestionStatus",
+      "label": "Ingestion Status",
+      "file_type": "code",
+      "source_file": "src/renderer/src/components/documents/IngestionStatus.tsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "appshell_AppShell",
+      "label": "App Shell",
+      "file_type": "code",
+      "source_file": "src/renderer/src/components/layout/AppShell.tsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "header_Header",
+      "label": "Header",
+      "file_type": "code",
+      "source_file": "src/renderer/src/components/layout/Header.tsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "sidebar_Sidebar",
+      "label": "Sidebar",
+      "file_type": "code",
+      "source_file": "src/renderer/src/components/layout/Sidebar.tsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "statusbar_StatusBar",
+      "label": "Status Bar",
+      "file_type": "code",
+      "source_file": "src/renderer/src/components/layout/StatusBar.tsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "appshell_AppShell",
+      "target": "header_Header",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "src/renderer/src/components/layout/AppShell.tsx",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "appshell_AppShell",
+      "target": "sidebar_Sidebar",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "src/renderer/src/components/layout/AppShell.tsx",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "appshell_AppShell",
+      "target": "statusbar_StatusBar",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "src/renderer/src/components/layout/AppShell.tsx",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "appshell_AppShell",
+      "target": "chatview_ChatView",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "src/renderer/src/components/layout/AppShell.tsx",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "chatview_ChatView",
+      "target": "chatthread_ChatThread",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "src/renderer/src/components/chat/ChatView.tsx",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "chatview_ChatView",
+      "target": "composer_Composer",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "src/renderer/src/components/chat/ChatView.tsx",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "chatview_ChatView",
+      "target": "contextpanel_ContextPanel",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "src/renderer/src/components/chat/ChatView.tsx",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "chatthread_ChatThread",
+      "target": "messagelist_MessageList",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "src/renderer/src/components/chat/ChatThread.tsx",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "messagelist_MessageList",
+      "target": "messagebubble_MessageBubble",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "src/renderer/src/components/chat/MessageList.tsx",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "messagebubble_MessageBubble",
+      "target": "agentstepcard_AgentStepCard",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "src/renderer/src/components/chat/MessageBubble.tsx",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "agentstepcard_AgentStepCard",
+      "target": "toolcallcard_ToolCallCard",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "src/renderer/src/components/agent/AgentStepCard.tsx",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "agentstepcard_AgentStepCard",
+      "target": "observationview_ObservationView",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "src/renderer/src/components/agent/AgentStepCard.tsx",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "agentstepcard_AgentStepCard",
+      "target": "reasoningpanel_ReasoningPanel",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "src/renderer/src/components/agent/AgentStepCard.tsx",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "agentstepcard_AgentStepCard",
+      "target": "riskbadge_RiskBadge",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "src/renderer/src/components/agent/AgentStepCard.tsx",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "toolcallcard_ToolCallCard",
+      "target": "riskbadge_RiskBadge",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "src/renderer/src/components/agent/ToolCallCard.tsx",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "toolcallcard_ToolCallCard",
+      "target": "terminalview_TerminalView",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "src/renderer/src/components/agent/ToolCallCard.tsx",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "approvalqueue_ApprovalQueue",
+      "target": "approvaldialog_ApprovalDialog",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "src/renderer/src/components/agent/ApprovalQueue.tsx",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "approvaldialog_ApprovalDialog",
+      "target": "riskbadge_RiskBadge",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "src/renderer/src/components/agent/ApprovalDialog.tsx",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "approvaldialog_ApprovalDialog",
+      "target": "toolcallcard_ToolCallCard",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "src/renderer/src/components/agent/ApprovalDialog.tsx",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "statusbar_StatusBar",
+      "target": "approvalqueue_ApprovalQueue",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "src/renderer/src/components/layout/StatusBar.tsx",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "sidebar_Sidebar",
+      "target": "documentlist_DocumentList",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "src/renderer/src/components/layout/Sidebar.tsx",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "documentlist_DocumentList",
+      "target": "documentdetails_DocumentDetails",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "src/renderer/src/components/documents/DocumentList.tsx",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "documentuploader_DocumentUploader",
+      "target": "ingestionstatus_IngestionStatus",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "src/renderer/src/components/documents/DocumentUploader.tsx",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "contextpanel_ContextPanel",
+      "target": "documentlist_DocumentList",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.65,
+      "source_file": "src/renderer/src/components/chat/ContextPanel.tsx",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "contextpanel_ContextPanel",
+      "target": "documentuploader_DocumentUploader",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.65,
+      "source_file": "src/renderer/src/components/chat/ContextPanel.tsx",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "approvalqueue_ApprovalQueue",
+      "target": "agentstepcard_AgentStepCard",
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "src/renderer/src/components/agent/ApprovalQueue.tsx",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "riskbadge_RiskBadge",
+      "target": "approvaldialog_ApprovalDialog",
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "src/renderer/src/components/agent/RiskBadge.tsx",
+      "source_location": null,
+      "weight": 0.7
+    },
+    {
+      "source": "terminalview_TerminalView",
+      "target": "observationview_ObservationView",
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.65,
+      "source_file": "src/renderer/src/components/agent/TerminalView.tsx",
+      "source_location": null,
+      "weight": 0.7
+    },
+    {
+      "source": "composer_Composer",
+      "target": "chatthread_ChatThread",
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "src/renderer/src/components/chat/Composer.tsx",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "header_Header",
+      "target": "approvalqueue_ApprovalQueue",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.55,
+      "source_file": "src/renderer/src/components/layout/Header.tsx",
+      "source_location": null,
+      "weight": 0.8
+    }
+  ],
+  "hyperedges": [],
+  "input_tokens": 0,
+  "output_tokens": 0
+}

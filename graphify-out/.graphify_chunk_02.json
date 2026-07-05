@@ -1,0 +1,651 @@
+{
+  "nodes": [
+    {
+      "id": "memorymanager_MemoryMessage",
+      "label": "MemoryMessage Interface",
+      "file_type": "code",
+      "source_file": "src/main/agent/memory-manager.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "memorymanager_MemoryManager",
+      "label": "MemoryManager Class",
+      "file_type": "code",
+      "source_file": "src/main/agent/memory-manager.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "orchestrator_AgentOrchestrator",
+      "label": "AgentOrchestrator Class",
+      "file_type": "code",
+      "source_file": "src/main/agent/orchestrator.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "orchestrator_AgentOrchestratorOptions",
+      "label": "AgentOrchestratorOptions Interface",
+      "file_type": "code",
+      "source_file": "src/main/agent/orchestrator.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "orchestrator_ActiveRun",
+      "label": "ActiveRun Interface",
+      "file_type": "code",
+      "source_file": "src/main/agent/orchestrator.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "orchestrator_toPublicStatus",
+      "label": "toPublicStatus Helper",
+      "file_type": "code",
+      "source_file": "src/main/agent/orchestrator.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "system_SYSTEM_PROMPT",
+      "label": "SYSTEM_PROMPT Constant (Nexus Persona)",
+      "file_type": "code",
+      "source_file": "src/main/agent/prompts/system.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "tooluse_TOOL_USE_PROMPTS",
+      "label": "TOOL_USE_PROMPTS Constant",
+      "file_type": "code",
+      "source_file": "src/main/agent/prompts/tool-use.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "reactloop_runReactLoop",
+      "label": "runReactLoop Async Generator",
+      "file_type": "code",
+      "source_file": "src/main/agent/react-loop.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "reactloop_RunReactLoopOptions",
+      "label": "RunReactLoopOptions Interface",
+      "file_type": "code",
+      "source_file": "src/main/agent/react-loop.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "reactloop_buildPrompt",
+      "label": "buildPrompt Internal Function",
+      "file_type": "code",
+      "source_file": "src/main/agent/react-loop.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "reactloop_collectProviderResponse",
+      "label": "collectProviderResponse Internal Function",
+      "file_type": "code",
+      "source_file": "src/main/agent/react-loop.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "reactloop_parseToolCall",
+      "label": "parseToolCall Internal Function",
+      "file_type": "code",
+      "source_file": "src/main/agent/react-loop.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "reactloop_shouldStop",
+      "label": "shouldStop Internal Function",
+      "file_type": "code",
+      "source_file": "src/main/agent/react-loop.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "reactloop_inferConfidence",
+      "label": "inferConfidence Internal Function",
+      "file_type": "code",
+      "source_file": "src/main/agent/react-loop.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "analysistool_analysisTool",
+      "label": "analysisTool AgentTool",
+      "file_type": "code",
+      "source_file": "src/main/agent/tools/analysis.tool.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "browsertool_browserTool",
+      "label": "browserTool AgentTool (High Risk)",
+      "file_type": "code",
+      "source_file": "src/main/agent/tools/browser.tool.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "documenttool_documentTool",
+      "label": "documentTool AgentTool (RAG)",
+      "file_type": "code",
+      "source_file": "src/main/agent/tools/document.tool.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "approvalclassifier_ApprovalClassifier",
+      "label": "ApprovalClassifier (Stub)",
+      "file_type": "code",
+      "source_file": "src/main/agent/guardrails/approval-classifier.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "inputfilter_InputFilter",
+      "label": "InputFilter (Stub)",
+      "file_type": "code",
+      "source_file": "src/main/agent/guardrails/input-filter.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "outputfilter_OutputFilter",
+      "label": "OutputFilter (Stub)",
+      "file_type": "code",
+      "source_file": "src/main/agent/guardrails/output-filter.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "policy_Policy",
+      "label": "Policy (Stub)",
+      "file_type": "code",
+      "source_file": "src/main/agent/guardrails/policy.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "riskclassifier_RiskClassifier",
+      "label": "RiskClassifier (Stub)",
+      "file_type": "code",
+      "source_file": "src/main/agent/guardrails/risk-classifier.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "scopevalidator_ScopeValidator",
+      "label": "ScopeValidator (Stub)",
+      "file_type": "code",
+      "source_file": "src/main/agent/guardrails/scope-validator.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "planner_Planner",
+      "label": "Planner (Stub)",
+      "file_type": "code",
+      "source_file": "src/main/agent/planner.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "observationparser_ObservationParser",
+      "label": "ObservationParser (Stub)",
+      "file_type": "code",
+      "source_file": "src/main/agent/observation-parser.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "reasoningsteprunner_ReasoningStepRunner",
+      "label": "ReasoningStepRunner (Stub)",
+      "file_type": "code",
+      "source_file": "src/main/agent/reasoning-step-runner.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "runmanager_RunManager",
+      "label": "RunManager (Stub)",
+      "file_type": "code",
+      "source_file": "src/main/agent/run-manager.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "stopconditions_StopConditions",
+      "label": "StopConditions (Stub)",
+      "file_type": "code",
+      "source_file": "src/main/agent/stop-conditions.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "promptapproval_approvalPrompt",
+      "label": "Approval Prompt (Stub)",
+      "file_type": "code",
+      "source_file": "src/main/agent/prompts/approval.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "promptplanner_plannerPrompt",
+      "label": "Planner Prompt (Stub)",
+      "file_type": "code",
+      "source_file": "src/main/agent/prompts/planner.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "promptreact_reactPrompt",
+      "label": "React Prompt (Stub)",
+      "file_type": "code",
+      "source_file": "src/main/agent/prompts/react.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "orchestrator_AgentOrchestrator",
+      "target": "reactloop_runReactLoop",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/agent/orchestrator.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "orchestrator_AgentOrchestrator",
+      "target": "memorymanager_MemoryManager",
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/agent/orchestrator.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "reactloop_runReactLoop",
+      "target": "reactloop_buildPrompt",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/agent/react-loop.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "reactloop_runReactLoop",
+      "target": "reactloop_collectProviderResponse",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/agent/react-loop.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "reactloop_runReactLoop",
+      "target": "reactloop_parseToolCall",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/agent/react-loop.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "reactloop_runReactLoop",
+      "target": "reactloop_shouldStop",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/agent/react-loop.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "reactloop_runReactLoop",
+      "target": "reactloop_inferConfidence",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/agent/react-loop.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "reactloop_runReactLoop",
+      "target": "memorymanager_MemoryManager",
+      "relation": "shares_data_with",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/agent/react-loop.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "reactloop_buildPrompt",
+      "target": "system_SYSTEM_PROMPT",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/agent/react-loop.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "reactloop_buildPrompt",
+      "target": "tooluse_TOOL_USE_PROMPTS",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/agent/react-loop.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "system_SYSTEM_PROMPT",
+      "target": "browsertool_browserTool",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "src/main/agent/prompts/system.ts",
+      "source_location": null,
+      "weight": 0.85
+    },
+    {
+      "source": "system_SYSTEM_PROMPT",
+      "target": "analysistool_analysisTool",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "src/main/agent/prompts/system.ts",
+      "source_location": null,
+      "weight": 0.85
+    },
+    {
+      "source": "system_SYSTEM_PROMPT",
+      "target": "documenttool_documentTool",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "src/main/agent/prompts/system.ts",
+      "source_location": null,
+      "weight": 0.85
+    },
+    {
+      "source": "browsertool_browserTool",
+      "target": "approvalclassifier_ApprovalClassifier",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "src/main/agent/tools/browser.tool.ts",
+      "source_location": null,
+      "weight": 0.75
+    },
+    {
+      "source": "orchestrator_AgentOrchestrator",
+      "target": "approvalclassifier_ApprovalClassifier",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "src/main/agent/orchestrator.ts",
+      "source_location": null,
+      "weight": 0.75
+    },
+    {
+      "source": "approvalclassifier_ApprovalClassifier",
+      "target": "riskclassifier_RiskClassifier",
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "src/main/agent/guardrails/approval-classifier.ts",
+      "source_location": null,
+      "weight": 0.85
+    },
+    {
+      "source": "inputfilter_InputFilter",
+      "target": "outputfilter_OutputFilter",
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "src/main/agent/guardrails/input-filter.ts",
+      "source_location": null,
+      "weight": 0.85
+    },
+    {
+      "source": "policy_Policy",
+      "target": "inputfilter_InputFilter",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.65,
+      "source_file": "src/main/agent/guardrails/policy.ts",
+      "source_location": null,
+      "weight": 0.65
+    },
+    {
+      "source": "policy_Policy",
+      "target": "outputfilter_OutputFilter",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.65,
+      "source_file": "src/main/agent/guardrails/policy.ts",
+      "source_location": null,
+      "weight": 0.65
+    },
+    {
+      "source": "policy_Policy",
+      "target": "riskclassifier_RiskClassifier",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.65,
+      "source_file": "src/main/agent/guardrails/policy.ts",
+      "source_location": null,
+      "weight": 0.65
+    },
+    {
+      "source": "policy_Policy",
+      "target": "scopevalidator_ScopeValidator",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.65,
+      "source_file": "src/main/agent/guardrails/policy.ts",
+      "source_location": null,
+      "weight": 0.65
+    },
+    {
+      "source": "reactloop_parseToolCall",
+      "target": "observationparser_ObservationParser",
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "src/main/agent/react-loop.ts",
+      "source_location": null,
+      "weight": 0.75
+    },
+    {
+      "source": "reactloop_shouldStop",
+      "target": "stopconditions_StopConditions",
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "src/main/agent/react-loop.ts",
+      "source_location": null,
+      "weight": 0.75
+    },
+    {
+      "source": "reasoningsteprunner_ReasoningStepRunner",
+      "target": "reactloop_runReactLoop",
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "src/main/agent/reasoning-step-runner.ts",
+      "source_location": null,
+      "weight": 0.75
+    },
+    {
+      "source": "runmanager_RunManager",
+      "target": "orchestrator_AgentOrchestrator",
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "src/main/agent/run-manager.ts",
+      "source_location": null,
+      "weight": 0.75
+    },
+    {
+      "source": "orchestrator_AgentOrchestrator",
+      "target": "planner_Planner",
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.55,
+      "source_file": "src/main/agent/orchestrator.ts",
+      "source_location": null,
+      "weight": 0.55
+    },
+    {
+      "source": "promptapproval_approvalPrompt",
+      "target": "approvalclassifier_ApprovalClassifier",
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "src/main/agent/prompts/approval.ts",
+      "source_location": null,
+      "weight": 0.85
+    },
+    {
+      "source": "promptplanner_plannerPrompt",
+      "target": "planner_Planner",
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "src/main/agent/prompts/planner.ts",
+      "source_location": null,
+      "weight": 0.85
+    },
+    {
+      "source": "promptreact_reactPrompt",
+      "target": "reactloop_runReactLoop",
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "src/main/agent/prompts/react.ts",
+      "source_location": null,
+      "weight": 0.85
+    }
+  ],
+  "hyperedges": [],
+  "input_tokens": 2800,
+  "output_tokens": 950
+}

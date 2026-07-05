@@ -1,0 +1,810 @@
+{
+  "nodes": [
+    {
+      "id": "paths_getDbPath",
+      "label": "getDbPath",
+      "file_type": "code",
+      "source_file": "src/main/config/paths.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "paths_getMigrationsDir",
+      "label": "getMigrationsDir",
+      "file_type": "code",
+      "source_file": "src/main/config/paths.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "settings_initSettingsService",
+      "label": "initSettingsService",
+      "file_type": "code",
+      "source_file": "src/main/config/settings.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "settings_settingsService",
+      "label": "settingsService (module singleton)",
+      "file_type": "code",
+      "source_file": "src/main/config/settings.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "index_mainEntryPoint",
+      "label": "Main Process Entry Point",
+      "file_type": "code",
+      "source_file": "src/main/index.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "agenthandlers_handleAgentStart",
+      "label": "handleAgentStart",
+      "file_type": "code",
+      "source_file": "src/main/ipc/agent.handlers.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "agenthandlers_handleAgentStop",
+      "label": "handleAgentStop",
+      "file_type": "code",
+      "source_file": "src/main/ipc/agent.handlers.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "agenthandlers_handleAgentGet",
+      "label": "handleAgentGet",
+      "file_type": "code",
+      "source_file": "src/main/ipc/agent.handlers.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "agenthandlers_orchestratorSingleton",
+      "label": "AgentOrchestrator (lazy singleton per webContents)",
+      "file_type": "code",
+      "source_file": "src/main/ipc/agent.handlers.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "chathandlers_handleChatList",
+      "label": "handleChatList",
+      "file_type": "code",
+      "source_file": "src/main/ipc/chat.handlers.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "chathandlers_handleChatCreate",
+      "label": "handleChatCreate",
+      "file_type": "code",
+      "source_file": "src/main/ipc/chat.handlers.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "chathandlers_handleChatDelete",
+      "label": "handleChatDelete",
+      "file_type": "code",
+      "source_file": "src/main/ipc/chat.handlers.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "chathandlers_handleMessageList",
+      "label": "handleMessageList",
+      "file_type": "code",
+      "source_file": "src/main/ipc/chat.handlers.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "chathandlers_handleMessageCreate",
+      "label": "handleMessageCreate",
+      "file_type": "code",
+      "source_file": "src/main/ipc/chat.handlers.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "modelhandlers_handleModelCatalog",
+      "label": "handleModelCatalog",
+      "file_type": "code",
+      "source_file": "src/main/ipc/model.handlers.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "modelhandlers_handleModelList",
+      "label": "handleModelList",
+      "file_type": "code",
+      "source_file": "src/main/ipc/model.handlers.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "modelhandlers_handleModelSelectGguf",
+      "label": "handleModelSelectGguf",
+      "file_type": "code",
+      "source_file": "src/main/ipc/model.handlers.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "modelhandlers_handleModelRegisterLocal",
+      "label": "handleModelRegisterLocal",
+      "file_type": "code",
+      "source_file": "src/main/ipc/model.handlers.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "modelhandlers_handleModelDownload",
+      "label": "handleModelDownload",
+      "file_type": "code",
+      "source_file": "src/main/ipc/model.handlers.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "modelhandlers_handleModelLoad",
+      "label": "handleModelLoad",
+      "file_type": "code",
+      "source_file": "src/main/ipc/model.handlers.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "modelhandlers_handleModelUnload",
+      "label": "handleModelUnload",
+      "file_type": "code",
+      "source_file": "src/main/ipc/model.handlers.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "modelhandlers_handleModelStatus",
+      "label": "handleModelStatus",
+      "file_type": "code",
+      "source_file": "src/main/ipc/model.handlers.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "modelhandlers_runtimeSingleton",
+      "label": "LlamaCppRuntime (lazy singleton per webContents)",
+      "file_type": "code",
+      "source_file": "src/main/ipc/model.handlers.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "router_registerIpcHandlers",
+      "label": "registerIpcHandlers (IPC dispatch hub)",
+      "file_type": "code",
+      "source_file": "src/main/ipc/router.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "settingshandlers_handleSettingsGet",
+      "label": "handleSettingsGet",
+      "file_type": "code",
+      "source_file": "src/main/ipc/settings.handlers.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "settingshandlers_handleSettingsSet",
+      "label": "handleSettingsSet",
+      "file_type": "code",
+      "source_file": "src/main/ipc/settings.handlers.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "settingshandlers_handleSettingsGetAll",
+      "label": "handleSettingsGetAll",
+      "file_type": "code",
+      "source_file": "src/main/ipc/settings.handlers.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "catalog_MODEL_CATALOG",
+      "label": "MODEL_CATALOG (Qwen/Mistral entries)",
+      "file_type": "code",
+      "source_file": "src/main/models/catalog.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "catalog_listCatalogModels",
+      "label": "listCatalogModels",
+      "file_type": "code",
+      "source_file": "src/main/models/catalog.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "downloader_ModelDownloader",
+      "label": "ModelDownloader",
+      "file_type": "code",
+      "source_file": "src/main/models/downloader.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "localhttpprovider_LlamaCppHttpProvider",
+      "label": "LlamaCppHttpProvider",
+      "file_type": "code",
+      "source_file": "src/main/models/local-http.provider.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "index_mainEntryPoint",
+      "target": "paths_getDbPath",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/index.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "index_mainEntryPoint",
+      "target": "paths_getMigrationsDir",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/index.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "index_mainEntryPoint",
+      "target": "settings_initSettingsService",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/index.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "index_mainEntryPoint",
+      "target": "router_registerIpcHandlers",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/index.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "settings_initSettingsService",
+      "target": "settings_settingsService",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/config/settings.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "router_registerIpcHandlers",
+      "target": "settingshandlers_handleSettingsGet",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/ipc/router.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "router_registerIpcHandlers",
+      "target": "settingshandlers_handleSettingsSet",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/ipc/router.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "router_registerIpcHandlers",
+      "target": "settingshandlers_handleSettingsGetAll",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/ipc/router.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "router_registerIpcHandlers",
+      "target": "chathandlers_handleChatList",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/ipc/router.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "router_registerIpcHandlers",
+      "target": "chathandlers_handleChatCreate",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/ipc/router.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "router_registerIpcHandlers",
+      "target": "chathandlers_handleChatDelete",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/ipc/router.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "router_registerIpcHandlers",
+      "target": "chathandlers_handleMessageList",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/ipc/router.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "router_registerIpcHandlers",
+      "target": "chathandlers_handleMessageCreate",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/ipc/router.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "router_registerIpcHandlers",
+      "target": "agenthandlers_handleAgentStart",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/ipc/router.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "router_registerIpcHandlers",
+      "target": "agenthandlers_handleAgentStop",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/ipc/router.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "router_registerIpcHandlers",
+      "target": "agenthandlers_handleAgentGet",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/ipc/router.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "router_registerIpcHandlers",
+      "target": "modelhandlers_handleModelCatalog",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/ipc/router.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "router_registerIpcHandlers",
+      "target": "modelhandlers_handleModelList",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/ipc/router.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "router_registerIpcHandlers",
+      "target": "modelhandlers_handleModelSelectGguf",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/ipc/router.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "router_registerIpcHandlers",
+      "target": "modelhandlers_handleModelRegisterLocal",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/ipc/router.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "router_registerIpcHandlers",
+      "target": "modelhandlers_handleModelDownload",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/ipc/router.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "router_registerIpcHandlers",
+      "target": "modelhandlers_handleModelLoad",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/ipc/router.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "router_registerIpcHandlers",
+      "target": "modelhandlers_handleModelUnload",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/ipc/router.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "router_registerIpcHandlers",
+      "target": "modelhandlers_handleModelStatus",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/ipc/router.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "agenthandlers_handleAgentStart",
+      "target": "agenthandlers_orchestratorSingleton",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/ipc/agent.handlers.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "agenthandlers_handleAgentStop",
+      "target": "agenthandlers_orchestratorSingleton",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/ipc/agent.handlers.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "agenthandlers_handleAgentGet",
+      "target": "agenthandlers_orchestratorSingleton",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/ipc/agent.handlers.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "agenthandlers_orchestratorSingleton",
+      "target": "agenthandlers_handleAgentStart",
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "src/main/ipc/agent.handlers.ts",
+      "source_location": null,
+      "weight": 0.9
+    },
+    {
+      "source": "settingshandlers_handleSettingsGet",
+      "target": "settings_settingsService",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/ipc/settings.handlers.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "settingshandlers_handleSettingsSet",
+      "target": "settings_settingsService",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/ipc/settings.handlers.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "settingshandlers_handleSettingsGetAll",
+      "target": "settings_settingsService",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/ipc/settings.handlers.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "modelhandlers_handleModelCatalog",
+      "target": "catalog_listCatalogModels",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/ipc/model.handlers.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "modelhandlers_handleModelDownload",
+      "target": "downloader_ModelDownloader",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/ipc/model.handlers.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "modelhandlers_handleModelLoad",
+      "target": "modelhandlers_runtimeSingleton",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/ipc/model.handlers.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "modelhandlers_handleModelUnload",
+      "target": "modelhandlers_runtimeSingleton",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/ipc/model.handlers.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "modelhandlers_handleModelStatus",
+      "target": "modelhandlers_runtimeSingleton",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/ipc/model.handlers.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "modelhandlers_handleModelLoad",
+      "target": "modelhandlers_handleModelStatus",
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "src/main/ipc/model.handlers.ts",
+      "source_location": null,
+      "weight": 0.85
+    },
+    {
+      "source": "catalog_listCatalogModels",
+      "target": "catalog_MODEL_CATALOG",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/models/catalog.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "downloader_ModelDownloader",
+      "target": "catalog_MODEL_CATALOG",
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "src/main/models/downloader.ts",
+      "source_location": null,
+      "weight": 0.75
+    },
+    {
+      "source": "localhttpprovider_LlamaCppHttpProvider",
+      "target": "modelhandlers_runtimeSingleton",
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "src/main/models/local-http.provider.ts",
+      "source_location": null,
+      "weight": 0.85
+    },
+    {
+      "source": "downloader_ModelDownloader",
+      "target": "modelhandlers_handleModelDownload",
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "src/main/models/downloader.ts",
+      "source_location": null,
+      "weight": 0.95
+    },
+    {
+      "source": "localhttpprovider_LlamaCppHttpProvider",
+      "target": "catalog_MODEL_CATALOG",
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "src/main/models/local-http.provider.ts",
+      "source_location": null,
+      "weight": 0.75
+    },
+    {
+      "source": "index_mainEntryPoint",
+      "target": "router_registerIpcHandlers",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/index.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "agenthandlers_handleAgentStart",
+      "target": "agenthandlers_handleAgentStop",
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "src/main/ipc/agent.handlers.ts",
+      "source_location": null,
+      "weight": 0.85
+    },
+    {
+      "source": "chathandlers_handleChatCreate",
+      "target": "chathandlers_handleMessageCreate",
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "src/main/ipc/chat.handlers.ts",
+      "source_location": null,
+      "weight": 0.75
+    },
+    {
+      "source": "modelhandlers_handleModelRegisterLocal",
+      "target": "modelhandlers_handleModelDownload",
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "src/main/ipc/model.handlers.ts",
+      "source_location": null,
+      "weight": 0.85
+    }
+  ],
+  "hyperedges": [],
+  "input_tokens": 0,
+  "output_tokens": 0
+}

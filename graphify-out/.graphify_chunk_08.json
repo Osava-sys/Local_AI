@@ -1,0 +1,481 @@
+{
+  "nodes": [
+    {
+      "id": "toolcallsrepository_ToolCallsRepository",
+      "label": "ToolCalls Repository",
+      "file_type": "code",
+      "source_file": "src/main/storage/repositories/tool-calls.repository.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "workspacesrepository_WorkspacesRepository",
+      "label": "Workspaces Repository",
+      "file_type": "code",
+      "source_file": "src/main/storage/repositories/workspaces.repository.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "sqlitevecstore_SqliteVecStore",
+      "label": "SQLite-Vec Store",
+      "file_type": "code",
+      "source_file": "src/main/storage/sqlite-vec.store.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "vectorstore_VectorStore",
+      "label": "Vector Store",
+      "file_type": "code",
+      "source_file": "src/main/storage/vector-store.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "localtelemetry_LocalTelemetry",
+      "label": "Local Telemetry",
+      "file_type": "code",
+      "source_file": "src/main/telemetry/local-telemetry.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "telemetryevents_TelemetryEvents",
+      "label": "Telemetry Events",
+      "file_type": "code",
+      "source_file": "src/main/telemetry/telemetry-events.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "telemetrypolicy_TelemetryPolicy",
+      "label": "Telemetry Policy",
+      "file_type": "code",
+      "source_file": "src/main/telemetry/telemetry-policy.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "utils_errors_Errors",
+      "label": "Error Utilities",
+      "file_type": "code",
+      "source_file": "src/main/utils/errors.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "utils_events_Events",
+      "label": "Event Utilities",
+      "file_type": "code",
+      "source_file": "src/main/utils/events.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "utils_logger_Logger",
+      "label": "Logger Utility",
+      "file_type": "code",
+      "source_file": "src/main/utils/logger.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "utils_result_Result",
+      "label": "Result Utility",
+      "file_type": "code",
+      "source_file": "src/main/utils/result.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "utils_time_Time",
+      "label": "Time Utility",
+      "file_type": "code",
+      "source_file": "src/main/utils/time.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "workspaceevents_WorkspaceEvents",
+      "label": "Workspace Events",
+      "file_type": "code",
+      "source_file": "src/main/workspaces/workspace-events.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "workspacepolicy_WorkspacePolicy",
+      "label": "Workspace Policy",
+      "file_type": "code",
+      "source_file": "src/main/workspaces/workspace-policy.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "workspacescanner_WorkspaceScanner",
+      "label": "Workspace Scanner",
+      "file_type": "code",
+      "source_file": "src/main/workspaces/workspace-scanner.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "workspaceservice_WorkspaceService",
+      "label": "Workspace Service",
+      "file_type": "code",
+      "source_file": "src/main/workspaces/workspace-service.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "preloadapi_PreloadApi",
+      "label": "Preload API (stub)",
+      "file_type": "code",
+      "source_file": "src/preload/api.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "exposedapi_ExposedApi",
+      "label": "Exposed API Interface",
+      "file_type": "code",
+      "source_file": "src/preload/exposed-api.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "preloadindex_IpcBridge",
+      "label": "Preload IPC Bridge",
+      "file_type": "code",
+      "source_file": "src/preload/index.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "ipcclient_IpcClient",
+      "label": "IPC Client",
+      "file_type": "code",
+      "source_file": "src/preload/ipc-client.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "renderer_app_App",
+      "label": "App Root Component",
+      "file_type": "code",
+      "source_file": "src/renderer/src/App.tsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "agentruntime_AgentRunTimeline",
+      "label": "Agent Run Timeline Component",
+      "file_type": "code",
+      "source_file": "src/renderer/src/components/agent/AgentRunTimeline.tsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "renderer_app_App",
+      "target": "preloadindex_IpcBridge",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/renderer/src/App.tsx",
+      "source_location": "lines 28-170",
+      "weight": 1.0
+    },
+    {
+      "source": "preloadindex_IpcBridge",
+      "target": "exposedapi_ExposedApi",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/preload/index.ts",
+      "source_location": "line 4",
+      "weight": 1.0
+    },
+    {
+      "source": "renderer_app_App",
+      "target": "agentruntime_AgentRunTimeline",
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "src/renderer/src/App.tsx",
+      "source_location": "lines 309-323",
+      "weight": 0.85
+    },
+    {
+      "source": "renderer_app_App",
+      "target": "renderer_app_App",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/renderer/src/App.tsx",
+      "source_location": "lines 1-4",
+      "weight": 1.0
+    },
+    {
+      "source": "workspaceservice_WorkspaceService",
+      "target": "workspacescanner_WorkspaceScanner",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "src/main/workspaces/workspace-service.ts",
+      "source_location": null,
+      "weight": 0.85
+    },
+    {
+      "source": "workspaceservice_WorkspaceService",
+      "target": "workspaceevents_WorkspaceEvents",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "src/main/workspaces/workspace-service.ts",
+      "source_location": null,
+      "weight": 0.85
+    },
+    {
+      "source": "workspaceservice_WorkspaceService",
+      "target": "workspacepolicy_WorkspacePolicy",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "src/main/workspaces/workspace-service.ts",
+      "source_location": null,
+      "weight": 0.85
+    },
+    {
+      "source": "workspaceservice_WorkspaceService",
+      "target": "workspacesrepository_WorkspacesRepository",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "src/main/workspaces/workspace-service.ts",
+      "source_location": null,
+      "weight": 0.85
+    },
+    {
+      "source": "localtelemetry_LocalTelemetry",
+      "target": "telemetryevents_TelemetryEvents",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "src/main/telemetry/local-telemetry.ts",
+      "source_location": null,
+      "weight": 0.85
+    },
+    {
+      "source": "localtelemetry_LocalTelemetry",
+      "target": "telemetrypolicy_TelemetryPolicy",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "src/main/telemetry/local-telemetry.ts",
+      "source_location": null,
+      "weight": 0.85
+    },
+    {
+      "source": "sqlitevecstore_SqliteVecStore",
+      "target": "vectorstore_VectorStore",
+      "relation": "implements",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "src/main/storage/sqlite-vec.store.ts",
+      "source_location": null,
+      "weight": 0.85
+    },
+    {
+      "source": "toolcallsrepository_ToolCallsRepository",
+      "target": "utils_result_Result",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "src/main/storage/repositories/tool-calls.repository.ts",
+      "source_location": null,
+      "weight": 0.85
+    },
+    {
+      "source": "workspacesrepository_WorkspacesRepository",
+      "target": "utils_result_Result",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "src/main/storage/repositories/workspaces.repository.ts",
+      "source_location": null,
+      "weight": 0.85
+    },
+    {
+      "source": "workspacescanner_WorkspaceScanner",
+      "target": "utils_logger_Logger",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "src/main/workspaces/workspace-scanner.ts",
+      "source_location": null,
+      "weight": 0.75
+    },
+    {
+      "source": "workspaceservice_WorkspaceService",
+      "target": "utils_logger_Logger",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "src/main/workspaces/workspace-service.ts",
+      "source_location": null,
+      "weight": 0.75
+    },
+    {
+      "source": "toolcallsrepository_ToolCallsRepository",
+      "target": "utils_logger_Logger",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "src/main/storage/repositories/tool-calls.repository.ts",
+      "source_location": null,
+      "weight": 0.75
+    },
+    {
+      "source": "workspacescanner_WorkspaceScanner",
+      "target": "workspaceevents_WorkspaceEvents",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "src/main/workspaces/workspace-scanner.ts",
+      "source_location": null,
+      "weight": 0.75
+    },
+    {
+      "source": "ipcclient_IpcClient",
+      "target": "preloadindex_IpcBridge",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "src/preload/ipc-client.ts",
+      "source_location": null,
+      "weight": 0.75
+    },
+    {
+      "source": "localtelemetry_LocalTelemetry",
+      "target": "utils_logger_Logger",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "src/main/telemetry/local-telemetry.ts",
+      "source_location": null,
+      "weight": 0.75
+    },
+    {
+      "source": "workspacepolicy_WorkspacePolicy",
+      "target": "workspaceevents_WorkspaceEvents",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "src/main/workspaces/workspace-policy.ts",
+      "source_location": null,
+      "weight": 0.75
+    },
+    {
+      "source": "utils_errors_Errors",
+      "target": "utils_result_Result",
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.65,
+      "source_file": "src/main/utils/errors.ts",
+      "source_location": null,
+      "weight": 0.65
+    },
+    {
+      "source": "utils_time_Time",
+      "target": "utils_logger_Logger",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.65,
+      "source_file": "src/main/utils/time.ts",
+      "source_location": null,
+      "weight": 0.65
+    },
+    {
+      "source": "utils_events_Events",
+      "target": "workspaceevents_WorkspaceEvents",
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.65,
+      "source_file": "src/main/utils/events.ts",
+      "source_location": null,
+      "weight": 0.65
+    }
+  ],
+  "hyperedges": [],
+  "input_tokens": 0,
+  "output_tokens": 0
+}

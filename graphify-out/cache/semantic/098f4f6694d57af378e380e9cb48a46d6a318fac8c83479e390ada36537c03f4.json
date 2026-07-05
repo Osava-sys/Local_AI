@@ -1,0 +1,1 @@
+{"nodes": [{"id": "docker_seccomp_profile", "label": "Docker Seccomp Security Profile", "file_type": "config", "source_file": "resources/docker/seccomp-profile.json", "source_location": null, "source_url": null, "captured_at": null, "author": null, "contributor": null}], "edges": [], "hyperedges": []}

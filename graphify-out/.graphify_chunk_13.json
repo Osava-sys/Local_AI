@@ -1,0 +1,623 @@
+{
+  "nodes": [
+    {
+      "id": "agentschema_ReactLoopOptionsSchema",
+      "label": "ReactLoopOptions Schema",
+      "file_type": "code",
+      "source_file": "src/shared/validation/agent.schema.ts",
+      "source_location": "line 3",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "agentschema_AgentStartPayloadSchema",
+      "label": "AgentStartPayload Schema",
+      "file_type": "code",
+      "source_file": "src/shared/validation/agent.schema.ts",
+      "source_location": "line 10",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "agentschema_AgentStopPayloadSchema",
+      "label": "AgentStopPayload Schema",
+      "file_type": "code",
+      "source_file": "src/shared/validation/agent.schema.ts",
+      "source_location": "line 16",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "agentschema_AgentGetPayloadSchema",
+      "label": "AgentGetPayload Schema",
+      "file_type": "code",
+      "source_file": "src/shared/validation/agent.schema.ts",
+      "source_location": "line 20",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "modelschema_ModelRegisterLocalPayloadSchema",
+      "label": "ModelRegisterLocalPayload Schema",
+      "file_type": "code",
+      "source_file": "src/shared/validation/model.schema.ts",
+      "source_location": "line 3",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "modelschema_ModelDownloadPayloadSchema",
+      "label": "ModelDownloadPayload Schema",
+      "file_type": "code",
+      "source_file": "src/shared/validation/model.schema.ts",
+      "source_location": "line 8",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "modelschema_ModelLoadPayloadSchema",
+      "label": "ModelLoadPayload Schema",
+      "file_type": "code",
+      "source_file": "src/shared/validation/model.schema.ts",
+      "source_location": "line 14",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "settingsschema_AppConfigSchema",
+      "label": "AppConfig Schema",
+      "file_type": "code",
+      "source_file": "src/shared/validation/settings.schema.ts",
+      "source_location": "line 3",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "settingsschema_AppConfig",
+      "label": "AppConfig Type",
+      "file_type": "code",
+      "source_file": "src/shared/validation/settings.schema.ts",
+      "source_location": "line 23",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "settingsschema_SettingsGetPayloadSchema",
+      "label": "SettingsGetPayload Schema",
+      "file_type": "code",
+      "source_file": "src/shared/validation/settings.schema.ts",
+      "source_location": "line 25",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "settingsschema_SettingsSetPayloadSchema",
+      "label": "SettingsSetPayload Schema",
+      "file_type": "code",
+      "source_file": "src/shared/validation/settings.schema.ts",
+      "source_location": "line 29",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "settingsschema_ChatCreatePayloadSchema",
+      "label": "ChatCreatePayload Schema",
+      "file_type": "code",
+      "source_file": "src/shared/validation/settings.schema.ts",
+      "source_location": "line 34",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "settingsschema_ChatDeletePayloadSchema",
+      "label": "ChatDeletePayload Schema",
+      "file_type": "code",
+      "source_file": "src/shared/validation/settings.schema.ts",
+      "source_location": "line 38",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "settingsschema_MessageListPayloadSchema",
+      "label": "MessageListPayload Schema",
+      "file_type": "code",
+      "source_file": "src/shared/validation/settings.schema.ts",
+      "source_location": "line 42",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "settingsschema_MessageCreatePayloadSchema",
+      "label": "MessageCreatePayload Schema",
+      "file_type": "code",
+      "source_file": "src/shared/validation/settings.schema.ts",
+      "source_location": "line 46",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "workspacetypes_WorkspaceTypesModule",
+      "label": "Workspace Types Module",
+      "file_type": "code",
+      "source_file": "src/shared/types/workspace.types.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "approvalschema_ApprovalSchemaModule",
+      "label": "Approval Schema Module",
+      "file_type": "code",
+      "source_file": "src/shared/validation/approval.schema.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "chatschema_ChatSchemaModule",
+      "label": "Chat Schema Module",
+      "file_type": "code",
+      "source_file": "src/shared/validation/chat.schema.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "sandboxschema_SandboxSchemaModule",
+      "label": "Sandbox Schema Module",
+      "file_type": "code",
+      "source_file": "src/shared/validation/sandbox.schema.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "e2eapp_AppE2ESuite",
+      "label": "App E2E Test Suite",
+      "file_type": "code",
+      "source_file": "tests/e2e/app.e2e.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "e2eapprovals_ApprovalsE2ESuite",
+      "label": "Approvals E2E Test Suite",
+      "file_type": "code",
+      "source_file": "tests/e2e/approvals.e2e.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "e2echat_ChatE2ESuite",
+      "label": "Chat E2E Test Suite",
+      "file_type": "code",
+      "source_file": "tests/e2e/chat.e2e.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "e2esandbox_SandboxE2ESuite",
+      "label": "Sandbox E2E Test Suite",
+      "file_type": "code",
+      "source_file": "tests/e2e/sandbox.e2e.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "integrationipc_IPCIntegrationTest",
+      "label": "IPC Integration Test Suite",
+      "file_type": "code",
+      "source_file": "tests/integration/ipc.test.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "integrationrag_RAGIntegrationTest",
+      "label": "RAG Integration Test Suite",
+      "file_type": "code",
+      "source_file": "tests/integration/rag.test.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "integrationsandboxrunner_SandboxRunnerIntegrationTest",
+      "label": "SandboxRunner Integration Test Suite",
+      "file_type": "code",
+      "source_file": "tests/integration/sandbox-runner.test.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "integrationstorage_StorageIntegrationTest",
+      "label": "Storage Integration Test Suite",
+      "file_type": "code",
+      "source_file": "tests/integration/storage.test.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "unitagentloop_AgentLoopTest",
+      "label": "AgentLoop Unit Test Suite",
+      "file_type": "code",
+      "source_file": "tests/unit/agent-loop.test.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "unitapprovalgate_ApprovalGateTest",
+      "label": "ApprovalGate Unit Test Suite",
+      "file_type": "code",
+      "source_file": "tests/unit/approval-gate.test.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "unitapprovalpolicysource_ApprovalPolicySourceTest",
+      "label": "ApprovalPolicySource Unit Test Suite",
+      "file_type": "code",
+      "source_file": "tests/unit/approval-policy-source.test.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "unitbrowsersandboxrouting_BrowserSandboxRoutingTest",
+      "label": "BrowserSandboxRouting Unit Test Suite",
+      "file_type": "code",
+      "source_file": "tests/unit/browser-sandbox-routing.test.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "unitmodelregistry_ModelRegistryTest",
+      "label": "ModelRegistry Unit Test Suite",
+      "file_type": "code",
+      "source_file": "tests/unit/model-registry.test.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "unitsandboxpolicy_SandboxPolicyTest",
+      "label": "SandboxPolicy Unit Test Suite",
+      "file_type": "code",
+      "source_file": "tests/unit/sandbox-policy.test.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "unittoolintentboundary_ToolIntentBoundaryTest",
+      "label": "ToolIntentBoundary Unit Test Suite",
+      "file_type": "code",
+      "source_file": "tests/unit/tool-intent-boundary.test.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "agentschema_AgentStartPayloadSchema",
+      "target": "agentschema_ReactLoopOptionsSchema",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/shared/validation/agent.schema.ts",
+      "source_location": "line 13",
+      "weight": 1.0
+    },
+    {
+      "source": "settingsschema_AppConfig",
+      "target": "settingsschema_AppConfigSchema",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/shared/validation/settings.schema.ts",
+      "source_location": "line 23",
+      "weight": 1.0
+    },
+    {
+      "source": "settingsschema_ChatCreatePayloadSchema",
+      "target": "settingsschema_AppConfigSchema",
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "src/shared/validation/settings.schema.ts",
+      "source_location": "line 34",
+      "weight": 0.75
+    },
+    {
+      "source": "settingsschema_MessageCreatePayloadSchema",
+      "target": "settingsschema_ChatCreatePayloadSchema",
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "src/shared/validation/settings.schema.ts",
+      "source_location": "line 46",
+      "weight": 0.85
+    },
+    {
+      "source": "settingsschema_MessageListPayloadSchema",
+      "target": "settingsschema_ChatCreatePayloadSchema",
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "src/shared/validation/settings.schema.ts",
+      "source_location": "line 42",
+      "weight": 0.85
+    },
+    {
+      "source": "settingsschema_ChatDeletePayloadSchema",
+      "target": "settingsschema_ChatCreatePayloadSchema",
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "src/shared/validation/settings.schema.ts",
+      "source_location": "line 38",
+      "weight": 0.85
+    },
+    {
+      "source": "modelschema_ModelLoadPayloadSchema",
+      "target": "modelschema_ModelRegisterLocalPayloadSchema",
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.65,
+      "source_file": "src/shared/validation/model.schema.ts",
+      "source_location": "line 14",
+      "weight": 0.65
+    },
+    {
+      "source": "unitagentloop_AgentLoopTest",
+      "target": "agentschema_AgentStartPayloadSchema",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "tests/unit/agent-loop.test.ts",
+      "source_location": null,
+      "weight": 0.75
+    },
+    {
+      "source": "unitmodelregistry_ModelRegistryTest",
+      "target": "modelschema_ModelLoadPayloadSchema",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "tests/unit/model-registry.test.ts",
+      "source_location": null,
+      "weight": 0.75
+    },
+    {
+      "source": "unitmodelregistry_ModelRegistryTest",
+      "target": "modelschema_ModelRegisterLocalPayloadSchema",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "tests/unit/model-registry.test.ts",
+      "source_location": null,
+      "weight": 0.75
+    },
+    {
+      "source": "unitapprovalgate_ApprovalGateTest",
+      "target": "approvalschema_ApprovalSchemaModule",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "tests/unit/approval-gate.test.ts",
+      "source_location": null,
+      "weight": 0.85
+    },
+    {
+      "source": "unitapprovalpolicysource_ApprovalPolicySourceTest",
+      "target": "approvalschema_ApprovalSchemaModule",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "tests/unit/approval-policy-source.test.ts",
+      "source_location": null,
+      "weight": 0.85
+    },
+    {
+      "source": "unitsandboxpolicy_SandboxPolicyTest",
+      "target": "sandboxschema_SandboxSchemaModule",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "tests/unit/sandbox-policy.test.ts",
+      "source_location": null,
+      "weight": 0.85
+    },
+    {
+      "source": "unitbrowsersandboxrouting_BrowserSandboxRoutingTest",
+      "target": "sandboxschema_SandboxSchemaModule",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "tests/unit/browser-sandbox-routing.test.ts",
+      "source_location": null,
+      "weight": 0.75
+    },
+    {
+      "source": "unittoolintentboundary_ToolIntentBoundaryTest",
+      "target": "agentschema_AgentStartPayloadSchema",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.65,
+      "source_file": "tests/unit/tool-intent-boundary.test.ts",
+      "source_location": null,
+      "weight": 0.65
+    },
+    {
+      "source": "e2eapprovals_ApprovalsE2ESuite",
+      "target": "approvalschema_ApprovalSchemaModule",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "tests/e2e/approvals.e2e.ts",
+      "source_location": null,
+      "weight": 0.85
+    },
+    {
+      "source": "e2echat_ChatE2ESuite",
+      "target": "settingsschema_ChatCreatePayloadSchema",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "tests/e2e/chat.e2e.ts",
+      "source_location": null,
+      "weight": 0.75
+    },
+    {
+      "source": "e2esandbox_SandboxE2ESuite",
+      "target": "sandboxschema_SandboxSchemaModule",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "tests/e2e/sandbox.e2e.ts",
+      "source_location": null,
+      "weight": 0.85
+    },
+    {
+      "source": "integrationsandboxrunner_SandboxRunnerIntegrationTest",
+      "target": "sandboxschema_SandboxSchemaModule",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "tests/integration/sandbox-runner.test.ts",
+      "source_location": null,
+      "weight": 0.85
+    },
+    {
+      "source": "integrationipc_IPCIntegrationTest",
+      "target": "agentschema_AgentStartPayloadSchema",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.65,
+      "source_file": "tests/integration/ipc.test.ts",
+      "source_location": null,
+      "weight": 0.65
+    },
+    {
+      "source": "integrationipc_IPCIntegrationTest",
+      "target": "settingsschema_SettingsGetPayloadSchema",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.65,
+      "source_file": "tests/integration/ipc.test.ts",
+      "source_location": null,
+      "weight": 0.65
+    },
+    {
+      "source": "workspacetypes_WorkspaceTypesModule",
+      "target": "agentschema_AgentStartPayloadSchema",
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "src/shared/types/workspace.types.ts",
+      "source_location": null,
+      "weight": 0.75
+    },
+    {
+      "source": "agentschema_AgentStartPayloadSchema",
+      "target": "workspacetypes_WorkspaceTypesModule",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "src/shared/validation/agent.schema.ts",
+      "source_location": "line 11",
+      "weight": 0.85
+    },
+    {
+      "source": "settingsschema_AppConfigSchema",
+      "target": "chatschema_ChatSchemaModule",
+      "relation": "semantically_similar_to",
+      "confidence": "AMBIGUOUS",
+      "confidence_score": 0.25,
+      "source_file": "src/shared/validation/settings.schema.ts",
+      "source_location": null,
+      "weight": 0.25
+    }
+  ],
+  "hyperedges": [],
+  "input_tokens": 1450,
+  "output_tokens": 890
+}

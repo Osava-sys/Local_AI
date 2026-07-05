@@ -1,0 +1,1 @@
+{"nodes": [{"id": "riskclassifier_RiskClassifier", "label": "RiskClassifier (Stub)", "file_type": "code", "source_file": "src/main/agent/guardrails/risk-classifier.ts", "source_location": null, "source_url": null, "captured_at": null, "author": null, "contributor": null}], "edges": [], "hyperedges": []}

@@ -1,0 +1,12 @@
+providers:
+  - id: ollama
+    name: Ollama
+    type: ollama
+    enabled: true
+    baseUrl: http://127.0.0.1:11434
+
+  - id: llamacpp
+    name: llama.cpp
+    type: llamacpp
+    enabled: false
+    baseUrl: http://127.0.0.1:8080

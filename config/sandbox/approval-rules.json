@@ -1,0 +1,41 @@
+{
+  "defaultDecision": "allow",
+  "criticalPatterns": [
+    "\\brm\\s+-rf\\b",
+    "\\bdel\\s+/[fsq]\\b",
+    "\\brmdir\\s+/s\\b",
+    "\\bdd\\s+if=",
+    "\\bmkfs\\b",
+    "\\bformat\\b",
+    "\\bmount\\b",
+    "\\bchmod\\s+777\\b",
+    "\\bchown\\b",
+    "\\bsudo\\b",
+    "\\bsu\\b",
+    "\\bssh\\s+root@",
+    "\\bnetcat\\b.*\\b-e\\b",
+    "\\bnc\\b.*\\b-e\\b",
+    "\\bpowershell\\b.*-enc",
+    "\\bcurl\\b.*\\|\\s*(sh|bash|powershell)",
+    "\\bwget\\b.*\\|\\s*(sh|bash|powershell)"
+  ],
+  "deniedPatterns": [
+    "\\bshutdown\\b",
+    "\\breboot\\b",
+    "\\bbcdedit\\b",
+    "\\breg\\s+delete\\b"
+  ],
+  "localTargets": [
+    "localhost",
+    "127.0.0.1",
+    "::1",
+    "10.0.0.0/8",
+    "172.16.0.0/12",
+    "192.168.0.0/16"
+  ],
+  "highRiskTools": [
+    "shell",
+    "network",
+    "browser"
+  ]
+}

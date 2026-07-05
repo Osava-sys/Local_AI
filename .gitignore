@@ -1,0 +1,21 @@
+node_modules/
+out/
+dist/
+release/
+
+.env
+.env.local
+
+*.log
+*.db
+*.db-shm
+*.db-wal
+
+coverage/
+.DS_Store
+Thumbs.db
+
+# Graphify artifacts
+graphify-out/graph.json
+graphify-out/graph.html
+.graphify_cache/

@@ -1,0 +1,17 @@
+CREATE TABLE IF NOT EXISTS chats (
+  id          TEXT    PRIMARY KEY NOT NULL,
+  title       TEXT    NOT NULL DEFAULT 'New Chat',
+  created_at  TEXT    NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ', 'now')),
+  updated_at  TEXT    NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ', 'now'))
+);
+
+CREATE TABLE IF NOT EXISTS messages (
+  id          TEXT    PRIMARY KEY NOT NULL,
+  chat_id     TEXT    NOT NULL REFERENCES chats(id) ON DELETE CASCADE,
+  role        TEXT    NOT NULL CHECK (role IN ('user', 'assistant', 'system')),
+  content     TEXT    NOT NULL,
+  model       TEXT,
+  created_at  TEXT    NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ', 'now'))
+);
+
+CREATE INDEX IF NOT EXISTS idx_messages_chat_id ON messages(chat_id);

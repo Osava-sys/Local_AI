@@ -1,0 +1,16 @@
+app:
+  name: Local AI
+  version: 0.1.0
+  logLevel: info
+
+ollama:
+  host: http://127.0.0.1:11434
+  timeout: 30000
+
+models:
+  defaultModel: ""
+  catalog: []
+
+ui:
+  theme: system
+  language: en

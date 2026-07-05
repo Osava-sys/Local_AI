@@ -1,0 +1,1 @@
+{"nodes": [{"id": "analysistool_analysisTool", "label": "analysisTool AgentTool", "file_type": "code", "source_file": "src/main/agent/tools/analysis.tool.ts", "source_location": null, "source_url": null, "captured_at": null, "author": null, "contributor": null}], "edges": [], "hyperedges": []}

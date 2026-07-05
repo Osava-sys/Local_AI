@@ -1,0 +1,495 @@
+{
+  "nodes": [
+    {
+      "id": "childrunner_ChildProcessRunner",
+      "label": "ChildProcessRunner",
+      "file_type": "code",
+      "source_file": "src/main/sandbox/child-runner.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "commandnormalizer_NormalizedCommand",
+      "label": "NormalizedCommand Interface",
+      "file_type": "code",
+      "source_file": "src/main/sandbox/command-normalizer.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "commandnormalizer_normalizeCommand",
+      "label": "normalizeCommand",
+      "file_type": "code",
+      "source_file": "src/main/sandbox/command-normalizer.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "commandnormalizer_splitCommandLine",
+      "label": "splitCommandLine",
+      "file_type": "code",
+      "source_file": "src/main/sandbox/command-normalizer.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "dockerrunner_DockerRunner",
+      "label": "DockerRunner (stub)",
+      "file_type": "code",
+      "source_file": "src/main/sandbox/docker-runner.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "environment_EnvironmentModule",
+      "label": "Environment Module (stub)",
+      "file_type": "code",
+      "source_file": "src/main/sandbox/environment.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "filesystemscope_FilesystemScope",
+      "label": "FilesystemScope (stub)",
+      "file_type": "code",
+      "source_file": "src/main/sandbox/filesystem-scope.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "limits_LimitsModule",
+      "label": "Limits Module (stub)",
+      "file_type": "code",
+      "source_file": "src/main/sandbox/limits.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "networkscope_NetworkScope",
+      "label": "NetworkScope (stub)",
+      "file_type": "code",
+      "source_file": "src/main/sandbox/network-scope.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "policyloader_PolicyLoader",
+      "label": "PolicyLoader (stub)",
+      "file_type": "code",
+      "source_file": "src/main/sandbox/policy-loader.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "policy_PolicyModule",
+      "label": "Policy Module (stub)",
+      "file_type": "code",
+      "source_file": "src/main/sandbox/policy.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "runnerregistry_RunnerRegistry",
+      "label": "RunnerRegistry (stub)",
+      "file_type": "code",
+      "source_file": "src/main/sandbox/runner-registry.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "sandboxexecutor_SandboxExecutor",
+      "label": "SandboxExecutor",
+      "file_type": "code",
+      "source_file": "src/main/sandbox/sandbox-executor.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "watchdog_WatchdogModule",
+      "label": "Watchdog Module (stub)",
+      "file_type": "code",
+      "source_file": "src/main/sandbox/watchdog.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "approvalgate_ApprovalGate",
+      "label": "ApprovalGate",
+      "file_type": "code",
+      "source_file": "src/main/sandbox/approval-gate.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "auditlog_AuditLog",
+      "label": "AuditLog (stub)",
+      "file_type": "code",
+      "source_file": "src/main/security/audit-log.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "csp_CSPModule",
+      "label": "CSP Module (stub)",
+      "file_type": "code",
+      "source_file": "src/main/security/csp.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "encryption_EncryptionModule",
+      "label": "Encryption Module (stub)",
+      "file_type": "code",
+      "source_file": "src/main/security/encryption.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "keychain_KeychainModule",
+      "label": "Keychain Module (stub)",
+      "file_type": "code",
+      "source_file": "src/main/security/keychain.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "permissions_PermissionsModule",
+      "label": "Permissions Module (stub)",
+      "file_type": "code",
+      "source_file": "src/main/security/permissions.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "safepath_SafePathModule",
+      "label": "SafePath Module (stub)",
+      "file_type": "code",
+      "source_file": "src/main/security/safe-path.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "dbclient_setDb",
+      "label": "setDb",
+      "file_type": "code",
+      "source_file": "src/main/storage/db-client.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "dbclient_getDb",
+      "label": "getDb",
+      "file_type": "code",
+      "source_file": "src/main/storage/db-client.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "db_initDb",
+      "label": "initDb",
+      "file_type": "code",
+      "source_file": "src/main/storage/db.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "lancedbstore_LanceDbStore",
+      "label": "LanceDB Store (stub)",
+      "file_type": "code",
+      "source_file": "src/main/storage/lancedb.store.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "migrations_runMigrations",
+      "label": "runMigrations",
+      "file_type": "code",
+      "source_file": "src/main/storage/migrations.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "childrunner_ChildProcessRunner",
+      "target": "commandnormalizer_normalizeCommand",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/sandbox/child-runner.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "commandnormalizer_normalizeCommand",
+      "target": "commandnormalizer_splitCommandLine",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/sandbox/command-normalizer.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "sandboxexecutor_SandboxExecutor",
+      "target": "approvalgate_ApprovalGate",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/sandbox/sandbox-executor.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "sandboxexecutor_SandboxExecutor",
+      "target": "childrunner_ChildProcessRunner",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/sandbox/sandbox-executor.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "db_initDb",
+      "target": "migrations_runMigrations",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/main/storage/db.ts",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "dbclient_getDb",
+      "target": "dbclient_setDb",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "src/main/storage/db-client.ts",
+      "source_location": null,
+      "weight": 0.85
+    },
+    {
+      "source": "db_initDb",
+      "target": "dbclient_setDb",
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "src/main/storage/db.ts",
+      "source_location": null,
+      "weight": 0.85
+    },
+    {
+      "source": "runnerregistry_RunnerRegistry",
+      "target": "childrunner_ChildProcessRunner",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "src/main/sandbox/runner-registry.ts",
+      "source_location": null,
+      "weight": 0.85
+    },
+    {
+      "source": "runnerregistry_RunnerRegistry",
+      "target": "dockerrunner_DockerRunner",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "src/main/sandbox/runner-registry.ts",
+      "source_location": null,
+      "weight": 0.85
+    },
+    {
+      "source": "sandboxexecutor_SandboxExecutor",
+      "target": "dockerrunner_DockerRunner",
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "src/main/sandbox/sandbox-executor.ts",
+      "source_location": null,
+      "weight": 0.75
+    },
+    {
+      "source": "policyloader_PolicyLoader",
+      "target": "policy_PolicyModule",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "src/main/sandbox/policy-loader.ts",
+      "source_location": null,
+      "weight": 0.85
+    },
+    {
+      "source": "sandboxexecutor_SandboxExecutor",
+      "target": "filesystemscope_FilesystemScope",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "src/main/sandbox/sandbox-executor.ts",
+      "source_location": null,
+      "weight": 0.75
+    },
+    {
+      "source": "sandboxexecutor_SandboxExecutor",
+      "target": "networkscope_NetworkScope",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "src/main/sandbox/sandbox-executor.ts",
+      "source_location": null,
+      "weight": 0.75
+    },
+    {
+      "source": "sandboxexecutor_SandboxExecutor",
+      "target": "limits_LimitsModule",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.65,
+      "source_file": "src/main/sandbox/sandbox-executor.ts",
+      "source_location": null,
+      "weight": 0.65
+    },
+    {
+      "source": "filesystemscope_FilesystemScope",
+      "target": "safepath_SafePathModule",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "src/main/sandbox/filesystem-scope.ts",
+      "source_location": null,
+      "weight": 0.75
+    },
+    {
+      "source": "watchdog_WatchdogModule",
+      "target": "sandboxexecutor_SandboxExecutor",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "src/main/sandbox/watchdog.ts",
+      "source_location": null,
+      "weight": 0.75
+    },
+    {
+      "source": "encryption_EncryptionModule",
+      "target": "keychain_KeychainModule",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "src/main/security/encryption.ts",
+      "source_location": null,
+      "weight": 0.75
+    },
+    {
+      "source": "permissions_PermissionsModule",
+      "target": "policy_PolicyModule",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "src/main/security/permissions.ts",
+      "source_location": null,
+      "weight": 0.75
+    },
+    {
+      "source": "auditlog_AuditLog",
+      "target": "sandboxexecutor_SandboxExecutor",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.65,
+      "source_file": "src/main/security/audit-log.ts",
+      "source_location": null,
+      "weight": 0.65
+    },
+    {
+      "source": "environment_EnvironmentModule",
+      "target": "limits_LimitsModule",
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.65,
+      "source_file": "src/main/sandbox/environment.ts",
+      "source_location": null,
+      "weight": 0.65
+    }
+  ],
+  "hyperedges": [],
+  "input_tokens": 0,
+  "output_tokens": 0
+}

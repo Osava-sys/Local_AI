@@ -1,0 +1,12 @@
+tools:
+  - id: shell
+    enabled: false
+    requiresApproval: true
+
+  - id: filesystem
+    enabled: false
+    requiresApproval: true
+
+  - id: browser
+    enabled: false
+    requiresApproval: true
