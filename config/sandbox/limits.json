@@ -1,7 +1,10 @@
 {
   "defaultTimeoutMs": 30000,
+  "httpRequestTimeoutMs": 30000,
+  "networkScanTimeoutMs": 300000,
   "maxTimeoutMs": 300000,
   "maxOutputBytes": 1048576,
   "maxFileSizeMB": 10,
-  "maxDirectoryDepth": 5
+  "maxDirectoryDepth": 5,
+  "approvalTimeoutMs": 300000
 }

@@ -1,8 +1,8 @@
 import { readFileSync } from 'fs'
-import { isIP } from 'net'
 import { join, resolve } from 'path'
 import type { ApprovalEvaluation, ApprovalPolicyConfig } from '@shared/types/approval.types'
 import type { ToolIntent } from '@shared/types/sandbox.types'
+import { isLocalTarget } from '../sandbox/network-scope'
 
 const DEFAULT_POLICY: ApprovalPolicyConfig = {
   defaultDecision: 'allow',
@@ -15,8 +15,20 @@ const DEFAULT_POLICY: ApprovalPolicyConfig = {
     '\\bchmod\\s+777\\b',
     '\\bcurl\\b.*\\|\\s*(sh|bash|powershell)',
     '\\bwget\\b.*\\|\\s*(sh|bash|powershell)',
+    '\\bpowershell(?:\\.exe)?\\b.*-command\\b',
+    '\\bpwsh(?:\\.exe)?\\b.*-command\\b',
+    '\\bpowershell(?:\\.exe)?\\b.*\\b(invoke-expression|iex)\\b',
+    '\\bpwsh(?:\\.exe)?\\b.*\\b(invoke-expression|iex)\\b',
+    '\\bsqlmap\\b',
+    '\\bgobuster\\b',
+    '\\bburpsuite(?:-cli)?\\b',
   ],
-  deniedPatterns: ['\\bshutdown\\b', '\\breboot\\b', '\\bbcdedit\\b'],
+  deniedPatterns: [
+    '\\bshutdown\\b',
+    '\\breboot\\b',
+    '\\bbcdedit\\b',
+    '\\b(?:powershell|pwsh)(?:\\.exe)?\\b.*-(?:encodedcommand|enc|e)\\b',
+  ],
   localTargets: ['localhost', '127.0.0.1', '::1', '10.0.0.0/8', '172.16.0.0/12', '192.168.0.0/16'],
   highRiskTools: ['shell', 'network', 'browser'],
 }
@@ -58,21 +70,6 @@ function matchesAny(patterns: string[], text: string): string | null {
   return null
 }
 
-function isPrivateIpv4(value: string): boolean {
-  const parts = value.split('.').map(part => Number(part))
-  if (parts.length !== 4 || parts.some(part => Number.isNaN(part))) return false
-  const [a, b] = parts
-  return a === 10 || (a === 172 && b >= 16 && b <= 31) || (a === 192 && b === 168)
-}
-
-function isLocalTarget(value: string): boolean {
-  const lower = value.toLowerCase()
-  if (lower === 'localhost' || lower === '::1') return true
-  if (lower.startsWith('127.')) return true
-  if (isIP(lower) === 4) return isPrivateIpv4(lower)
-  return false
-}
-
 export class ApprovalPolicy {
   constructor(private readonly config: ApprovalPolicyConfig = loadJsonConfig()) {}
 
@@ -88,12 +85,65 @@ export class ApprovalPolicy {
       }
     }
 
+    if (intent.kind === 'shell' && isPowershellEncodedCommand(text)) {
+      return {
+        decision: 'deny',
+        reason: 'PowerShell EncodedCommand is denied because it hides executable logic from review.',
+        matchedRule: 'powershell-encoded-command',
+        intent,
+      }
+    }
+
     const criticalPattern = matchesAny(this.config.criticalPatterns, text)
     if (criticalPattern) {
       return {
         decision: 'needs_human_approval',
         reason: `Critical action requires human approval: ${criticalPattern}`,
         matchedRule: criticalPattern,
+        intent,
+      }
+    }
+
+    if (intent.kind === 'shell' && isDangerousPowershellCommand(text)) {
+      return {
+        decision: 'needs_human_approval',
+        reason: 'PowerShell command contains high-risk download/eval behavior.',
+        matchedRule: 'powershell-dangerous-command',
+        intent,
+      }
+    }
+
+    if (intent.kind === 'shell' && containsShellControlOperator(text)) {
+      return {
+        decision: 'needs_human_approval',
+        reason: 'Shell command contains control operators, pipes, or redirection and needs review.',
+        matchedRule: 'shell-control-operator',
+        intent,
+      }
+    }
+
+    if (intent.kind === 'shell' && isPowershellCommandMode(text)) {
+      return {
+        decision: 'needs_human_approval',
+        reason: 'PowerShell -Command can execute complex logic and needs review.',
+        matchedRule: 'powershell-command',
+        intent,
+      }
+    }
+
+    if (intent.risk === 'critical') {
+      return {
+        decision: 'needs_human_approval',
+        reason: 'Critical-risk tool intent requires human approval.',
+        matchedRule: 'critical-risk-intent',
+        intent,
+      }
+    }
+
+    if (intent.networkTarget && !isLocalTarget(intent.networkTarget)) {
+      return {
+        decision: 'needs_human_approval',
+        reason: `Network target is outside the local/private scope: ${intent.networkTarget}`,
         intent,
       }
     }
@@ -123,3 +173,19 @@ export class ApprovalPolicy {
 }
 
 export const approvalPolicy = new ApprovalPolicy()
+
+function isPowershellEncodedCommand(text: string): boolean {
+  return /\b(?:powershell|pwsh)(?:\.exe)?\b[\s\S]*-(?:encodedcommand|enc|e)\b/i.test(text)
+}
+
+function isPowershellCommandMode(text: string): boolean {
+  return /\b(?:powershell|pwsh)(?:\.exe)?\b[\s\S]*-command\b/i.test(text)
+}
+
+function isDangerousPowershellCommand(text: string): boolean {
+  return /\b(?:powershell|pwsh)(?:\.exe)?\b[\s\S]*(?:\biex\b|\binvoke-expression\b|downloadstring|invoke-webrequest|iwr)[\s\S]*\|[\s\S]*(?:\biex\b|\binvoke-expression\b)/i.test(text)
+}
+
+function containsShellControlOperator(text: string): boolean {
+  return /(?:&&|\|\||[|;<>])/.test(text)
+}

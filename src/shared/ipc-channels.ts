@@ -17,11 +17,16 @@ export const InvokeChannels = {
   'model:catalog': { direction: 'renderer→main' },
   'model:list': { direction: 'renderer→main' },
   'model:selectGguf': { direction: 'renderer→main' },
+  'model:selectLlamaServer': { direction: 'renderer→main' },
   'model:registerLocal': { direction: 'renderer→main' },
   'model:download': { direction: 'renderer→main' },
   'model:load': { direction: 'renderer→main' },
   'model:unload': { direction: 'renderer→main' },
   'model:status': { direction: 'renderer→main' },
+  // approvals
+  'approval:list': { direction: 'renderer→main' },
+  'approval:approve': { direction: 'renderer→main' },
+  'approval:reject': { direction: 'renderer→main' },
 } as const
 
 export const EventChannels = {
@@ -30,6 +35,8 @@ export const EventChannels = {
   'agent:error': { direction: 'main→renderer' },
   'model:downloadProgress': { direction: 'main→renderer' },
   'model:runtimeState': { direction: 'main→renderer' },
+  'approval:requested': { direction: 'main→renderer' },
+  'approval:resolved': { direction: 'main→renderer' },
 } as const
 
 export type InvokeChannel = keyof typeof InvokeChannels

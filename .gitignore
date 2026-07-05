@@ -15,6 +15,24 @@ coverage/
 .DS_Store
 Thumbs.db
 
+# Build & tooling caches
+.vite/
+*.tsbuildinfo
+
+# Local runtime binaries (llama.cpp, ollama, downloaded security tools).
+# Large and machine-specific — keep the .gitkeep placeholders, ignore the rest.
+resources/bin/llama-cpp/*
+resources/bin/ollama/*
+resources/bin/tools/*
+!resources/bin/**/.gitkeep
+
+# Local model weights (downloaded to userData at runtime; never commit)
+*.gguf
+models/
+
+# Local Claude Code settings (settings.json stays tracked)
+.claude/settings.local.json
+
 # Graphify artifacts
 graphify-out/graph.json
 graphify-out/graph.html

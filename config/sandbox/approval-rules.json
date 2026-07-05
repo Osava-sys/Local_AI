@@ -15,7 +15,12 @@
     "\\bssh\\s+root@",
     "\\bnetcat\\b.*\\b-e\\b",
     "\\bnc\\b.*\\b-e\\b",
-    "\\bpowershell\\b.*-enc",
+    "\\b(?:powershell|pwsh)(?:\\.exe)?\\b.*-(?:encodedcommand|enc|e)\\b",
+    "\\b(?:powershell|pwsh)(?:\\.exe)?\\b.*-command\\b",
+    "\\b(?:powershell|pwsh)(?:\\.exe)?\\b.*\\b(invoke-expression|iex)\\b",
+    "\\bsqlmap\\b",
+    "\\bgobuster\\b",
+    "\\bburpsuite(?:-cli)?\\b",
     "\\bcurl\\b.*\\|\\s*(sh|bash|powershell)",
     "\\bwget\\b.*\\|\\s*(sh|bash|powershell)"
   ],

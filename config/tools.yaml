@@ -10,3 +10,28 @@ tools:
   - id: browser
     enabled: false
     requiresApproval: true
+
+  # System security binaries. `path` may point to a bundled or installed
+  # executable; when empty the sandbox resolves the binary from PATH and marks
+  # the tool unavailable if it is missing (see sandbox/tool-availability.ts).
+  - id: nmap
+    enabled: true
+    requiresApproval: true
+    path: ""
+
+  - id: gobuster
+    enabled: true
+    requiresApproval: true
+    path: ""
+
+  - id: sqlmap
+    enabled: true
+    requiresApproval: true
+    path: ""
+
+# Known wordlists offered to gobuster. A gobuster intent is refused before
+# approval unless its wordlist resolves to an existing file in an allowed scope.
+wordlists:
+  common: "wordlists/common.txt"
+  directories: "wordlists/directory-list-2.3-medium.txt"
+  dns: "wordlists/dns-subdomains.txt"

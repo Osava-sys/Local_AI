@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import type { Chat } from '@shared/types/chat.types'
 import type { AgentRunStep } from '@shared/types/agent.types'
 import type { LocalModelRecord, ModelDownloadProgress, ModelRuntimeStatus } from '@shared/types/model.types'
+import { ApprovalQueue } from './components/agent/ApprovalQueue'
 
 export default function App() {
   const [pong, setPong] = useState<string | null>(null)
@@ -17,6 +18,7 @@ export default function App() {
   const [localModelPath, setLocalModelPath] = useState('')
   const [downloadUrl, setDownloadUrl] = useState('')
   const [llamaServerPath, setLlamaServerPath] = useState('')
+  const [mmprojPath, setMmprojPath] = useState('')
   const [device, setDevice] = useState<'gpu' | 'cpu'>('gpu')
   const [gpuLayers, setGpuLayers] = useState(35)
   const [contextLength, setContextLength] = useState(32768)
@@ -93,9 +95,9 @@ export default function App() {
     setAgentState('starting')
 
     const r = await window.api.agent.start('default', agentPrompt, {
-      maxSteps: 5,
+      maxSteps: 10,
       timeoutPerStep: 30000,
-      totalTimeout: 180000,
+      totalTimeout: 300000,
     })
 
     if (r.ok) {
@@ -117,6 +119,11 @@ export default function App() {
   async function handleSelectGguf() {
     const r = await window.api.model.selectGguf()
     if (r.ok && r.value) setLocalModelPath(r.value.path)
+  }
+
+  async function handleSelectLlamaServer() {
+    const r = await window.api.model.selectLlamaServer()
+    if (r.ok && r.value) setLlamaServerPath(r.value.path)
   }
 
   async function handleRegisterLocalModel() {
@@ -148,6 +155,7 @@ export default function App() {
       modelId: selectedModelId,
       device,
       executablePath: llamaServerPath || undefined,
+      mmprojPath: mmprojPath || undefined,
       gpuLayers,
       contextLength,
       batchSize: 512,
@@ -205,6 +213,11 @@ export default function App() {
           runtime = <strong>{runtimeStatus?.state ?? 'idle'}</strong>
           {runtimeStatus?.endpoint && <> — <code>{runtimeStatus.endpoint}</code></>}
         </p>
+        {runtimeStatus?.error && (
+          <p style={{ color: 'crimson', whiteSpace: 'pre-wrap' }}>
+            {runtimeStatus.error}
+          </p>
+        )}
 
         <div style={{ display: 'grid', gap: 8 }}>
           <label>
@@ -243,7 +256,18 @@ export default function App() {
             <input
               value={llamaServerPath}
               onChange={event => setLlamaServerPath(event.target.value)}
-              placeholder="resources\\bin\\llama-cpp\\llama-server.exe or LLAMA_CPP_SERVER_PATH"
+              placeholder="Select llama-server.exe, or set LLAMA_CPP_SERVER_PATH"
+              style={{ width: '100%', boxSizing: 'border-box' }}
+            />
+          </label>
+          <button onClick={handleSelectLlamaServer}>Select llama-server.exe</button>
+
+          <label>
+            mmproj (vision) — optionnel, vide = détection auto à côté du modèle
+            <input
+              value={mmprojPath}
+              onChange={event => setMmprojPath(event.target.value)}
+              placeholder="mmproj-*.gguf (auto-détecté si laissé vide)"
               style={{ width: '100%', boxSizing: 'border-box' }}
             />
           </label>
@@ -305,6 +329,10 @@ export default function App() {
 
         {agentRunId && <p>run = <code>{agentRunId}</code></p>}
         {agentError && <p style={{ color: 'crimson' }}>{agentError}</p>}
+
+        <div style={{ marginTop: '1.5rem', borderTop: '1px dashed #ccc', paddingTop: '1rem' }}>
+          <ApprovalQueue />
+        </div>
 
         <ol>
           {agentSteps.map((step, index) => (

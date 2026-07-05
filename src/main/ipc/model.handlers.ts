@@ -43,6 +43,19 @@ export async function handleModelSelectGguf(): Promise<Result<{ path: string } |
   return { ok: true, value: { path: result.filePaths[0] } }
 }
 
+export async function handleModelSelectLlamaServer(): Promise<Result<{ path: string } | null>> {
+  const result = await dialog.showOpenDialog({
+    title: 'Select llama.cpp server executable',
+    properties: ['openFile'],
+    filters: process.platform === 'win32'
+      ? [{ name: 'llama.cpp server', extensions: ['exe'] }]
+      : [{ name: 'llama.cpp server', extensions: ['*'] }],
+  })
+
+  if (result.canceled || result.filePaths.length === 0) return { ok: true, value: null }
+  return { ok: true, value: { path: result.filePaths[0] } }
+}
+
 export function handleModelRegisterLocal(_event: IpcMainInvokeEvent, payload: unknown): Result<LocalModelRecord> {
   const parsed = ModelRegisterLocalPayloadSchema.safeParse(payload)
   if (!parsed.success) return { ok: false, error: parsed.error.message }

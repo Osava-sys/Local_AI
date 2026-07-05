@@ -22,4 +22,5 @@ export const ModelLoadPayloadSchema = z.object({
   threads: z.number().int().min(1).max(128).optional(),
   batchSize: z.number().int().min(1).max(8192).optional(),
   flashAttention: z.boolean().optional(),
+  mmprojPath: z.string().min(1).optional(),
 })

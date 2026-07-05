@@ -1,13 +1,17 @@
 import type { ToolCall } from '@shared/types/agent.types'
 import type { ToolResult } from '@shared/types/sandbox.types'
-import { SandboxExecutor } from '../../sandbox/sandbox-executor'
+import { type IntentExecutor, SandboxExecutor } from '../../sandbox/sandbox-executor'
 import { analysisTool } from './analysis.tool'
 import { browserTool } from './browser.tool'
+import { burpSuiteCliTool } from './burpsuite-cli.tool'
 import { documentTool } from './document.tool'
 import { filesystemTool } from './filesystem.tool'
+import { gobusterTool } from './gobuster.tool'
 import { networkTool } from './network.tool'
+import { nmapTool } from './nmap.tool'
 import { ragTool } from './rag.tool'
 import { shellTool } from './shell.tool'
+import { sqlmapTool } from './sqlmap.tool'
 import type { AgentTool, ToolExecution } from './tool'
 import { workspaceTool } from './workspace.tool'
 
@@ -19,10 +23,14 @@ function aliasesFor(name: string): string[] {
 export class ToolRegistry {
   private readonly tools = new Map<string, AgentTool>()
 
-  constructor(private readonly sandbox = new SandboxExecutor()) {
+  constructor(private readonly sandbox: IntentExecutor = new SandboxExecutor()) {
     this.registerMany([
       shellTool,
       networkTool,
+      nmapTool,
+      gobusterTool,
+      sqlmapTool,
+      burpSuiteCliTool,
       filesystemTool,
       browserTool,
       documentTool,

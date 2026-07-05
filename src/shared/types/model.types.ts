@@ -95,6 +95,11 @@ export interface ModelLoadOptions {
   threads?: number
   batchSize?: number
   flashAttention?: boolean
+  /**
+   * Path to a multimodal projector (mmproj*.gguf) that enables image input.
+   * Left unset, the runtime auto-detects an mmproj file next to the model.
+   */
+  mmprojPath?: string
 }
 
 export interface ModelRuntimeStatus {

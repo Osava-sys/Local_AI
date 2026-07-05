@@ -7,6 +7,16 @@ export type AgentState =
   | 'done'
   | 'error'
   | 'paused'
+  | 'blocked'
+
+/** Why the ReAct loop stopped. Lets the orchestrator pick a truthful final state. */
+export type RunStopReason =
+  | 'completed'
+  | 'no_tool'
+  | 'max_steps'
+  | 'timeout'
+  | 'blocked'
+  | 'error'
 
 /** Un appel d'outil demandé par l'agent dans la boucle RAO. */
 export interface ToolCall {
@@ -43,6 +53,8 @@ export interface ReasoningStep {
     durationMs: number
     confidenceScore: number
   }
+  /** Set on a terminal step to tell the orchestrator why the loop stopped. */
+  stopReason?: RunStopReason
 }
 
 export interface ReactLoopOptions {

@@ -1,5 +1,5 @@
 import { existsSync, statSync } from 'fs'
-import { basename, extname, join } from 'path'
+import { basename, delimiter, extname, join } from 'path'
 import type { ModelQuantization } from '@shared/types/model.types'
 
 export function inferQuantization(filePath: string): ModelQuantization | 'unknown' {
@@ -35,7 +35,28 @@ export function defaultLlamaServerCandidates(appPath: string): string[] {
     join(appPath, 'resources', 'bin', 'llama-cpp', legacyBinaryName),
     join(process.cwd(), 'resources', 'bin', 'llama-cpp', binaryName),
     join(process.cwd(), 'resources', 'bin', 'llama-cpp', legacyBinaryName),
-    binaryName,
-    legacyBinaryName,
+    findExecutableOnPath(binaryName),
+    findExecutableOnPath(legacyBinaryName),
   ].filter(Boolean)
+}
+
+export function findExecutableOnPath(command: string): string {
+  const pathEnv = process.env['PATH'] ?? ''
+  const pathExt = process.platform === 'win32'
+    ? (process.env['PATHEXT'] ?? '.EXE;.CMD;.BAT;.COM').split(';')
+    : ['']
+
+  for (const dir of pathEnv.split(delimiter)) {
+    if (!dir) continue
+    const candidates = pathExt.map(ext => {
+      const hasExtension = ext && command.toLowerCase().endsWith(ext.toLowerCase())
+      return join(dir, hasExtension ? command : `${command}${ext}`)
+    })
+
+    for (const candidate of candidates) {
+      if (existsSync(candidate)) return candidate
+    }
+  }
+
+  return ''
 }

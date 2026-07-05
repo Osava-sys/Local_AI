@@ -2,6 +2,7 @@ import { describe, it, expect, vi } from 'vitest'
 import type { ApprovalDecision, ApprovalEvaluation } from '@shared/types/approval.types'
 import type {
   NetworkToolIntent,
+  SandboxPolicy,
   ShellToolIntent,
   ToolIntent,
   ToolResult,
@@ -42,6 +43,41 @@ function makeExecutor(decision: ApprovalDecision) {
   return { executor: new SandboxExecutor(gate, runner), run }
 }
 
+function makeExecutorWithSandboxPolicy(policy: SandboxPolicy) {
+  const gate = {
+    evaluate: (intent: ToolIntent): ApprovalEvaluation => ({ decision: 'allow', reason: 'test:allow', intent }),
+  } as unknown as ApprovalGate
+  const run = vi.fn(
+    async (intent: ShellToolIntent): Promise<ToolResult> => ({
+      id: intent.id,
+      kind: intent.kind,
+      status: 'success',
+      observation: 'ran',
+      exitCode: 0,
+      startedAt: 'a',
+      endedAt: 'b',
+      durationMs: 1,
+    }),
+  )
+  const runner = { run } as unknown as ChildProcessRunner
+  return { executor: new SandboxExecutor(gate, runner, undefined, undefined, undefined, undefined, policy), run }
+}
+
+const sandboxPolicy: SandboxPolicy = {
+  runner: 'child_process',
+  workspaceRoot: '.',
+  allowDocker: false,
+  allowChildProcess: true,
+  allowBrowserAutomation: false,
+  allowOutboundNetwork: true,
+  bindInterfaces: [],
+  maxConnectionsPerScan: 64,
+  maxOutputBytes: 1024,
+  maxFileSizeMB: 10,
+  maxDirectoryDepth: 5,
+  defaultTimeoutMs: 30000,
+}
+
 describe('SandboxExecutor — policy enforcement and routing', () => {
   it('short-circuits denied intents without touching the runner', async () => {
     const { executor, run } = makeExecutor('deny')
@@ -73,5 +109,32 @@ describe('SandboxExecutor — policy enforcement and routing', () => {
     expect(passed.command).toBe('nmap')
     expect(passed.args).toContain('127.0.0.1')
     expect(passed.args).toContain('-sV')
+  })
+
+  it('denies network execution when outbound network is disabled', async () => {
+    const { executor, run } = makeExecutorWithSandboxPolicy({ ...sandboxPolicy, allowOutboundNetwork: false })
+    const result = await executor.execute(networkIntent)
+
+    expect(result.status).toBe('denied')
+    expect(result.observation).toContain('Outbound network access is disabled')
+    expect(run).not.toHaveBeenCalled()
+  })
+
+  it('denies intents that exceed max connections per scan', async () => {
+    const { executor, run } = makeExecutorWithSandboxPolicy({ ...sandboxPolicy, maxConnectionsPerScan: 2 })
+    const result = await executor.execute({ ...shellIntent, networkTarget: '127.0.0.1', maxConnections: 3 })
+
+    expect(result.status).toBe('denied')
+    expect(result.observation).toContain('max_connections_per_scan')
+    expect(run).not.toHaveBeenCalled()
+  })
+
+  it('denies disallowed bound network interfaces', async () => {
+    const { executor, run } = makeExecutorWithSandboxPolicy({ ...sandboxPolicy, bindInterfaces: ['eth0'] })
+    const result = await executor.execute({ ...shellIntent, networkTarget: '127.0.0.1', bindInterface: 'wlan0' })
+
+    expect(result.status).toBe('denied')
+    expect(result.observation).toContain('not allowed')
+    expect(run).not.toHaveBeenCalled()
   })
 })

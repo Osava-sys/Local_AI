@@ -10,9 +10,16 @@ import {
   handleModelLoad,
   handleModelRegisterLocal,
   handleModelSelectGguf,
+  handleModelSelectLlamaServer,
   handleModelStatus,
   handleModelUnload,
 } from './model.handlers'
+import {
+  handleApprovalApprove,
+  handleApprovalList,
+  handleApprovalReject,
+  registerApprovalEventForwarding,
+} from './approval.handlers'
 
 const handlers: Record<keyof typeof InvokeChannels, (e: Electron.IpcMainInvokeEvent, payload: unknown) => unknown> = {
   'settings:get': handleSettingsGet,
@@ -29,15 +36,20 @@ const handlers: Record<keyof typeof InvokeChannels, (e: Electron.IpcMainInvokeEv
   'model:catalog': handleModelCatalog,
   'model:list': handleModelList,
   'model:selectGguf': handleModelSelectGguf,
+  'model:selectLlamaServer': handleModelSelectLlamaServer,
   'model:registerLocal': handleModelRegisterLocal,
   'model:download': handleModelDownload,
   'model:load': handleModelLoad,
   'model:unload': handleModelUnload,
   'model:status': handleModelStatus,
+  'approval:list': handleApprovalList,
+  'approval:approve': handleApprovalApprove,
+  'approval:reject': handleApprovalReject,
 }
 
 export function registerIpcHandlers(): void {
   for (const [channel, handler] of Object.entries(handlers)) {
     ipcMain.handle(channel, handler)
   }
+  registerApprovalEventForwarding()
 }

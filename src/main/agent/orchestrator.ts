@@ -5,6 +5,7 @@ import type { ModelConfigInput, ModelProvider } from '@shared/types/model.types'
 import { LlamaCppHttpProvider } from '../models/local-http.provider'
 import { getActiveRuntimeModelConfig } from '../models/model-runtime'
 import { AgentRunsRepository } from '../storage/repositories/agent-runs.repository'
+import { AgentSessionMemoryRepository } from '../storage/repositories/agent-session-memory.repository'
 import { AgentRunStateRepository } from '../storage/repositories/agent-run-state.repository'
 import { AgentRunStepsRepository } from '../storage/repositories/agent-run-steps.repository'
 import { MemoryManager } from './memory-manager'
@@ -45,7 +46,7 @@ export class AgentOrchestrator {
   constructor(db: BetterSqlite3.Database, options: AgentOrchestratorOptions = {}) {
     this.provider = options.provider ?? new LlamaCppHttpProvider()
     this.tools = options.tools ?? new ToolRegistry()
-    this.memory = options.memory ?? new MemoryManager()
+    this.memory = options.memory ?? new MemoryManager(new AgentSessionMemoryRepository(db))
     this.webContents = options.webContents
     this.modelConfig = options.modelConfig
 
@@ -114,7 +115,9 @@ export class AgentOrchestrator {
     modelConfig: ModelConfigInput,
   ): Promise<void> {
     const steps: ReasoningStep[] = []
+    let stopReason: ReasoningStep['stopReason']
     this.memory.clear()
+    this.memory.startSession(runId)
 
     try {
       await this.provider.init(modelConfig)
@@ -127,6 +130,7 @@ export class AgentOrchestrator {
         if (controller.signal.aborted) break
 
         steps.push(step)
+        if (step.stopReason) stopReason = step.stopReason
         const persistedStep = this.stepsRepo.append(runId, step)
         this.stateRepo.save(runId, { workspaceId, steps })
         this.emitStep({ ...persistedStep, metadata: step.metadata, observation: step.observation })
@@ -138,7 +142,12 @@ export class AgentOrchestrator {
         }
       }
 
-      const finalState: AgentState = controller.signal.aborted ? 'paused' : 'done'
+      // A run blocked by a denied/expired approval must not be reported as done.
+      const finalState: AgentState = controller.signal.aborted
+        ? 'paused'
+        : stopReason === 'blocked'
+          ? 'blocked'
+          : 'done'
       this.runsRepo.updateState(runId, finalState)
       this.emitState(runId, finalState)
     } catch (error) {
@@ -174,6 +183,6 @@ export class AgentOrchestrator {
 function toPublicStatus(state: AgentState): AgentRun['status'] {
   if (state === 'done') return 'completed'
   if (state === 'error') return 'failed'
-  if (state === 'paused' || state === 'awaiting_approval') return 'paused'
+  if (state === 'paused' || state === 'awaiting_approval' || state === 'blocked') return 'paused'
   return 'running'
 }

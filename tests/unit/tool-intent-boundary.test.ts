@@ -26,19 +26,71 @@ describe('intent builders — boundary and defaulting behaviour', () => {
       const noArgs = shellIntent({ command: 'echo', args: 'not-an-array' }, call)
       expect(noArgs.args).toBeUndefined()
     })
+
+    it('splits a simple one-line command when args are omitted', () => {
+      const intent = shellIntent({ command: 'netstat -ano' }, call)
+      expect(intent.kind).toBe('shell')
+      if (intent.kind !== 'shell') throw new Error('expected shell intent')
+      expect(intent.command).toBe('netstat')
+      expect(intent.args).toEqual(['-ano'])
+    })
+
+    it('converts safe local PowerShell Test-NetConnection into a network probe intent', () => {
+      const intent = shellIntent(
+        {
+          command: 'powershell',
+          args: [
+            '-Command',
+            'Test-NetConnection -ComputerName 127.0.0.1 -Port 5432 -InformationLevel Detailed | Select-Object TcpTestSucceeded, TcpTestRemotePort',
+          ],
+          timeoutMs: 15000,
+        },
+        call
+      )
+
+      expect(intent.kind).toBe('network')
+      if (intent.kind !== 'network') throw new Error('expected network intent')
+      expect(intent.target).toBe('127.0.0.1')
+      expect(intent.ports).toEqual([5432])
+      expect(intent.scanType).toBe('connect')
+      expect(intent.maxConnections).toBe(1)
+      expect(intent.notes?.[0]).toMatch(/PowerShell was not executed/)
+    })
+
+    it('does not convert complex PowerShell command strings', () => {
+      const intent = shellIntent(
+        {
+          command: 'powershell',
+          args: [
+            '-Command',
+            'Test-NetConnection -ComputerName 127.0.0.1 -Port 5432; Remove-Item x',
+          ],
+        },
+        call
+      )
+
+      expect(intent.kind).toBe('shell')
+    })
   })
 
   describe('networkIntent', () => {
     it('falls back to the version scan for unknown scan types', () => {
-      expect(networkIntent({ target: 'localhost', scanType: 'evil' }, call).scanType).toBe('version')
+      expect(networkIntent({ target: 'localhost', scanType: 'evil' }, call).scanType).toBe(
+        'version'
+      )
       expect(networkIntent({ target: 'localhost' }, call).scanType).toBe('version')
     })
 
     it('preserves recognised scan types and filters non-finite ports', () => {
       expect(networkIntent({ target: 'localhost', scanType: 'syn' }, call).scanType).toBe('syn')
+      expect(networkIntent({ target: 'localhost', scanType: 'connectivity' }, call).scanType).toBe(
+        'connect'
+      )
       const intent = networkIntent({ target: 'localhost', ports: [80, 'x', 443, NaN] }, call)
       expect(intent.ports).toEqual([80, 443])
       expect(intent.risk).toBe('high')
+      expect(intent.networkTarget).toBe('localhost')
+      expect(intent.maxConnections).toBe(2)
     })
   })
 
@@ -52,6 +104,25 @@ describe('intent builders — boundary and defaulting behaviour', () => {
       expect(filesystemIntent({ path: '/tmp/x', mode: 'read' }, call).risk).toBe('low')
       expect(filesystemIntent({ path: '/tmp/x', mode: 'list' }, call).risk).toBe('low')
     })
+
+    it('supports read-only search mode with filename patterns', () => {
+      const intent = filesystemIntent(
+        {
+          path: '.',
+          mode: 'search',
+          pattern: ['docker-compose.yml', '*.conf'],
+          recursive: true,
+          maxResults: 25,
+        },
+        call
+      )
+
+      expect(intent.mode).toBe('search')
+      expect(intent.risk).toBe('low')
+      expect(intent.pattern).toEqual(['docker-compose.yml', '*.conf'])
+      expect(intent.recursive).toBe(true)
+      expect(intent.maxResults).toBe(25)
+    })
   })
 
   describe('browserIntent', () => {
@@ -59,7 +130,9 @@ describe('intent builders — boundary and defaulting behaviour', () => {
       const intent = browserIntent({ url: 'http://x', action: 'exfiltrate' }, call)
       expect(intent.risk).toBe('critical')
       expect(intent.action).toBe('open')
-      expect(browserIntent({ url: 'http://x', action: 'screenshot' }, call).action).toBe('screenshot')
+      expect(browserIntent({ url: 'http://x', action: 'screenshot' }, call).action).toBe(
+        'screenshot'
+      )
     })
   })
 

@@ -1,5 +1,5 @@
 import { contextBridge, ipcRenderer } from 'electron'
-import type { AgentEventMap, ExposedApi, ModelEventMap } from '@shared/types/ipc.types'
+import type { AgentEventMap, ApprovalEventMap, ExposedApi, ModelEventMap } from '@shared/types/ipc.types'
 
 const api: ExposedApi = {
   ping: () => ipcRenderer.invoke('ping'),
@@ -44,6 +44,7 @@ const api: ExposedApi = {
     catalog: () => ipcRenderer.invoke('model:catalog', {}),
     list: () => ipcRenderer.invoke('model:list', {}),
     selectGguf: () => ipcRenderer.invoke('model:selectGguf', {}),
+    selectLlamaServer: () => ipcRenderer.invoke('model:selectLlamaServer', {}),
     registerLocal: (path, name) => ipcRenderer.invoke('model:registerLocal', { path, name }),
     download: (request) => ipcRenderer.invoke('model:download', request),
     load: (options) => ipcRenderer.invoke('model:load', options),
@@ -53,6 +54,20 @@ const api: ExposedApi = {
       const channel = event === 'downloadProgress' ? 'model:downloadProgress' : 'model:runtimeState'
       const listener = (_: Electron.IpcRendererEvent, payload: unknown) => {
         callback(payload as ModelEventMap[typeof event])
+      }
+      ipcRenderer.on(channel, listener)
+      return () => ipcRenderer.removeListener(channel, listener)
+    },
+  },
+
+  approval: {
+    list: () => ipcRenderer.invoke('approval:list', {}),
+    approve: (id, note) => ipcRenderer.invoke('approval:approve', { id, note }),
+    reject: (id, note) => ipcRenderer.invoke('approval:reject', { id, note }),
+    on: (event, callback) => {
+      const channel = event === 'requested' ? 'approval:requested' : 'approval:resolved'
+      const listener = (_: Electron.IpcRendererEvent, payload: unknown) => {
+        callback(payload as ApprovalEventMap[typeof event])
       }
       ipcRenderer.on(channel, listener)
       return () => ipcRenderer.removeListener(channel, listener)

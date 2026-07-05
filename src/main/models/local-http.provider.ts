@@ -194,11 +194,21 @@ export class LlamaCppHttpProvider implements ModelProvider {
     const root = trimTrailingSlash(this.modelConfig.host)
       .replace(/\/api\/generate$/, '')
       .replace(/\/v1\/chat\/completions$/, '')
+      .replace(/\/v1$/, '')
+    // Probe the model listing so a foreign server sharing the port (e.g. Apache
+    // on 8080, which answers "/" with 200 but "/v1/models" with 404) is caught
+    // here as "no model server" instead of surfacing later as a cryptic 404.
+    const probeUrl = this.mode === 'openai-chat' ? `${root}/v1/models` : root
     const controller = new AbortController()
     const timeout = setTimeout(() => controller.abort(), Math.min(this.modelConfig.timeoutMs, 5000))
 
     try {
-      const response = await fetch(root, { method: 'GET', signal: controller.signal })
+      const response = await fetch(probeUrl, { method: 'GET', signal: controller.signal })
+      if (this.mode === 'openai-chat' && !response.ok) {
+        throw new Error(
+          `No model server reachable at ${root} (GET /v1/models → HTTP ${response.status}). Load a model first, or check the port.`,
+        )
+      }
       if (response.status >= 500) {
         throw new Error(`Model server unhealthy: HTTP ${response.status}`)
       }

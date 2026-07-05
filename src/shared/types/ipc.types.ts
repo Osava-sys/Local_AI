@@ -1,5 +1,6 @@
 import type { Chat, Message } from './chat.types'
 import type { AgentRun, AgentRunStep, AgentStartPayload } from './agent.types'
+import type { ApprovalRequestView } from './approval.types'
 import type {
   LocalModelRecord,
   ModelCatalogEntry,
@@ -20,6 +21,11 @@ export interface ModelEventMap {
   runtimeState: ModelRuntimeStatus
 }
 
+export interface ApprovalEventMap {
+  requested: ApprovalRequestView
+  resolved: ApprovalRequestView
+}
+
 export type IpcChannel =
   | 'ping'
   | 'settings:get'
@@ -36,11 +42,15 @@ export type IpcChannel =
   | 'model:catalog'
   | 'model:list'
   | 'model:selectGguf'
+  | 'model:selectLlamaServer'
   | 'model:registerLocal'
   | 'model:download'
   | 'model:load'
   | 'model:unload'
   | 'model:status'
+  | 'approval:list'
+  | 'approval:approve'
+  | 'approval:reject'
 
 export type Result<T, E = string> =
   | { ok: true; value: T }
@@ -82,11 +92,18 @@ export interface ExposedApi {
     catalog(): Promise<Result<ModelCatalogEntry[]>>
     list(): Promise<Result<LocalModelRecord[]>>
     selectGguf(): Promise<Result<{ path: string } | null>>
+    selectLlamaServer(): Promise<Result<{ path: string } | null>>
     registerLocal(path: string, name?: string): Promise<Result<LocalModelRecord>>
     download(request: ModelDownloadRequest): Promise<Result<LocalModelRecord>>
     load(options: ModelLoadOptions): Promise<Result<ModelRuntimeStatus>>
     unload(): Promise<Result<void>>
     status(): Promise<Result<ModelRuntimeStatus>>
     on<K extends keyof ModelEventMap>(event: K, callback: (payload: ModelEventMap[K]) => void): () => void
+  }
+  approval: {
+    list(): Promise<Result<ApprovalRequestView[]>>
+    approve(id: string, note?: string): Promise<Result<ApprovalRequestView | null>>
+    reject(id: string, note?: string): Promise<Result<ApprovalRequestView | null>>
+    on<K extends keyof ApprovalEventMap>(event: K, callback: (payload: ApprovalEventMap[K]) => void): () => void
   }
 }
