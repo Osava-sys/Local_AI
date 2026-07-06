@@ -65,6 +65,21 @@ const SERVICE_BY_PORT: Record<number, string> = {
   27017: 'mongodb',
 }
 
+const SERVICE_ALIASES: Record<string, string> = {
+  domain: 'dns',
+  'domain-s': 'dns',
+  'http-proxy': 'http-alt',
+  'https-alt': 'https',
+  mongo: 'mongodb',
+  'ms-sql-s': 'mssql',
+  'microsoft-ds': 'smb',
+  msrpc: 'rpc',
+  'netbios-ssn': 'netbios',
+  postgres: 'postgresql',
+  sunrpc: 'rpc',
+  www: 'http',
+}
+
 const CRITICAL_SERVICES = new Set([
   'ssh',
   'rdp',
@@ -102,7 +117,7 @@ export function scoreObservedServices(inputs: ObservedServiceRiskInput[]): RiskF
   const deduped = new Map<string, ObservedServiceRiskInput>()
   for (const input of inputs) {
     if (!Number.isInteger(input.port) || input.port < 1 || input.port > 65535) continue
-    const key = `${input.target ?? ''}:${input.port}:${input.protocol ?? 'tcp'}`
+    const key = riskDedupKey(input)
     const previous = deduped.get(key)
     deduped.set(key, mergeRiskInputs(previous, input))
   }
@@ -110,6 +125,11 @@ export function scoreObservedServices(inputs: ObservedServiceRiskInput[]): RiskF
   return [...deduped.values()]
     .map(scoreObservedService)
     .sort((a, b) => b.riskScore - a.riskScore || a.port - b.port)
+}
+
+function riskDedupKey(input: ObservedServiceRiskInput): string {
+  const service = normalizeService(input.service, input.port)
+  return `${input.protocol ?? 'tcp'}:${input.port}:${service}`
 }
 
 export function scoreObservedService(input: ObservedServiceRiskInput): RiskFinding {
@@ -153,7 +173,7 @@ export function scoreObservedService(input: ObservedServiceRiskInput): RiskFindi
 export function priorityFromScore(score: number): RiskPriority {
   if (score >= 95) return 'CRITICAL'
   if (score >= 50) return 'HIGH'
-  if (score >= 25) return 'MEDIUM'
+  if (score >= 20) return 'MEDIUM'
   return 'LOW'
 }
 
@@ -166,15 +186,16 @@ function mergeRiskInputs(
   next: ObservedServiceRiskInput
 ): ObservedServiceRiskInput {
   if (!previous) return next
+  const exposure = strongerExposure(resolveExposure(previous), resolveExposure(next))
   return {
     ...previous,
     ...next,
-    target: next.target ?? previous.target,
+    target: preferredTarget(previous, next, exposure),
     protocol: next.protocol ?? previous.protocol,
     state: next.state ?? previous.state,
     service: preferredText(previous.service, next.service),
     version: preferredText(previous.version, next.version),
-    exposure: strongerExposure(previous.exposure, next.exposure),
+    exposure,
     cves: unique([...(previous.cves ?? []), ...(next.cves ?? [])]),
     vulnerabilityHints: unique([
       ...(previous.vulnerabilityHints ?? []),
@@ -198,9 +219,39 @@ function strongerExposure(
   return accessibilityWeight(right) > accessibilityWeight(left) ? right : left
 }
 
+function preferredTarget(
+  left: ObservedServiceRiskInput,
+  right: ObservedServiceRiskInput,
+  exposure: ObservedServiceRiskInput['exposure'] | undefined
+): string | undefined {
+  const candidates = [left.target, right.target].filter((value): value is string => Boolean(value))
+  if (candidates.length === 0) return undefined
+
+  if (exposure === 'all_interfaces') {
+    return (
+      candidates.find((value) => normalizeTarget(value) === '0.0.0.0') ??
+      candidates.find((value) => normalizeTarget(value) === '::') ??
+      candidates[0]
+    )
+  }
+  if (exposure === 'lan')
+    return candidates.find((value) => isPrivateIp(normalizeTarget(value))) ?? candidates[0]
+  if (exposure === 'localhost') {
+    return (
+      candidates.find((value) => {
+        const target = normalizeTarget(value)
+        return target === 'localhost' || target === '127.0.0.1' || target === '::1'
+      }) ?? candidates[0]
+    )
+  }
+  return right.target ?? left.target
+}
+
 function normalizeService(service: string | undefined, port: number): string {
   const normalized = (service ?? '').trim().toLowerCase()
-  if (normalized && !normalized.startsWith('durationms=')) return normalized
+  if (normalized && !normalized.startsWith('durationms=')) {
+    return SERVICE_ALIASES[normalized] ?? normalized
+  }
   return SERVICE_BY_PORT[port] ?? 'unknown'
 }
 
@@ -212,10 +263,10 @@ function cleanVersion(version: string | undefined): string {
 
 function resolveExposure(input: ObservedServiceRiskInput): RiskFinding['exposure'] {
   if (input.exposure) return input.exposure
-  const target = (input.target ?? '').toLowerCase()
+  const target = normalizeTarget(input.target ?? '')
   if (!target) return 'unknown'
   if (target === 'localhost' || target === '127.0.0.1' || target === '::1') return 'localhost'
-  if (target === '0.0.0.0' || target === '::' || target === '[::]') return 'all_interfaces'
+  if (target === '0.0.0.0' || target === '::') return 'all_interfaces'
   if (isPrivateIp(target)) return 'lan'
   return 'internet'
 }
@@ -302,6 +353,13 @@ function isPrivateIp(value: string): boolean {
   if (!match) return false
   const second = Number(match[1])
   return second >= 16 && second <= 31
+}
+
+function normalizeTarget(value: string): string {
+  return value
+    .trim()
+    .toLowerCase()
+    .replace(/^\[|\]$/g, '')
 }
 
 function unique(values: string[]): string[] {

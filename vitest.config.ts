@@ -34,6 +34,7 @@ export default defineConfig({
       'tests/unit/security-tools.test.ts',
       'tests/unit/parser-tool.test.ts',
       'tests/unit/parser-tool-boundary.test.ts',
+      'tests/unit/risk-scoring.test.ts',
       'tests/unit/session-memory.test.ts',
       'tests/unit/watchdog.test.ts',
       'tests/unit/tool-availability.test.ts',

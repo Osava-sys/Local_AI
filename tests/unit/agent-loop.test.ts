@@ -157,6 +157,50 @@ describe('runReactLoop', () => {
     ).toBe(true)
   })
 
+  it('recovers a valid tool action from fenced JSON with trailing punctuation', async () => {
+    const response = [
+      '# REASONING',
+      'Je lance une commande locale minimale.',
+      '# ACTION',
+      '```json',
+      '{',
+      '  "tool": "shell.tool.ts",',
+      '  "args": {',
+      '    "command": "ipconfig /all",',
+      '    "timeoutMs": 30000,',
+      '    "cwd": ".",',
+      '    "environment": {}',
+      '  }',
+      '}..',
+      '```',
+    ].join('\n')
+    const { provider } = makeProvider({ responses: [response] })
+
+    const steps = await collect(
+      runReactLoop(
+        'diagnostic local',
+        successfulTools('ipconfig observation'),
+        new MemoryManager(),
+        {
+          provider,
+          maxSteps: 1,
+        }
+      )
+    )
+
+    const action = steps.find((step) => step.type === 'act')?.toolCall
+    expect(action?.name).toBe('shell.tool.ts')
+    expect(action?.args).toMatchObject({
+      command: 'ipconfig /all',
+      timeoutMs: 30000,
+      cwd: '.',
+      environment: {},
+    })
+    expect(
+      steps.some((step) => step.type === 'observe' && step.content === 'ipconfig observation')
+    ).toBe(true)
+  })
+
   it('stops with an observation when the model requests no tool', async () => {
     const { provider } = makeProvider({ responses: ['Je reflechis, pas d action pour le moment.'] })
     const steps = await collect(
@@ -359,5 +403,33 @@ describe('runReactLoop', () => {
     expect(final).toContain('Rapport JSON')
     expect(final).toContain('"riskScore"')
     expect(final).toContain('"servicesDetected"')
+  })
+
+  it('deduplicates dual-stack netstat findings and filters noisy dynamic sockets in the final report', async () => {
+    const { provider } = makeProvider({
+      responses: ['{"tool":"shell","args":{"command":"netstat -ano"}}'],
+    })
+    const observation = [
+      'TCP 0.0.0.0:5432 state=LISTENING pid=8016 exposure=all_interfaces',
+      'TCP [::]:5432 state=LISTENING pid=8016 exposure=all_interfaces',
+      'TCP 0.0.0.0:49664 state=LISTENING pid=4 exposure=all_interfaces',
+      'pid=8016 process=postgres.exe',
+    ].join('\n')
+
+    const steps = await collect(
+      runReactLoop('scan', successfulTools(observation), new MemoryManager(), {
+        provider,
+        maxSteps: 1,
+      })
+    )
+
+    const final = steps.at(-1)?.content ?? ''
+    expect(final).toContain('MEDIUM score=24/100 0.0.0.0:5432/tcp postgresql')
+    expect(final).toContain('"riskScore": 24')
+    expect(final).toContain('"priority": "MEDIUM"')
+    expect(final).not.toContain('"port": 49664')
+    expect(
+      final.match(/5432\/tcp postgresql exposure=all_interfaces score=24/g) ?? []
+    ).toHaveLength(1)
   })
 })

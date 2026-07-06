@@ -243,21 +243,40 @@ interface NetstatSocketObservation {
 }
 
 const SERVICE_HINTS: Record<number, string> = {
+  21: 'FTP',
+  22: 'SSH',
+  25: 'SMTP',
+  53: 'DNS',
   80: 'HTTP',
+  110: 'POP3',
   135: 'RPC Windows',
   139: 'NetBIOS',
+  143: 'IMAP',
+  389: 'LDAP',
   443: 'HTTPS',
   445: 'SMB',
   1433: 'SQL Server',
+  1434: 'SQL Server Browser',
+  1521: 'Oracle',
   2179: 'Hyper-V VM console',
   3000: 'serveur web/dev',
   4000: 'serveur web/dev',
+  5000: 'serveur web/dev',
+  5173: 'serveur web/dev',
   5432: 'PostgreSQL',
   5433: 'PostgreSQL',
+  5900: 'VNC',
+  6379: 'Redis',
+  8000: 'HTTP alternatif',
+  8033: 'HTTP/dev',
   8080: 'HTTP alternatif',
   8081: 'HTTP alternatif',
+  9080: 'HTTP alternatif',
+  9222: 'Chrome DevTools',
   27017: 'MongoDB',
 }
+
+const REPORTABLE_RISK_SCORE = 20
 
 function buildMaxStepsFinal(memory: MemoryManager, maxSteps: number): string {
   return buildGroundedFinal(
@@ -282,17 +301,19 @@ function buildGroundedFinal(memory: MemoryManager, lead: string): string {
     ...socket,
     process: socket.process ?? processByPid.get(socket.pid),
   }))
+  const riskRelevantSockets = enrichedSockets.filter(isRiskRelevantSocket)
   const observedPorts = new Set([
     ...probes.filter((probe) => probe.status === 'open').map((probe) => probe.port),
-    ...enrichedSockets.map((socket) => socket.port),
+    ...riskRelevantSockets.map((socket) => socket.port),
   ])
   const openProbes = probes.filter((probe) => probe.status === 'open')
   const closedProbes = probes.filter((probe) => probe.status === 'closed')
   const externallyBound = enrichedSockets.filter(
     (socket) => socket.exposure === 'all_interfaces' || socket.exposure === 'lan'
   )
+  const riskRelevantExternallyBound = externallyBound.filter(isRiskRelevantSocket)
   const localhostOnly = enrichedSockets.filter((socket) => socket.exposure === 'localhost')
-  const observedServices = buildObservedServiceRiskInputs(transcript, probes, enrichedSockets)
+  const observedServices = buildObservedServiceRiskInputs(transcript, probes, riskRelevantSockets)
   const riskFindings = scoreObservedServices(observedServices)
 
   const findings: string[] = []
@@ -314,8 +335,12 @@ function buildGroundedFinal(memory: MemoryManager, lead: string): string {
     )
   }
 
-  const risks = buildRiskBullets(observedPorts, externallyBound, riskFindings)
-  const recommendations = buildRecommendationBullets(observedPorts, externallyBound, riskFindings)
+  const risks = buildRiskBullets(observedPorts, riskRelevantExternallyBound, riskFindings)
+  const recommendations = buildRecommendationBullets(
+    observedPorts,
+    riskRelevantExternallyBound,
+    riskFindings
+  )
   const nextActions = [
     'Corréler les PID restants avec tasklist si une écoute importante n’a pas encore de processus identifié.',
     'Tester les services HTTP détectés avec curl en conservant le statut, les en-têtes et un aperçu du corps.',
@@ -324,7 +349,7 @@ function buildGroundedFinal(memory: MemoryManager, lead: string): string {
   const report = buildStructuredFinalReport(
     memory,
     probes,
-    enrichedSockets,
+    riskRelevantSockets,
     riskFindings,
     recommendations
   )
@@ -425,6 +450,7 @@ function buildObservedServiceRiskInputs(
   }
 
   for (const socket of sockets) {
+    if (!isRiskRelevantSocket(socket)) continue
     inputs.push({
       target: socket.address,
       port: socket.port,
@@ -483,13 +509,27 @@ function formatProbeGroups(probes: TcpProbeObservation[]): string {
 }
 
 function formatSocketList(sockets: NetstatSocketObservation[], limit: number): string {
-  const selected = sockets
+  const displaySockets = dedupeSocketsForDisplay(sockets)
+  const selected = displaySockets
     .slice()
     .sort((a, b) => socketPriority(b) - socketPriority(a) || a.port - b.port)
     .slice(0, limit)
   const suffix =
-    sockets.length > selected.length ? ` (+${sockets.length - selected.length} autres)` : ''
+    displaySockets.length > selected.length
+      ? ` (+${displaySockets.length - selected.length} autres)`
+      : ''
   return `${selected.map(formatSocket).join(', ')}${suffix}`
+}
+
+function dedupeSocketsForDisplay(sockets: NetstatSocketObservation[]): NetstatSocketObservation[] {
+  const seen = new Set<string>()
+  return sockets.filter((socket) => {
+    const addressGroup = socket.exposure === 'all_interfaces' ? 'all_interfaces' : socket.address
+    const key = `${socket.protocol}:${addressGroup}:${socket.port}:${socket.pid}`
+    if (seen.has(key)) return false
+    seen.add(key)
+    return true
+  })
 }
 
 function formatSocket(socket: NetstatSocketObservation): string {
@@ -505,7 +545,7 @@ function buildRiskBullets(
   const risks: string[] = []
   risks.push(
     ...riskFindings
-      .filter((finding) => finding.riskScore >= 25)
+      .filter((finding) => finding.riskScore >= REPORTABLE_RISK_SCORE)
       .slice(0, 5)
       .map(formatRiskFinding)
   )
@@ -535,7 +575,7 @@ function buildRiskBullets(
       'Aucun risque exploitable n’est confirmé par les observations actuelles; poursuivre avec des probes ciblés plutôt qu’avec des hypothèses.'
     )
   }
-  return risks
+  return uniqueStrings(risks)
 }
 
 function buildRecommendationBullets(
@@ -547,7 +587,7 @@ function buildRecommendationBullets(
   recommendations.push(
     ...uniqueStrings(
       riskFindings
-        .filter((finding) => finding.riskScore >= 25)
+        .filter((finding) => finding.riskScore >= REPORTABLE_RISK_SCORE)
         .map((finding) => finding.recommendation)
     ).slice(0, 5)
   )
@@ -585,7 +625,7 @@ function buildRecommendationBullets(
       'Continuer la collecte non destructive: interfaces réseau, ports écoutants, puis probes ciblés uniquement sur les ports confirmés.'
     )
   }
-  return recommendations
+  return uniqueStrings(recommendations)
 }
 
 function formatRiskFinding(finding: RiskFinding): string {
@@ -609,12 +649,14 @@ function buildStructuredFinalReport(
     ...probes.filter((probe) => probe.status === 'open').map((probe) => `${probe.port}/tcp`),
     ...sockets.map((socket) => `${socket.port}/${socket.protocol}`),
   ])
-  const riskRecommendations = riskFindings.map((finding) => ({
-    priority: finding.priority,
-    category: 'NETWORK',
-    finding: `${finding.port}/${finding.protocol} ${finding.service} exposure=${finding.exposure} score=${finding.riskScore}`,
-    remediation: finding.recommendation,
-  }))
+  const riskRecommendations = riskFindings
+    .filter((finding) => finding.riskScore >= REPORTABLE_RISK_SCORE)
+    .map((finding) => ({
+      priority: finding.priority,
+      category: 'NETWORK',
+      finding: `${finding.port}/${finding.protocol} ${finding.service} exposure=${finding.exposure} score=${finding.riskScore}`,
+      remediation: finding.recommendation,
+    }))
   const genericRecommendations = recommendations.map((line) => ({
     priority: 'MEDIUM',
     category: 'HARDENING',
@@ -655,8 +697,21 @@ function buildStructuredFinalReport(
       cveMatched: uniqueStrings(riskFindings.flatMap((finding) => finding.cveMatched)),
       riskLevel: highestRiskPriority(riskFindings),
     },
-    recommendations: [...riskRecommendations, ...genericRecommendations].slice(0, 12),
+    recommendations: dedupeReportRecommendations([
+      ...riskRecommendations,
+      ...genericRecommendations,
+    ]).slice(0, 12),
   }
+}
+
+function dedupeReportRecommendations<T extends { remediation: string }>(items: T[]): T[] {
+  const seen = new Set<string>()
+  return items.filter((item) => {
+    const key = item.remediation.toLowerCase()
+    if (seen.has(key)) return false
+    seen.add(key)
+    return true
+  })
 }
 
 function hasAnyPort(ports: Set<number>, candidates: number[]): boolean {
@@ -673,6 +728,18 @@ function socketPriority(socket: NetstatSocketObservation): number {
   const serviceScore = SERVICE_HINTS[socket.port] ? 100 : 0
   const protocolScore = socket.protocol === 'tcp' ? 50 : 0
   return exposureScore + serviceScore + protocolScore
+}
+
+function isRiskRelevantSocket(socket: NetstatSocketObservation): boolean {
+  if (!Number.isInteger(socket.port) || socket.port < 1 || socket.port > 65535) return false
+  const hasServiceHint = SERVICE_HINTS[socket.port] !== undefined
+  if (socket.protocol === 'udp') {
+    return hasServiceHint && socket.exposure !== 'localhost'
+  }
+  if (socket.protocol !== 'tcp') return false
+  if (hasServiceHint) return true
+  if (socket.exposure !== 'all_interfaces' && socket.exposure !== 'lan') return false
+  return socket.port < 1024 || socket.port <= 10000
 }
 
 function formatPort(port: number): string {
