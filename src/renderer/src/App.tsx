@@ -1,357 +1,263 @@
-import React, { useEffect, useState } from 'react'
-import type { Chat } from '@shared/types/chat.types'
-import type { AgentRunStep } from '@shared/types/agent.types'
-import type { LocalModelRecord, ModelDownloadProgress, ModelRuntimeStatus } from '@shared/types/model.types'
-import { ApprovalQueue } from './components/agent/ApprovalQueue'
+import { useCallback, useEffect, useState } from 'react'
+import type { AgentState } from '@shared/types/agent.types'
+import type { ModelRuntimeStatus } from '@shared/types/model.types'
+import { AppShell } from './components/layout/AppShell'
+import { useApproval } from './hooks/use-approval'
+import { useAgentStore } from './stores/agent.store'
+import type { AppRouteId } from './routes'
+import AgentRuns from './pages/AgentRuns'
+import Approvals from './pages/Approvals'
+import AuditLog from './pages/AuditLog'
+import Dashboard from './pages/Dashboard'
+import Models from './pages/Models'
+import RiskReports from './pages/RiskReports'
+import Sandbox from './pages/Sandbox'
+import Settings from './pages/Settings'
 
-export default function App() {
-  const [pong, setPong] = useState<string | null>(null)
-  const [theme, setTheme] = useState<string | null>(null)
-  const [chats, setChats] = useState<Chat[]>([])
-  const [agentPrompt, setAgentPrompt] = useState('Dis-moi ton nom et propose une première action de diagnostic local sans danger.')
-  const [agentRunId, setAgentRunId] = useState<string | null>(null)
-  const [agentState, setAgentState] = useState<string>('idle')
-  const [agentSteps, setAgentSteps] = useState<AgentRunStep[]>([])
-  const [agentError, setAgentError] = useState<string | null>(null)
-  const [models, setModels] = useState<LocalModelRecord[]>([])
-  const [selectedModelId, setSelectedModelId] = useState('')
-  const [localModelPath, setLocalModelPath] = useState('')
-  const [downloadUrl, setDownloadUrl] = useState('')
-  const [llamaServerPath, setLlamaServerPath] = useState('')
-  const [mmprojPath, setMmprojPath] = useState('')
-  const [device, setDevice] = useState<'gpu' | 'cpu'>('gpu')
-  const [gpuLayers, setGpuLayers] = useState(35)
-  const [contextLength, setContextLength] = useState(32768)
-  const [runtimeStatus, setRuntimeStatus] = useState<ModelRuntimeStatus | null>(null)
-  const [downloadProgress, setDownloadProgress] = useState<ModelDownloadProgress | null>(null)
-  const [status, setStatus] = useState('')
+type ThemeMode = 'light' | 'dark'
+
+const DEFAULT_PROMPT =
+  'Run a safe local defensive diagnostic. Start with observations only, then ask for human approval before any sensitive action.'
+
+export default function App(): React.ReactElement {
+  const [activeRoute, setActiveRoute] = useState<AppRouteId>('agent-runs')
+  const [theme, setTheme] = useState<ThemeMode>('light')
+  const [prompt, setPrompt] = useState(DEFAULT_PROMPT)
+  const [modelStatus, setModelStatus] = useState<ModelRuntimeStatus | null>(null)
+  const [lastMessage, setLastMessage] = useState<string | null>(null)
+
+  const { pending, recent } = useApproval()
+  const currentRunId = useAgentStore(state => state.currentRunId)
+  const agentState = useAgentStore(state => state.state)
+  const steps = useAgentStore(state => state.steps)
+  const error = useAgentStore(state => state.error)
+  const setRun = useAgentStore(state => state.setRun)
+  const setAgentState = useAgentStore(state => state.setState)
+  const setError = useAgentStore(state => state.setError)
+  const appendStep = useAgentStore(state => state.appendStep)
+  const clearSteps = useAgentStore(state => state.clearSteps)
+  const resetSession = useAgentStore(state => state.resetSession)
 
   useEffect(() => {
-    window.api.ping().then(setPong)
+    document.documentElement.dataset.theme = theme
+  }, [theme])
 
-    window.api.settings.get('theme').then(r => {
-      if (r.ok) setTheme(r.value ?? '(not set)')
+  useEffect(() => {
+    window.api.settings.get('theme').then(result => {
+      if (result.ok && (result.value === 'light' || result.value === 'dark')) {
+        setTheme(result.value)
+      }
     })
-
-    window.api.chat.list().then(r => {
-      if (r.ok) setChats(r.value)
-    })
-    refreshModels()
-    window.api.model.status().then(r => {
-      if (r.ok) setRuntimeStatus(r.value)
+    window.api.model.status().then(result => {
+      if (result.ok) setModelStatus(result.value)
     })
 
     const offStep = window.api.agent.on('step', step => {
-      setAgentSteps(prev => [...prev, step])
+      appendStep(step)
+      if (step.runId) setRun(step.runId)
+      setLastMessage(`${step.type}: ${step.content.slice(0, 120)}`)
     })
     const offState = window.api.agent.on('state', payload => {
-      setAgentState(payload.state)
+      setRun(payload.runId)
+      setAgentState(asAgentState(payload.state))
+      setLastMessage(`Agent state: ${payload.state}`)
     })
     const offError = window.api.agent.on('error', payload => {
-      setAgentError(payload.error)
+      setError(payload.error)
       setAgentState('error')
+      setLastMessage(payload.error)
     })
-    const offModelProgress = window.api.model.on('downloadProgress', setDownloadProgress)
-    const offRuntimeState = window.api.model.on('runtimeState', setRuntimeStatus)
+    const offRuntime = window.api.model.on('runtimeState', status => {
+      setModelStatus(status)
+      setLastMessage(status.state === 'running' ? `Model loaded: ${status.modelName}` : `Model ${status.state}`)
+    })
+    const offDownload = window.api.model.on('downloadProgress', progress => {
+      setLastMessage(
+        progress.percent === null
+          ? `Downloading ${progress.filename}`
+          : `Downloading ${progress.filename}: ${progress.percent}%`,
+      )
+    })
 
     return () => {
       offStep()
       offState()
       offError()
-      offModelProgress()
-      offRuntimeState()
+      offRuntime()
+      offDownload()
     }
+  }, [appendStep, setAgentState, setError, setRun])
+
+  const handleThemeChange = useCallback((nextTheme: ThemeMode) => {
+    setTheme(nextTheme)
+    void window.api.settings.set('theme', nextTheme).then(result => {
+      if (!result.ok) setLastMessage(result.error)
+    })
   }, [])
 
-  async function refreshModels() {
-    const r = await window.api.model.list()
-    if (r.ok) {
-      setModels(r.value)
-      const active = r.value.find(model => model.isActive) ?? r.value[0]
-      if (active) setSelectedModelId(active.id)
-    }
-  }
-
-  async function handleSetTheme() {
-    const r = await window.api.settings.set('theme', 'dark')
-    if (r.ok) {
-      setStatus('theme saved → "dark". Reload to confirm persistence.')
-      const r2 = await window.api.settings.get('theme')
-      if (r2.ok) setTheme(r2.value ?? '(null)')
-    }
-  }
-
-  async function handleCreateChat() {
-    const r = await window.api.chat.create('Demo chat')
-    if (r.ok) {
-      setChats(prev => [r.value, ...prev])
-      setStatus(`chat created: ${r.value.id}`)
-    }
-  }
-
-  async function handleStartAgent() {
-    setAgentSteps([])
-    setAgentError(null)
+  const handleStart = useCallback(async () => {
+    const runPrompt = prompt.trim() || DEFAULT_PROMPT
+    setActiveRoute('agent-runs')
+    clearSteps()
+    setError(null)
     setAgentState('starting')
 
-    const r = await window.api.agent.start('default', agentPrompt, {
+    const result = await window.api.agent.start('default', runPrompt, {
       maxSteps: 10,
       timeoutPerStep: 30000,
       totalTimeout: 300000,
     })
 
-    if (r.ok) {
-      setAgentRunId(r.value.runId)
-      setStatus(`agent run started: ${r.value.runId}`)
+    if (result.ok) {
+      setRun(result.value.runId)
+      setLastMessage(`Agent run started: ${result.value.runId}`)
     } else {
-      setAgentError(r.error)
+      setError(result.error)
       setAgentState('error')
+      setLastMessage(result.error)
     }
-  }
+  }, [clearSteps, prompt, setAgentState, setError, setRun])
 
-  async function handleStopAgent() {
-    if (!agentRunId) return
-    const r = await window.api.agent.stop(agentRunId)
-    if (r.ok) setStatus(`agent run stopped: ${agentRunId}`)
-    else setAgentError(r.error)
-  }
-
-  async function handleSelectGguf() {
-    const r = await window.api.model.selectGguf()
-    if (r.ok && r.value) setLocalModelPath(r.value.path)
-  }
-
-  async function handleSelectLlamaServer() {
-    const r = await window.api.model.selectLlamaServer()
-    if (r.ok && r.value) setLlamaServerPath(r.value.path)
-  }
-
-  async function handleRegisterLocalModel() {
-    const r = await window.api.model.registerLocal(localModelPath)
-    if (r.ok) {
-      setStatus(`model registered: ${r.value.name}`)
-      await refreshModels()
-      setSelectedModelId(r.value.id)
+  const handleStop = useCallback(async () => {
+    if (!currentRunId) return
+    const result = await window.api.agent.stop(currentRunId)
+    if (result.ok) {
+      setAgentState('paused')
+      setLastMessage(`Agent run stopped: ${currentRunId}`)
     } else {
-      setStatus(r.error)
+      setError(result.error)
+      setLastMessage(result.error)
     }
-  }
+  }, [currentRunId, setAgentState, setError])
 
-  async function handleDownloadModel() {
-    setDownloadProgress(null)
-    const r = await window.api.model.download({ url: downloadUrl })
-    if (r.ok) {
-      setStatus(`model downloaded: ${r.value.name}`)
-      await refreshModels()
-      setSelectedModelId(r.value.id)
-    } else {
-      setStatus(r.error)
-    }
-  }
+  const handleNewRun = useCallback(() => {
+    resetSession()
+    setPrompt(DEFAULT_PROMPT)
+    setActiveRoute('agent-runs')
+    setLastMessage('New run ready')
+  }, [resetSession])
 
-  async function handleLoadModel() {
-    if (!selectedModelId) return
-    const r = await window.api.model.load({
-      modelId: selectedModelId,
-      device,
-      executablePath: llamaServerPath || undefined,
-      mmprojPath: mmprojPath || undefined,
-      gpuLayers,
-      contextLength,
-      batchSize: 512,
-      threads: 8,
-      flashAttention: device === 'gpu',
-    })
-
-    if (r.ok) {
-      setRuntimeStatus(r.value)
-      setStatus(r.value.state === 'running' ? `model loaded: ${r.value.modelName}` : r.value.error ?? 'model load finished')
-      await refreshModels()
-    } else {
-      setStatus(r.error)
-    }
-  }
-
-  async function handleUnloadModel() {
-    const r = await window.api.model.unload()
-    if (r.ok) {
-      setRuntimeStatus(await window.api.model.status().then(result => result.ok ? result.value : null))
-      setStatus('model unloaded')
-    } else {
-      setStatus(r.error)
-    }
-  }
+  const canStop = Boolean(
+    currentRunId &&
+      ['running', 'planning', 'awaiting_approval', 'starting', 'paused'].includes(agentState),
+  )
+  const sandboxActive =
+    pending.length > 0 ||
+    steps.some(step => step.toolCall?.status === 'running' || step.toolCall?.status === 'requires_approval')
 
   return (
-    <div style={{ fontFamily: 'system-ui, sans-serif', padding: '2rem', maxWidth: 920 }}>
-      <h1>Local AI — Phase 3</h1>
-
-      <section>
-        <h2>IPC ping</h2>
-        <p><code>window.api.ping()</code> → <strong>{pong ?? '…'}</strong></p>
-      </section>
-
-      <section>
-        <h2>Settings (SQLite)</h2>
-        <p>theme = <strong>{theme ?? '…'}</strong></p>
-        <button onClick={handleSetTheme}>set theme = "dark"</button>
-      </section>
-
-      <section>
-        <h2>Chats ({chats.length})</h2>
-        <button onClick={handleCreateChat}>Create chat</button>
-        <ul>
-          {chats.map(c => (
-            <li key={c.id}>{c.title} — <code style={{ fontSize: '0.75em' }}>{c.id}</code></li>
-          ))}
-        </ul>
-      </section>
-
-      <section style={{ marginTop: '2rem', borderTop: '1px solid #ddd', paddingTop: '1rem' }}>
-        <h2>Models</h2>
-        <p>
-          runtime = <strong>{runtimeStatus?.state ?? 'idle'}</strong>
-          {runtimeStatus?.endpoint && <> — <code>{runtimeStatus.endpoint}</code></>}
-        </p>
-        {runtimeStatus?.error && (
-          <p style={{ color: 'crimson', whiteSpace: 'pre-wrap' }}>
-            {runtimeStatus.error}
-          </p>
-        )}
-
-        <div style={{ display: 'grid', gap: 8 }}>
-          <label>
-            GGUF local
-            <input
-              value={localModelPath}
-              onChange={event => setLocalModelPath(event.target.value)}
-              placeholder="D:\\Models\\qwen3.5-9b-uncensored-hauhaucs-aggressive.Q8_0.gguf"
-              style={{ width: '100%', boxSizing: 'border-box' }}
-            />
-          </label>
-          <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-            <button onClick={handleSelectGguf}>Select GGUF</button>
-            <button onClick={handleRegisterLocalModel} disabled={!localModelPath}>Register Local Model</button>
-          </div>
-
-          <label>
-            Download GGUF URL
-            <input
-              value={downloadUrl}
-              onChange={event => setDownloadUrl(event.target.value)}
-              placeholder="https://.../model.Q8_0.gguf"
-              style={{ width: '100%', boxSizing: 'border-box' }}
-            />
-          </label>
-          <button onClick={handleDownloadModel} disabled={!downloadUrl}>Download Model</button>
-          {downloadProgress && (
-            <p>
-              download = <strong>{downloadProgress.status}</strong>
-              {downloadProgress.percent !== null && <> — {downloadProgress.percent}%</>}
-            </p>
-          )}
-
-          <label>
-            llama.cpp server executable
-            <input
-              value={llamaServerPath}
-              onChange={event => setLlamaServerPath(event.target.value)}
-              placeholder="Select llama-server.exe, or set LLAMA_CPP_SERVER_PATH"
-              style={{ width: '100%', boxSizing: 'border-box' }}
-            />
-          </label>
-          <button onClick={handleSelectLlamaServer}>Select llama-server.exe</button>
-
-          <label>
-            mmproj (vision) — optionnel, vide = détection auto à côté du modèle
-            <input
-              value={mmprojPath}
-              onChange={event => setMmprojPath(event.target.value)}
-              placeholder="mmproj-*.gguf (auto-détecté si laissé vide)"
-              style={{ width: '100%', boxSizing: 'border-box' }}
-            />
-          </label>
-
-          <label>
-            Registered models
-            <select
-              value={selectedModelId}
-              onChange={event => setSelectedModelId(event.target.value)}
-              style={{ width: '100%', boxSizing: 'border-box' }}
-            >
-              <option value="">No model selected</option>
-              {models.map(model => (
-                <option key={model.id} value={model.id}>
-                  {model.isActive ? '* ' : ''}{model.name} — {(model.sizeBytes / 1024 / 1024 / 1024).toFixed(2)} GB — {model.quantization}
-                </option>
-              ))}
-            </select>
-          </label>
-
-          <div style={{ display: 'flex', gap: 12, alignItems: 'center', flexWrap: 'wrap' }}>
-            <label>
-              Device
-              <select value={device} onChange={event => setDevice(event.target.value as 'gpu' | 'cpu')}>
-                <option value="gpu">GPU</option>
-                <option value="cpu">CPU</option>
-              </select>
-            </label>
-            <label>
-              GPU layers
-              <input type="number" min={0} max={200} value={gpuLayers} onChange={event => setGpuLayers(Number(event.target.value))} />
-            </label>
-            <label>
-              Context
-              <input type="number" min={512} max={262144} value={contextLength} onChange={event => setContextLength(Number(event.target.value))} />
-            </label>
-          </div>
-
-          <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-            <button onClick={handleLoadModel} disabled={!selectedModelId}>Load Model</button>
-            <button onClick={handleUnloadModel}>Unload Model</button>
-          </div>
-        </div>
-      </section>
-
-      <section style={{ marginTop: '2rem', borderTop: '1px solid #ddd', paddingTop: '1rem' }}>
-        <h2>Nexus Agent</h2>
-        <p>state = <strong>{agentState}</strong></p>
-        <textarea
-          value={agentPrompt}
-          onChange={event => setAgentPrompt(event.target.value)}
-          rows={4}
-          style={{ width: '100%', boxSizing: 'border-box', fontFamily: 'inherit' }}
-        />
-        <div style={{ display: 'flex', gap: 8, marginTop: 8 }}>
-          <button onClick={handleStartAgent}>Start Agent</button>
-          <button onClick={handleStopAgent} disabled={!agentRunId}>Stop Agent</button>
-        </div>
-
-        {agentRunId && <p>run = <code>{agentRunId}</code></p>}
-        {agentError && <p style={{ color: 'crimson' }}>{agentError}</p>}
-
-        <div style={{ marginTop: '1.5rem', borderTop: '1px dashed #ccc', paddingTop: '1rem' }}>
-          <ApprovalQueue />
-        </div>
-
-        <ol>
-          {agentSteps.map((step, index) => (
-            <li key={step.id ?? `${index}-${step.timestamp}`} style={{ marginBottom: 12 }}>
-              <strong>{step.type}</strong>
-              <pre style={{ whiteSpace: 'pre-wrap', background: '#f6f6f6', padding: 12 }}>
-                {step.content}
-              </pre>
-              {step.toolCall && (
-                <code>
-                  {step.toolCall.name} — {step.toolCall.status}
-                </code>
-              )}
-            </li>
-          ))}
-        </ol>
-      </section>
-
-      {status && <p style={{ color: 'green' }}>{status}</p>}
-    </div>
+    <AppShell
+      activeRoute={activeRoute}
+      agentState={agentState}
+      canStop={canStop}
+      currentRunId={currentRunId}
+      lastMessage={lastMessage}
+      modelStatus={modelStatus}
+      pendingApprovals={pending.length}
+      sandboxActive={sandboxActive}
+      theme={theme}
+      onNewRun={handleNewRun}
+      onRouteChange={setActiveRoute}
+      onSettings={() => setActiveRoute('settings')}
+      onStart={handleStart}
+      onStop={handleStop}
+      onToggleTheme={handleThemeChange}
+    >
+      {renderRoute(activeRoute, {
+        agentState,
+        currentRunId,
+        error,
+        modelStatus,
+        pending,
+        prompt,
+        recent,
+        setActiveRoute,
+        setPrompt,
+        steps,
+        theme,
+        handleNewRun,
+        handleStart,
+        handleStop,
+        handleThemeChange,
+      })}
+    </AppShell>
   )
+}
+
+function renderRoute(
+  activeRoute: AppRouteId,
+  context: {
+    agentState: AgentState | 'starting'
+    currentRunId: string | null
+    error: string | null
+    modelStatus: ModelRuntimeStatus | null
+    pending: ReturnType<typeof useApproval>['pending']
+    prompt: string
+    recent: ReturnType<typeof useApproval>['recent']
+    setActiveRoute(route: AppRouteId): void
+    setPrompt(prompt: string): void
+    steps: ReturnType<typeof useAgentStore.getState>['steps']
+    theme: ThemeMode
+    handleNewRun(): void
+    handleStart(): void
+    handleStop(): void
+    handleThemeChange(theme: ThemeMode): void
+  },
+): React.ReactElement {
+  switch (activeRoute) {
+    case 'dashboard':
+      return (
+        <Dashboard
+          agentState={context.agentState}
+          modelStatus={context.modelStatus}
+          pendingApprovals={context.pending.length}
+          steps={context.steps}
+          onNavigate={context.setActiveRoute}
+        />
+      )
+    case 'approvals':
+      return <Approvals />
+    case 'models':
+      return <Models />
+    case 'sandbox':
+      return <Sandbox />
+    case 'audit-log':
+      return <AuditLog />
+    case 'risk-reports':
+      return <RiskReports />
+    case 'settings':
+      return <Settings theme={context.theme} onThemeChange={context.handleThemeChange} />
+    case 'agent-runs':
+    default:
+      return (
+        <AgentRuns
+          currentRunId={context.currentRunId}
+          error={context.error}
+          modelStatus={context.modelStatus}
+          pendingApprovals={context.pending}
+          prompt={context.prompt}
+          recentApprovals={context.recent}
+          state={context.agentState}
+          steps={context.steps}
+          onNewRun={context.handleNewRun}
+          onPromptChange={context.setPrompt}
+          onStart={context.handleStart}
+          onStop={context.handleStop}
+        />
+      )
+  }
+}
+
+function asAgentState(value: string): AgentState {
+  const known: AgentState[] = [
+    'idle',
+    'planning',
+    'awaiting_approval',
+    'running',
+    'done',
+    'error',
+    'paused',
+    'blocked',
+  ]
+  return known.includes(value as AgentState) ? (value as AgentState) : 'running'
 }

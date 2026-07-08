@@ -1,66 +1,69 @@
 import React from 'react'
 import type { ApprovalRequestView } from '@shared/types/approval.types'
 import { useApproval } from '../../hooks/use-approval'
+import { Badge } from '../ui/Badge'
+import { Button } from '../ui/Button'
 import { ApprovalDialog } from './ApprovalDialog'
 
-const DECISION_STYLE: Record<string, { color: string; label: string }> = {
-  approved: { color: '#2e7d32', label: 'Approved — action executed' },
-  rejected: { color: '#c62828', label: 'Rejected — action was not executed' },
-  expired: { color: '#ef6c00', label: 'Expired without decision — action was not executed' },
+const DECISION_LABEL: Record<string, string> = {
+  approved: 'Approved',
+  rejected: 'Rejected',
+  expired: 'Expired',
 }
 
 function RecentDecision({ request }: { request: ApprovalRequestView }): React.ReactElement {
-  const style = DECISION_STYLE[request.status] ?? { color: '#555', label: request.status }
+  const tone = request.status === 'approved' ? 'success' : request.status === 'expired' ? 'warning' : 'danger'
   return (
-    <li style={{ marginBottom: 6, fontSize: '0.85em' }}>
-      <span style={{ color: style.color, fontWeight: 600 }}>{style.label}</span>
-      {' — '}
-      <span style={{ color: '#444' }}>{request.intentKind}: {request.summary}</span>
-    </li>
+    <div className="approval-row">
+      <div className="toolbar-line">
+        <Badge tone={tone}>{DECISION_LABEL[request.status] ?? request.status}</Badge>
+        <span className="muted mono">{request.decidedAt ?? request.createdAt}</span>
+      </div>
+      <strong>{request.intentKind}</strong>
+      <span className="muted">{request.summary}</span>
+    </div>
   )
 }
 
 /** Live queue of pending human-approval requests plus recent decisions. */
 export function ApprovalQueue(): React.ReactElement {
-  const { pending, recent, approve, reject } = useApproval()
+  const { pending, recent, approve, reject, refresh } = useApproval()
 
   return (
     <div>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <h2 style={{ margin: 0 }}>Approvals</h2>
-        <span
-          style={{
-            background: pending.length ? '#c62828' : '#9e9e9e',
-            color: '#fff',
-            borderRadius: 12,
-            padding: '2px 10px',
-            fontSize: '0.8em',
-          }}
-        >
-          {pending.length} pending
-        </span>
+      <div className="panel-header">
+        <div className="panel-title">Human Approvals</div>
+        <div className="header-cluster">
+          <Badge tone={pending.length ? 'warning' : 'success'}>{pending.length} pending</Badge>
+          <Button size="sm" variant="ghost" onClick={() => void refresh()}>
+            Sync
+          </Button>
+        </div>
       </div>
 
-      {pending.length === 0 ? (
-        <p style={{ color: '#777' }}>No actions awaiting approval.</p>
-      ) : (
-        <div style={{ marginTop: 12 }}>
-          {pending.map(request => (
-            <ApprovalDialog key={request.id} request={request} onApprove={approve} onReject={reject} />
-          ))}
-        </div>
-      )}
+      <div className="panel-body">
+        {pending.length === 0 ? (
+          <div className="empty-state">
+            <strong>No actions awaiting approval</strong>
+            <span>Safe actions can continue without a human decision.</span>
+          </div>
+        ) : (
+          <div className="approval-stack">
+            {pending.map(request => (
+              <ApprovalDialog key={request.id} request={request} onApprove={approve} onReject={reject} />
+            ))}
+          </div>
+        )}
 
-      {recent.length > 0 && (
-        <div style={{ marginTop: 16 }}>
-          <h3 style={{ margin: '0 0 8px' }}>Recent approval decisions</h3>
-          <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+        {recent.length > 0 && (
+          <div style={{ marginTop: 18 }}>
+            <div className="panel-title" style={{ marginBottom: 10 }}>Recent decisions</div>
             {recent.map(request => (
               <RecentDecision key={request.id} request={request} />
             ))}
-          </ul>
-        </div>
-      )}
+          </div>
+        )}
+      </div>
     </div>
   )
 }

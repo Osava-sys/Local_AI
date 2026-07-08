@@ -1,17 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import type { ApprovalRequestView } from '@shared/types/approval.types'
+import { Badge } from '../ui/Badge'
+import { Button } from '../ui/Button'
 
 interface ApprovalDialogProps {
   request: ApprovalRequestView
   onApprove(id: string): void
   onReject(id: string): void
-}
-
-const RISK_COLORS: Record<string, string> = {
-  low: '#2e7d32',
-  medium: '#f9a825',
-  high: '#ef6c00',
-  critical: '#c62828',
 }
 
 /** Seconds remaining until `expiresAt`, or null when there is no deadline. */
@@ -36,47 +31,45 @@ function computeRemaining(expiresAt?: string): number | null {
 
 /** A single pending approval card with a countdown and approve / reject actions. */
 export function ApprovalDialog({ request, onApprove, onReject }: ApprovalDialogProps): React.ReactElement {
-  const riskColor = RISK_COLORS[request.risk ?? 'high'] ?? '#555'
   const remaining = useCountdown(request.expiresAt)
+  const risk = request.risk ?? 'high'
+  const riskTone = risk === 'low' ? 'success' : risk === 'medium' ? 'warning' : risk === 'critical' ? 'critical' : 'danger'
 
   return (
-    <div
-      style={{
-        border: '1px solid #ddd',
-        borderLeft: `4px solid ${riskColor}`,
-        borderRadius: 6,
-        padding: 12,
-        marginBottom: 12,
-        background: '#fafafa',
-      }}
-    >
-      <div style={{ display: 'flex', justifyContent: 'space-between', gap: 8, alignItems: 'center' }}>
-        <strong>{request.intentKind}</strong>
-        <span style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
+    <article className="approval-dialog" data-risk={risk}>
+      <div className="approval-dialog-header">
+        <div>
+          <strong>{request.intentKind}</strong>
+          <div className="muted">{request.reason}</div>
+        </div>
+        <span className="header-cluster">
           {remaining !== null && (
-            <span style={{ fontSize: '0.8em', color: remaining <= 30 ? '#c62828' : '#555' }}>
+            <Badge tone={remaining <= 30 ? 'danger' : 'neutral'}>
               {remaining > 0 ? `expires in ${remaining}s` : 'expiring…'}
-            </span>
+            </Badge>
           )}
-          <span style={{ color: riskColor, fontSize: '0.8em', textTransform: 'uppercase' }}>
-            {request.risk ?? 'high'} risk
-          </span>
+          <Badge tone={riskTone}>{risk} risk</Badge>
         </span>
       </div>
 
-      <pre style={{ whiteSpace: 'pre-wrap', background: '#fff', border: '1px solid #eee', padding: 8, marginTop: 8 }}>
-        {request.summary}
-      </pre>
-      <p style={{ margin: '6px 0', color: '#555', fontSize: '0.9em' }}>{request.reason}</p>
+      <pre className="approval-summary">{request.summary}</pre>
+      <dl className="kv-grid">
+        <dt>runId</dt>
+        <dd className="truncate">{request.runId ?? 'none'}</dd>
+        <dt>toolCall</dt>
+        <dd className="truncate">{request.toolCallId ?? 'none'}</dd>
+        <dt>created</dt>
+        <dd className="truncate">{request.createdAt}</dd>
+      </dl>
 
-      <div style={{ display: 'flex', gap: 8 }}>
-        <button onClick={() => onApprove(request.id)} style={{ background: '#2e7d32', color: '#fff', border: 'none', padding: '6px 12px', borderRadius: 4 }}>
+      <div className="approval-actions">
+        <Button variant="success" onClick={() => onApprove(request.id)}>
           Approve
-        </button>
-        <button onClick={() => onReject(request.id)} style={{ background: '#c62828', color: '#fff', border: 'none', padding: '6px 12px', borderRadius: 4 }}>
+        </Button>
+        <Button variant="danger" onClick={() => onReject(request.id)}>
           Reject
-        </button>
+        </Button>
       </div>
-    </div>
+    </article>
   )
 }

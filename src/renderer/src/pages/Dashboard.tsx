@@ -1,0 +1,114 @@
+import { AlertTriangle, Bot, ClipboardCheck, Package, ShieldCheck } from 'lucide-react'
+import type { AgentRunStep, AgentState } from '@shared/types/agent.types'
+import type { ModelRuntimeStatus } from '@shared/types/model.types'
+import type { AppRouteId } from '../routes'
+import { Badge } from '../components/ui/Badge'
+import { Button } from '../components/ui/Button'
+
+interface DashboardProps {
+  agentState: AgentState | 'starting'
+  modelStatus: ModelRuntimeStatus | null
+  pendingApprovals: number
+  steps: AgentRunStep[]
+  onNavigate(route: AppRouteId): void
+}
+
+export default function Dashboard({
+  agentState,
+  modelStatus,
+  pendingApprovals,
+  steps,
+  onNavigate,
+}: DashboardProps): React.ReactElement {
+  const toolSteps = steps.filter(step => step.toolCall)
+  const observations = steps.filter(step => step.type === 'observe' || step.type === 'observation')
+
+  return (
+    <div className="page">
+      <div className="page-grid">
+        <section className="panel" style={{ gridColumn: 'span 6' }}>
+          <div className="panel-header">
+            <div className="panel-title">
+              <Bot size={17} />
+              Agent
+            </div>
+            <Badge tone={agentState === 'running' ? 'accent' : agentState === 'awaiting_approval' ? 'warning' : 'neutral'}>
+              {agentState}
+            </Badge>
+          </div>
+          <div className="panel-body">
+            <div className="dashboard-row">
+              <strong>{steps.length} steps</strong>
+              <span className="muted">
+                {observations.length} observations, {toolSteps.length} tool intents
+              </span>
+            </div>
+            <Button variant="primary" onClick={() => onNavigate('agent-runs')}>
+              Open Agent Graph
+            </Button>
+          </div>
+        </section>
+
+        <section className="panel" style={{ gridColumn: 'span 3' }}>
+          <div className="panel-header">
+            <div className="panel-title">
+              <Package size={17} />
+              Model
+            </div>
+          </div>
+          <div className="panel-body">
+            <strong>{modelStatus?.state === 'running' ? 'Loaded' : modelStatus?.state ?? 'Idle'}</strong>
+            <p className="muted">{modelStatus?.modelName ?? 'No active local model'}</p>
+          </div>
+        </section>
+
+        <section className="panel" style={{ gridColumn: 'span 3' }}>
+          <div className="panel-header">
+            <div className="panel-title">
+              <ClipboardCheck size={17} />
+              Approvals
+            </div>
+          </div>
+          <div className="panel-body">
+            <strong>{pendingApprovals} pending</strong>
+            <p className="muted">Human gate for sensitive actions</p>
+          </div>
+        </section>
+
+        <section className="panel" style={{ gridColumn: 'span 6' }}>
+          <div className="panel-header">
+            <div className="panel-title">
+              <ShieldCheck size={17} />
+              Safety Boundary
+            </div>
+            <Badge tone="success">Renderer allowlisted</Badge>
+          </div>
+          <div className="panel-body">
+            <div className="dashboard-row">
+              <strong>{'Agent decides -> intent -> approval -> sandbox -> audit'}</strong>
+              <span className="muted">Renderer uses window.api and never direct host APIs.</span>
+            </div>
+          </div>
+        </section>
+
+        <section className="panel" style={{ gridColumn: 'span 6' }}>
+          <div className="panel-header">
+            <div className="panel-title">
+              <AlertTriangle size={17} />
+              Recent Activity
+            </div>
+          </div>
+          <div className="panel-body">
+            {steps.slice(-5).reverse().map(step => (
+              <div className="dashboard-row" key={step.id ?? `${step.type}-${step.timestamp}`}>
+                <strong>{step.type}</strong>
+                <span className="muted">{step.content}</span>
+              </div>
+            ))}
+            {steps.length === 0 && <p className="muted">No live run events yet.</p>}
+          </div>
+        </section>
+      </div>
+    </div>
+  )
+}
