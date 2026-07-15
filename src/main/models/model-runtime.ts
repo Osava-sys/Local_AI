@@ -1,10 +1,11 @@
 import { spawn, type ChildProcessWithoutNullStreams } from 'child_process'
-import { existsSync, readdirSync, statSync } from 'fs'
+import { existsSync, statSync } from 'fs'
 import { createServer } from 'net'
 import { basename, dirname, join } from 'path'
 import type { WebContents } from 'electron'
 import type { LocalModelRecord, ModelConfigInput, ModelLoadOptions, ModelRuntimeStatus } from '@shared/types/model.types'
 import { defaultLlamaServerCandidates } from './resources'
+import { resolveMmprojPath } from './mmproj'
 
 let activeRuntimeConfig: ModelConfigInput | null = null
 
@@ -111,7 +112,7 @@ export class LlamaCppRuntime {
     // Load a multimodal projector so the model can accept images (vision),
     // the way LM Studio pairs the model with its mmproj. Explicit path wins;
     // otherwise auto-detect an mmproj*.gguf sitting next to the model.
-    const mmprojPath = this.resolveMmproj(model.path, options.mmprojPath)
+    const mmprojPath = resolveMmprojPath(model.path, options.mmprojPath)
     if (mmprojPath) {
       args.push('--mmproj', mmprojPath)
       console.log(`[runtime] multimodal projector: ${mmprojPath}`)
@@ -260,24 +261,6 @@ export class LlamaCppRuntime {
     throw new Error(
       'llama.cpp server executable not found. Put llama-server.exe in resources/bin/llama-cpp, set LLAMA_CPP_SERVER_PATH, or paste the full path to llama-server.exe in the UI.',
     )
-  }
-
-  /**
-   * Resolves the multimodal projector to load. An explicit, existing path is
-   * used as-is; otherwise the model's directory is scanned for an mmproj*.gguf
-   * sibling (LM Studio's convention). Returns null when there is none.
-   */
-  private resolveMmproj(modelPath: string, explicit?: string): string | null {
-    if (explicit) {
-      return existsSync(explicit) && statSync(explicit).isFile() ? explicit : null
-    }
-    try {
-      const dir = dirname(modelPath)
-      const match = readdirSync(dir).find(file => /^mmproj.*\.gguf$/i.test(file))
-      return match ? join(dir, match) : null
-    } catch {
-      return null
-    }
   }
 
   private async waitForServer(baseUrl: string, timeoutMs: number): Promise<void> {

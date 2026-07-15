@@ -1,8 +1,14 @@
 {
   "name": "local-ai",
   "version": "0.1.0",
+  "productName": "NEXUS",
   "type": "module",
   "main": "./out/main/index.js",
+  "build": {
+    "productName": "NEXUS",
+    "appId": "com.nexus.desktop",
+    "icon": "build/icon.png"
+  },
   "scripts": {
     "dev": "electron-vite dev",
     "build": "electron-vite build",

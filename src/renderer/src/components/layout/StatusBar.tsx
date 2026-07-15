@@ -27,7 +27,7 @@ export function StatusBar({
           </>
         )}
       </span>
-      <span className="truncate">{lastMessage ?? modelStatus?.endpoint ?? 'Nexus renderer ready'}</span>
+      <span className="truncate">{lastMessage ?? modelStatus?.endpoint ?? 'NEXUS renderer ready'}</span>
       <span>
         Model <strong>{modelStatus?.modelName ?? modelStatus?.state ?? 'idle'}</strong> · Approvals{' '}
         <strong>{pendingApprovals}</strong>

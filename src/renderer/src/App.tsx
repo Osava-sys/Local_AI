@@ -21,7 +21,7 @@ const DEFAULT_PROMPT =
 
 export default function App(): React.ReactElement {
   const [activeRoute, setActiveRoute] = useState<AppRouteId>('agent-runs')
-  const [theme, setTheme] = useState<ThemeMode>('light')
+  const [theme, setTheme] = useState<ThemeMode>('dark')
   const [prompt, setPrompt] = useState(DEFAULT_PROMPT)
   const [modelStatus, setModelStatus] = useState<ModelRuntimeStatus | null>(null)
   const [lastMessage, setLastMessage] = useState<string | null>(null)
@@ -239,7 +239,6 @@ function renderRoute(
           recentApprovals={context.recent}
           state={context.agentState}
           steps={context.steps}
-          onNewRun={context.handleNewRun}
           onPromptChange={context.setPrompt}
           onStart={context.handleStart}
           onStop={context.handleStop}

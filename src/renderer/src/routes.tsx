@@ -14,12 +14,12 @@ export interface AppRoute {
 }
 
 export const appRoutes: AppRoute[] = [
-  { id: 'dashboard', label: 'Dashboard' },
-  { id: 'agent-runs', label: 'Agent Graph' },
-  { id: 'approvals', label: 'Approvals' },
-  { id: 'models', label: 'Models' },
+  { id: 'dashboard', label: 'Tableau de bord' },
+  { id: 'agent-runs', label: 'Graphe agent' },
+  { id: 'approvals', label: 'Approbations' },
+  { id: 'models', label: 'Modèles' },
   { id: 'sandbox', label: 'Sandbox' },
   { id: 'audit-log', label: 'Audit' },
-  { id: 'risk-reports', label: 'Risk Reports' },
-  { id: 'settings', label: 'Settings' },
+  { id: 'risk-reports', label: 'Rapports de risque' },
+  { id: 'settings', label: 'Paramètres' },
 ]

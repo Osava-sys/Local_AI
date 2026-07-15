@@ -1,5 +1,6 @@
-import { Moon, Play, Plus, Settings, ShieldCheck, Square, Sun } from 'lucide-react'
+import { Moon, Play, Plus, Settings, Square, Sun } from 'lucide-react'
 import type { AgentState } from '@shared/types/agent.types'
+import nexusLogo from '../../assets/nexus-logo.png'
 import type { ModelRuntimeStatus } from '@shared/types/model.types'
 import { Badge, type BadgeTone } from '../ui/Badge'
 import { Button } from '../ui/Button'
@@ -24,15 +25,15 @@ interface HeaderProps {
 }
 
 const AGENT_LABEL: Record<AgentUiState, string> = {
-  idle: 'Idle',
-  planning: 'Planning',
-  starting: 'Starting',
-  awaiting_approval: 'Awaiting Approval',
-  running: 'Running',
-  blocked: 'Blocked',
-  done: 'Done',
-  error: 'Error',
-  paused: 'Paused',
+  idle: 'Inactif',
+  planning: 'Planification',
+  starting: 'Démarrage',
+  awaiting_approval: 'En attente',
+  running: 'En cours',
+  blocked: 'Bloqué',
+  done: 'Terminé',
+  error: 'Erreur',
+  paused: 'En pause',
 }
 
 export function Header({
@@ -54,12 +55,12 @@ export function Header({
   return (
     <header className="app-header">
       <div className="header-brand">
-        <div className="brand-mark" aria-hidden="true">
-          <ShieldCheck size={18} />
-        </div>
+        <span className="app-logo" role="img" aria-label="NEXUS">
+          <img src={nexusLogo} alt="" />
+        </span>
         <div className="brand-title">
-          <strong>Nexus</strong>
-          <span>Local defensive agent</span>
+          <strong>NEXUS</strong>
+          <span>Console de cyberdéfense</span>
         </div>
       </div>
 
@@ -67,27 +68,27 @@ export function Header({
         <Badge tone={modelBadge.tone}>{modelBadge.label}</Badge>
         <Badge tone={agentBadge.tone}>{agentBadge.label}</Badge>
         <Badge tone={pendingApprovals > 0 ? 'warning' : 'success'}>
-          {pendingApprovals > 0 ? `${pendingApprovals} approval` : 'Approval clear'}
+          {pendingApprovals > 0 ? `${pendingApprovals} approbation${pendingApprovals > 1 ? 's' : ''}` : 'Approbations à jour'}
         </Badge>
         <Badge tone={sandboxActive ? 'success' : 'warning'}>
-          {sandboxActive ? 'Sandbox active' : 'Sandbox idle'}
+          {sandboxActive ? 'Sandbox active' : 'Sandbox inactive'}
         </Badge>
       </div>
 
       <div className="header-actions">
         <Button variant="primary" onClick={onStart}>
           <Play size={16} />
-          Start
+          Démarrer
         </Button>
         <Button disabled={!canStop} variant="subtle" onClick={onStop}>
           <Square size={15} />
-          Stop
+          Arrêter
         </Button>
         <Button variant="subtle" onClick={onNewRun}>
           <Plus size={16} />
-          New Run
+          Nouvelle exécution
         </Button>
-        <Tooltip label="Settings">
+        <Tooltip label="Paramètres">
           <Button aria-label="Settings" iconOnly variant="ghost" onClick={onSettings}>
             <Settings size={17} />
           </Button>
@@ -121,10 +122,10 @@ function SunLabel(): React.ReactElement {
 }
 
 function getModelBadge(status: ModelRuntimeStatus | null): { label: string; tone: BadgeTone } {
-  if (status?.state === 'running') return { label: 'Loaded', tone: 'success' }
-  if (status?.state === 'starting') return { label: 'Loading model', tone: 'warning' }
-  if (status?.state === 'error') return { label: 'Model error', tone: 'danger' }
-  return { label: 'Unloaded', tone: 'neutral' }
+  if (status?.state === 'running') return { label: 'Modèle chargé', tone: 'success' }
+  if (status?.state === 'starting') return { label: 'Chargement…', tone: 'warning' }
+  if (status?.state === 'error') return { label: 'Erreur modèle', tone: 'danger' }
+  return { label: 'Modèle inactif', tone: 'neutral' }
 }
 
 function getAgentBadge(state: AgentUiState): { label: string; tone: BadgeTone } {

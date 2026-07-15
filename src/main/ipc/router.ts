@@ -5,6 +5,7 @@ import { handleChatList, handleChatCreate, handleChatDelete, handleMessageList, 
 import { handleAgentGet, handleAgentStart, handleAgentStop } from './agent.handlers'
 import {
   handleModelCatalog,
+  handleModelDetectMmproj,
   handleModelDownload,
   handleModelList,
   handleModelLoad,
@@ -37,6 +38,7 @@ const handlers: Record<keyof typeof InvokeChannels, (e: Electron.IpcMainInvokeEv
   'model:list': handleModelList,
   'model:selectGguf': handleModelSelectGguf,
   'model:selectLlamaServer': handleModelSelectLlamaServer,
+  'model:detectMmproj': handleModelDetectMmproj,
   'model:registerLocal': handleModelRegisterLocal,
   'model:download': handleModelDownload,
   'model:load': handleModelLoad,

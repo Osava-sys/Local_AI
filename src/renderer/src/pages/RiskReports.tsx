@@ -1,45 +1,83 @@
-import type { AgentRunStep } from '@shared/types/agent.types'
 import { FileWarning } from 'lucide-react'
+import type { AgentRunStep } from '@shared/types/agent.types'
 import { useAgentStore } from '../stores/agent.store'
+import { extractReport, riskTone } from '../lib/report'
 import { Badge } from '../components/ui/Badge'
+import { StructuredReport } from '../components/reports/StructuredReport'
 
 export default function RiskReports(): React.ReactElement {
-  const findings = useAgentStore(state => state.riskFindings)
+  const storeFindings = useAgentStore(state => state.riskFindings)
   const steps = useAgentStore(state => state.steps)
-  const derived = findings.length > 0 ? findings.map(item => ({
-    id: item.id,
-    title: item.target ?? item.service ?? 'Risk finding',
-    score: item.riskScore,
-    recommendation: item.recommendation,
-  })) : deriveFindingsFromSteps(steps)
+  const report = extractReport(steps)
+  const derived = storeFindings.length > 0
+    ? storeFindings.map(item => ({
+        id: item.id,
+        title: item.target ?? item.service ?? 'Finding de risque',
+        score: item.riskScore,
+        recommendation: item.recommendation,
+      }))
+    : deriveFindingsFromSteps(steps)
+
+  const count = report ? report.findings.length : derived.length
 
   return (
     <div className="page">
-      <section className="panel">
-        <div className="panel-header">
-          <div className="panel-title">
-            <FileWarning size={17} />
-            Risk Reports
+      <div className="page-head">
+        <div className="toolbar-line">
+          <div>
+            <h1>Rapports de risque</h1>
+            <p>Findings priorisés et recommandations issus des observations du run.</p>
           </div>
-          <Badge tone={derived.length > 0 ? 'warning' : 'success'}>{derived.length} findings</Badge>
+          <Badge tone={count > 0 ? 'warning' : 'success'}>
+            <FileWarning size={13} />
+            {count} finding{count > 1 ? 's' : ''}
+          </Badge>
         </div>
-        <div className="panel-body">
-          {derived.map(item => (
-            <div className="approval-row" key={item.id}>
-              <div className="toolbar-line">
-                <strong>{item.title}</strong>
-                <Badge tone={item.score >= 80 ? 'critical' : item.score >= 60 ? 'danger' : item.score >= 40 ? 'warning' : 'neutral'}>
-                  {item.score}/100
-                </Badge>
+      </div>
+
+      {report ? (
+        <section className="panel">
+          <div className="panel-body">
+            <StructuredReport report={report} />
+          </div>
+        </section>
+      ) : derived.length > 0 ? (
+        <section className="panel">
+          <div className="panel-body reco-list">
+            {derived.map(item => (
+              <div className="reco-card" key={item.id} data-tone={riskTone(item.score)}>
+                <div className="reco-card__head">
+                  <span className="risk-chip" data-risk={scoreLevel(item.score)}>
+                    {scoreLevel(item.score).toUpperCase()}
+                  </span>
+                  <strong>{item.title}</strong>
+                  <span className="mono muted" style={{ marginLeft: 'auto' }}>
+                    {item.score}/100
+                  </span>
+                </div>
+                <p className="reco-fix">{item.recommendation}</p>
               </div>
-              <span className="muted">{item.recommendation}</span>
-            </div>
-          ))}
-          {derived.length === 0 && <p className="muted">No risk findings have been promoted from observations yet.</p>}
-        </div>
-      </section>
+            ))}
+          </div>
+        </section>
+      ) : (
+        <section className="panel">
+          <div className="empty-state">
+            <FileWarning size={26} />
+            <strong>Aucun finding de risque</strong>
+            <span className="muted">Les findings apparaissent une fois les observations analysées.</span>
+          </div>
+        </section>
+      )}
     </div>
   )
+}
+
+function scoreLevel(score: number): string {
+  if (score >= 85) return 'critical'
+  if (score >= 65) return 'high'
+  if (score >= 40) return 'medium'
+  return 'low'
 }
 
 function deriveFindingsFromSteps(steps: AgentRunStep[]): Array<{

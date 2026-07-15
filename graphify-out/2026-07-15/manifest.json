@@ -1150,8 +1150,8 @@
     "semantic_hash": ""
   },
   "D:\\Local_AI\\src\\renderer\\src\\pages\\AgentRuns.tsx": {
-    "mtime": 1784144620.7800498,
-    "ast_hash": "15f685c018d9cd3de94002b4f3018f60",
+    "mtime": 1784138896.438921,
+    "ast_hash": "678adc04b21161574a29ae242f60bff4",
     "semantic_hash": ""
   },
   "D:\\Local_AI\\src\\renderer\\src\\pages\\Approvals.tsx": {
@@ -1160,8 +1160,8 @@
     "semantic_hash": ""
   },
   "D:\\Local_AI\\src\\renderer\\src\\pages\\AuditLog.tsx": {
-    "mtime": 1784144491.3584707,
-    "ast_hash": "e2d223cb3fb28715cf9f5260625ce28f",
+    "mtime": 1783525400.7447665,
+    "ast_hash": "6891eb43d745a6440612433534b853a1",
     "semantic_hash": ""
   },
   "D:\\Local_AI\\src\\renderer\\src\\pages\\Chat.tsx": {
@@ -1805,8 +1805,8 @@
     "semantic_hash": ""
   },
   "D:\\Local_AI\\src\\renderer\\src\\pages\\RiskReports.tsx": {
-    "mtime": 1784144468.6211073,
-    "ast_hash": "41c5c06c45f078fe43cc53c5fec978c6",
+    "mtime": 1783525400.7467651,
+    "ast_hash": "0acdbe195ae50cc205ccbb422a82f6d7",
     "semantic_hash": ""
   },
   "D:\\Local_AI\\src\\renderer\\src\\vite-env.d.ts": {
@@ -1832,16 +1832,6 @@
   "D:\\Local_AI\\src\\main\\models\\mmproj.ts": {
     "mtime": 1784142479.9992528,
     "ast_hash": "f7302f85f18242c8ef49f34668ef8817",
-    "semantic_hash": ""
-  },
-  "D:\\Local_AI\\src\\renderer\\src\\components\\reports\\StructuredReport.tsx": {
-    "mtime": 1784144434.5157032,
-    "ast_hash": "871e97da769fcad470c6a2119273d27a",
-    "semantic_hash": ""
-  },
-  "D:\\Local_AI\\src\\renderer\\src\\lib\\report.ts": {
-    "mtime": 1784144356.7604606,
-    "ast_hash": "6d32c3dcd3886dd0ed802c9597e4ce17",
     "semantic_hash": ""
   }
 }

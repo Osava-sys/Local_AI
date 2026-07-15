@@ -45,6 +45,7 @@ const api: ExposedApi = {
     list: () => ipcRenderer.invoke('model:list', {}),
     selectGguf: () => ipcRenderer.invoke('model:selectGguf', {}),
     selectLlamaServer: () => ipcRenderer.invoke('model:selectLlamaServer', {}),
+    detectMmproj: (ggufPath) => ipcRenderer.invoke('model:detectMmproj', { ggufPath }),
     registerLocal: (path, name) => ipcRenderer.invoke('model:registerLocal', { path, name }),
     download: (request) => ipcRenderer.invoke('model:download', request),
     load: (options) => ipcRenderer.invoke('model:load', options),

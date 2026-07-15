@@ -1,4 +1,62 @@
+/* Dark is the primary surface for the Nexus cyberdefense console. */
 :root,
+[data-theme="dark"] {
+  color-scheme: dark;
+  --background: #0b0d10;
+  --surface: #101318;
+  --surface-muted: #171b21;
+  --elevated: #161b22;
+  --elevated-strong: #1c222b;
+  --canvas: #0c0f13;
+  --border: #222a32;
+  --border-strong: #333e49;
+  --text-primary: #e7edf3;
+  --text-secondary: #9aa8b4;
+  --text-muted: #63707c;
+  --accent: #4ea1f2;
+  --accent-soft: #10233c;
+  --accent-strong: #a9d2ff;
+  --success: #4dc088;
+  --success-soft: #10251b;
+  --warning: #e3a63e;
+  --warning-soft: #29200f;
+  --danger: #ec6b73;
+  --danger-soft: #2a1519;
+  --critical: #ff8093;
+  --critical-soft: #331620;
+  --code-background: #0c0f13;
+  --code-border: #1f2730;
+  --graph-edge: #38434e;
+  --node-active: #4ea1f2;
+  --node-pending: #59646f;
+  --node-warning: #e3a63e;
+  --node-blocked: #ec6b73;
+  --node-done: #4dc088;
+  --focus-ring: rgb(78 161 242 / 0.32);
+  --scrollbar: #2b343d;
+
+  /* NEXUS brand gradient (sky → royal blue, sampled from the logo) */
+  --brand-from: #6cc0f6;
+  --brand-mid: #2f80ed;
+  --brand-to: #1f5fd8;
+  --brand-gradient: linear-gradient(135deg, var(--brand-from) 0%, var(--brand-mid) 52%, var(--brand-to) 100%);
+
+  --glow-accent:
+    0 0 0 1px color-mix(in srgb, var(--accent) 55%, transparent),
+    0 0 24px -3px color-mix(in srgb, var(--accent) 60%, transparent);
+  --glow-warning:
+    0 0 0 1px color-mix(in srgb, var(--warning) 62%, transparent),
+    0 0 28px -3px color-mix(in srgb, var(--warning) 55%, transparent);
+  --glow-danger:
+    0 0 0 1px color-mix(in srgb, var(--danger) 60%, transparent),
+    0 0 26px -3px color-mix(in srgb, var(--danger) 52%, transparent);
+  --shadow-node: 0 12px 30px rgb(0 0 0 / 0.5);
+  --shadow-panel: 0 24px 64px rgb(0 0 0 / 0.55);
+  --shadow-pop: 0 18px 44px rgb(0 0 0 / 0.6);
+  --shadow-soft: 0 16px 42px rgb(0 0 0 / 0.45);
+  --shadow-tight: 0 10px 24px rgb(0 0 0 / 0.4);
+}
+
 [data-theme="light"] {
   color-scheme: light;
   --background: #eef2f5;
@@ -6,14 +64,15 @@
   --surface-muted: #edf2f6;
   --elevated: #ffffff;
   --elevated-strong: #fbfdff;
+  --canvas: #f3f6f9;
   --border: #d9e2ea;
   --border-strong: #bac7d3;
   --text-primary: #17212b;
   --text-secondary: #5d6b7a;
   --text-muted: #8290a0;
-  --accent: #0786b8;
-  --accent-soft: #d9f3fb;
-  --accent-strong: #005f85;
+  --accent: #1f6ef5;
+  --accent-soft: #dcebfe;
+  --accent-strong: #1550c2;
   --success: #178a55;
   --success-soft: #dff6ea;
   --warning: #b77900;
@@ -25,44 +84,31 @@
   --code-background: #f2f5f7;
   --code-border: #d9e2ea;
   --graph-edge: #94a9b9;
-  --node-active: #0a9cca;
+  --node-active: #2f80ed;
   --node-pending: #95a1ad;
   --node-warning: #c98505;
   --node-blocked: #c83f43;
   --node-done: #1d9a62;
-  --focus-ring: rgb(7 134 184 / 0.28);
-}
+  --focus-ring: rgb(31 110 245 / 0.28);
+  --scrollbar: #c4cfd9;
 
-[data-theme="dark"] {
-  color-scheme: dark;
-  --background: #101214;
-  --surface: #171a1d;
-  --surface-muted: #1d2226;
-  --elevated: #202428;
-  --elevated-strong: #252a2f;
-  --border: #303840;
-  --border-strong: #44515c;
-  --text-primary: #edf3f7;
-  --text-secondary: #a9b5bf;
-  --text-muted: #74818c;
-  --accent: #4fb7da;
-  --accent-soft: #173342;
-  --accent-strong: #9bdff2;
-  --success: #47c386;
-  --success-soft: #173726;
-  --warning: #e5ae3d;
-  --warning-soft: #3a2c13;
-  --danger: #ee6b72;
-  --danger-soft: #3d1d22;
-  --critical: #ff8aa0;
-  --critical-soft: #481b28;
-  --code-background: #111518;
-  --code-border: #2d363e;
-  --graph-edge: #536573;
-  --node-active: #52c4e8;
-  --node-pending: #65727e;
-  --node-warning: #f1b94b;
-  --node-blocked: #ff737a;
-  --node-done: #55d893;
-  --focus-ring: rgb(79 183 218 / 0.26);
+  --brand-from: #6cc0f6;
+  --brand-mid: #2f80ed;
+  --brand-to: #1f5fd8;
+  --brand-gradient: linear-gradient(135deg, var(--brand-from) 0%, var(--brand-mid) 52%, var(--brand-to) 100%);
+
+  --glow-accent:
+    0 0 0 1px color-mix(in srgb, var(--accent) 40%, transparent),
+    0 0 20px -4px color-mix(in srgb, var(--accent) 45%, transparent);
+  --glow-warning:
+    0 0 0 1px color-mix(in srgb, var(--warning) 48%, transparent),
+    0 0 22px -4px color-mix(in srgb, var(--warning) 42%, transparent);
+  --glow-danger:
+    0 0 0 1px color-mix(in srgb, var(--danger) 46%, transparent),
+    0 0 22px -4px color-mix(in srgb, var(--danger) 40%, transparent);
+  --shadow-node: 0 12px 28px rgb(31 41 55 / 0.12);
+  --shadow-panel: 0 24px 60px rgb(31 41 55 / 0.14);
+  --shadow-pop: 0 16px 40px rgb(31 41 55 / 0.16);
+  --shadow-soft: 0 16px 42px rgb(31 41 55 / 0.12);
+  --shadow-tight: 0 10px 24px rgb(31 41 55 / 0.1);
 }

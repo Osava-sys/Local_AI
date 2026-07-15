@@ -10,6 +10,7 @@ import {
 } from 'lucide-react'
 import { appRoutes, type AppRouteId } from '../../routes'
 import { Tooltip } from '../ui/Tooltip'
+import nexusLogo from '../../assets/nexus-logo.png'
 
 interface SidebarProps {
   activeRoute: AppRouteId
@@ -30,12 +31,13 @@ const ICONS: Record<AppRouteId, React.ReactElement> = {
 export function Sidebar({ activeRoute, onRouteChange }: SidebarProps): React.ReactElement {
   return (
     <aside className="app-sidebar">
-      <div className="sidebar-logo" aria-hidden="true">
-        <Shield size={20} />
-      </div>
+      <span className="app-logo app-logo--rail" role="img" aria-label="NEXUS">
+        <img src={nexusLogo} alt="" />
+      </span>
+
       <nav aria-label="Primary" className="sidebar-nav">
         {appRoutes.map(route => (
-          <Tooltip key={route.id} label={route.label}>
+          <Tooltip key={route.id} label={route.label} side="right">
             <button
               aria-label={route.label}
               aria-current={activeRoute === route.id ? 'page' : undefined}

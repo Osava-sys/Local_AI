@@ -18,6 +18,7 @@ export const InvokeChannels = {
   'model:list': { direction: 'renderer→main' },
   'model:selectGguf': { direction: 'renderer→main' },
   'model:selectLlamaServer': { direction: 'renderer→main' },
+  'model:detectMmproj': { direction: 'renderer→main' },
   'model:registerLocal': { direction: 'renderer→main' },
   'model:download': { direction: 'renderer→main' },
   'model:load': { direction: 'renderer→main' },

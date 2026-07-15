@@ -1,16 +1,16 @@
-# Graph Report - Local_AI  (2026-07-06)
+# Graph Report - Local_AI  (2026-07-08)
 
 ## Corpus Check
-- 351 files · ~68,297 words
+- 353 files · ~74,023 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 1362 nodes · 2299 edges · 300 communities (238 shown, 62 thin omitted)
-- Extraction: 93% EXTRACTED · 7% INFERRED · 0% AMBIGUOUS · INFERRED: 164 edges (avg confidence: 0.82)
+- 1508 nodes · 2624 edges · 292 communities (227 shown, 65 thin omitted)
+- Extraction: 94% EXTRACTED · 6% INFERRED · 0% AMBIGUOUS · INFERRED: 164 edges (avg confidence: 0.82)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `59228f89`
+- Built from commit: `af19fd25`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -89,9 +89,15 @@
 - [[_COMMUNITY_Module 136|Module 136]]
 - [[_COMMUNITY_Module 160|Module 160]]
 - [[_COMMUNITY_Community 161|Community 161]]
-- [[_COMMUNITY_Community 202|Community 202]]
+- [[_COMMUNITY_Module 177|Module 177]]
+- [[_COMMUNITY_Module 178|Module 178]]
+- [[_COMMUNITY_Module 179|Module 179]]
+- [[_COMMUNITY_Module 192|Module 192]]
+- [[_COMMUNITY_Module 194|Module 194]]
+- [[_COMMUNITY_Module 198|Module 198]]
+- [[_COMMUNITY_Module 199|Module 199]]
+- [[_COMMUNITY_Module 208|Module 208]]
 - [[_COMMUNITY_Community 209|Community 209]]
-- [[_COMMUNITY_Community 218|Community 218]]
 - [[_COMMUNITY_Community 220|Community 220]]
 - [[_COMMUNITY_Community 229|Community 229]]
 - [[_COMMUNITY_Module 237|Module 237]]
@@ -118,16 +124,21 @@
 - [[_COMMUNITY_Community 269|Community 269]]
 - [[_COMMUNITY_Module 270|Module 270]]
 - [[_COMMUNITY_Module 271|Module 271]]
+- [[_COMMUNITY_Community 273|Community 273]]
 - [[_COMMUNITY_Community 275|Community 275]]
 - [[_COMMUNITY_Module 276|Module 276]]
 - [[_COMMUNITY_Module 277|Module 277]]
 - [[_COMMUNITY_Module 278|Module 278]]
+- [[_COMMUNITY_Community 279|Community 279]]
 - [[_COMMUNITY_Module 280|Module 280]]
 - [[_COMMUNITY_Module 281|Module 281]]
 - [[_COMMUNITY_Module 282|Module 282]]
 - [[_COMMUNITY_Module 283|Module 283]]
+- [[_COMMUNITY_Community 284|Community 284]]
 - [[_COMMUNITY_Community 285|Community 285]]
 - [[_COMMUNITY_Community 286|Community 286]]
+- [[_COMMUNITY_Community 287|Community 287]]
+- [[_COMMUNITY_Community 288|Community 288]]
 - [[_COMMUNITY_Community 289|Community 289]]
 - [[_COMMUNITY_Community 290|Community 290]]
 - [[_COMMUNITY_Community 291|Community 291]]
@@ -140,13 +151,13 @@
 1. `ToolIntent` - 30 edges
 2. `SandboxExecutor` - 29 edges
 3. `ToolResult` - 29 edges
-4. `ApprovalRequestView` - 22 edges
-5. `MemoryManager` - 20 edges
-6. `LocalModelRecord` - 19 edges
-7. `AgentOrchestrator` - 18 edges
-8. `AgentTool` - 18 edges
-9. `ToolRegistry` - 16 edges
-10. `ApprovalService` - 16 edges
+4. `ApprovalRequestView` - 25 edges
+5. `ModelRuntimeStatus` - 21 edges
+6. `MemoryManager` - 20 edges
+7. `LocalModelRecord` - 20 edges
+8. `AgentOrchestrator` - 18 edges
+9. `AgentTool` - 18 edges
+10. `AgentState` - 17 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `Approvals E2E Test Suite` --references--> `Approval Schema Module`  [INFERRED]
@@ -157,37 +168,37 @@
   src/main/approvals/approval-service.ts → src/shared/types/sandbox.types.ts
 - `FakeFactStore` --references--> `AgentSessionFact`  [EXTRACTED]
   tests/unit/session-memory.test.ts → src/main/storage/repositories/agent-session-memory.repository.ts
-- `ApprovalDialogProps` --references--> `ApprovalRequestView`  [EXTRACTED]
-  src/renderer/src/components/agent/ApprovalDialog.tsx → src/shared/types/approval.types.ts
+- `HeaderProps` --references--> `ModelRuntimeStatus`  [EXTRACTED]
+  src/renderer/src/components/layout/Header.tsx → src/shared/types/model.types.ts
 
 ## Import Cycles
 - None detected.
 
-## Communities (300 total, 62 thin omitted)
+## Communities (292 total, 65 thin omitted)
 
 ### Community 0 - "Agent Memory & Orchestration"
-Cohesion: 0.22
-Nodes (16): getRuntime(), handleModelCatalog(), handleModelDownload(), handleModelList(), handleModelLoad(), handleModelRegisterLocal(), handleModelSelectGguf(), handleModelSelectLlamaServer() (+8 more)
+Cohesion: 0.18
+Nodes (19): getRuntime(), handleModelCatalog(), handleModelDownload(), handleModelList(), handleModelLoad(), handleModelRegisterLocal(), handleModelSelectGguf(), handleModelSelectLlamaServer() (+11 more)
 
 ### Community 1 - "Model Download & Runtime"
 Cohesion: 0.12
-Nodes (18): summarizeCurlOutput(), truncate(), parseCsvTasklistLine(), parseTasklistOutput(), summarizeTasklistProcesses(), parseWindowsVersionOutput(), summarizeWindowsVersion(), WindowsVersionObservation (+10 more)
+Nodes (20): summarizeCurlOutput(), truncate(), parseCsvTasklistLine(), parseTasklistOutput(), summarizeTasklistProcesses(), parseWindowsVersionOutput(), summarizeWindowsVersion(), WindowsVersionObservation (+12 more)
 
 ### Community 3 - "Approval & Sandbox Policy"
-Cohesion: 0.10
-Nodes (24): ApprovalPolicy, commandText(), containsShellControlOperator(), DEFAULT_POLICY, isDangerousPowershellCommand(), isPowershellCommandMode(), isPowershellEncodedCommand(), matchesAny() (+16 more)
+Cohesion: 0.12
+Nodes (19): ApprovalPolicy, commandText(), containsShellControlOperator(), DEFAULT_POLICY, isDangerousPowershellCommand(), isPowershellCommandMode(), isPowershellEncodedCommand(), matchesAny() (+11 more)
 
 ### Community 4 - "Build Config & Renderer Lib"
 Cohesion: 0.11
 Nodes (19): __dirname, useChat Hook, useDocuments Hook, useModels Hook, useSandbox Hook, useSettings Hook, AgentRuns Page, AuditLog Page (+11 more)
 
 ### Community 5 - "Agent Tools Registry"
-Cohesion: 0.06
-Nodes (58): classifyTarget(), extractHost(), isLocalTarget(), isPrivateIpv4(), TargetScope, analysisTool, browserTool, BurpSuiteCliArgsSchema (+50 more)
+Cohesion: 0.07
+Nodes (49): analysisTool, browserTool, BurpSuiteCliArgsSchema, burpSuiteCliTool, documentTool, filesystemTool, GobusterArgsSchema, gobusterTool (+41 more)
 
 ### Community 6 - "Project Metadata"
 Cohesion: 0.05
-Nodes (38): dependencies, better-sqlite3, yaml, zod, zustand, devDependencies, electron, electron-builder (+30 more)
+Nodes (40): dependencies, better-sqlite3, lucide-react, @xyflow/react, yaml, zod, zustand, devDependencies (+32 more)
 
 ### Community 7 - "Main Process & IPC Entry"
 Cohesion: 1.00
@@ -210,8 +221,8 @@ Cohesion: 0.18
 Nodes (21): AuditTrail, Badge, Button, Dialog, Input, LimitsEditor, ModelCatalog, ModelDownloadProgress (+13 more)
 
 ### Community 13 - "Model IPC Handlers"
-Cohesion: 0.27
-Nodes (11): chatsRepo(), handleChatCreate(), handleChatDelete(), handleChatList(), handleMessageCreate(), handleMessageList(), messagesRepo(), ChatCreatePayloadSchema (+3 more)
+Cohesion: 0.22
+Nodes (13): chatsRepo(), handleChatCreate(), handleChatDelete(), handleChatList(), handleMessageCreate(), handleMessageList(), messagesRepo(), ChatCreatePayloadSchema (+5 more)
 
 ### Community 18 - "Module 18"
 Cohesion: 0.15
@@ -234,16 +245,16 @@ Cohesion: 0.31
 Nodes (11): RAG Chunker, Code Document Loader, RAG Embeddings, HTML Document Loader, RAG Ingest Pipeline, Markdown Document Loader, PDF Document Loader, RAG Reranker (+3 more)
 
 ### Community 24 - "Module 24"
-Cohesion: 0.09
-Nodes (20): __dirnameFallback(), loadJsonConfig(), ApprovalInsert, ApprovalRow, ApprovalsRepository, FilesystemScope, isSensitive(), ScopeCheck (+12 more)
+Cohesion: 0.14
+Nodes (17): __dirnameFallback(), loadJsonConfig(), FilesystemScope, isSensitive(), ScopeCheck, SENSITIVE_PREFIXES, boolAlias(), DEFAULT_SANDBOX_POLICY (+9 more)
 
 ### Community 26 - "Module 26"
 Cohesion: 0.06
 Nodes (35): For --cluster-only, For git commit hook, For /graphify add, For /graphify explain, For /graphify path, For /graphify query, For native CLAUDE.md integration, For --update (incremental re-extraction) (+27 more)
 
 ### Community 28 - "Module 28"
-Cohesion: 0.22
-Nodes (5): ActiveRun, DEFAULT_RUN_OPTIONS, toPublicStatus(), AgentRunStateRepository, AgentRun
+Cohesion: 0.16
+Nodes (8): ActiveRun, AgentOrchestrator, DEFAULT_RUN_OPTIONS, toPublicStatus(), AgentRunStateRepository, AgentRun, ReactLoopOptions, ModelConfigInput
 
 ### Community 29 - "Module 29"
 Cohesion: 0.67
@@ -262,8 +273,8 @@ Cohesion: 0.06
 Nodes (30): For --cluster-only, For git commit hook, For /graphify add, For /graphify explain, For /graphify path, For /graphify query, For native CLAUDE.md integration, For --update (incremental re-extraction) (+22 more)
 
 ### Community 34 - "Module 34"
-Cohesion: 0.27
-Nodes (5): SandboxAuditRepository, SandboxAuditRow, SandboxAuditRecord, ToolIntentKind, ToolResultStatus
+Cohesion: 0.12
+Nodes (13): SandboxAuditRepository, SandboxAuditRow, noopAuditSink, SandboxAuditSink, summarizeIntent(), truncateForAudit(), ApprovalDecision, SandboxAuditRecord (+5 more)
 
 ### Community 37 - "Module 37"
 Cohesion: 1.00
@@ -286,32 +297,32 @@ Cohesion: 0.67
 Nodes (3): Shared Constants, Shared Errors, Shared Schemas
 
 ### Community 87 - "Module 87"
-Cohesion: 0.16
-Nodes (10): AgentRunStepsRepository, dbStepType(), AgentActionEntry, AgentCheckpoint, AgentMemoryEntry, AgentRiskFindingView, AgentStoreState, useAgentStore (+2 more)
+Cohesion: 0.19
+Nodes (9): AgentRunsProps, DashboardProps, AgentRunStepsRepository, dbStepType(), AgentGetPayload, AgentRunStep, AgentStopPayload, ReasoningStep (+1 more)
 
 ### Community 88 - "Module 88"
-Cohesion: 0.33
-Nodes (7): parseNmapOutput(), BaseToolIntent, BrowserToolIntent, FilesystemToolIntent, GenericToolIntent, NetworkToolIntent, NmapPort
+Cohesion: 0.26
+Nodes (8): parseNmapOutput(), BaseToolIntent, BrowserToolIntent, FilesystemToolIntent, GenericToolIntent, NetworkToolIntent, NmapPort, allowAll
 
 ### Community 89 - "Module 89"
-Cohesion: 0.23
-Nodes (13): buildPrompt(), buildEnvironmentPrompt(), cache, detectTool(), detectTools(), forcedUnavailable, isToolAvailable(), markToolUnavailable() (+5 more)
+Cohesion: 0.20
+Nodes (14): buildPrompt(), buildEnvironmentPrompt(), cache, detectTool(), detectTools(), forcedUnavailable, isToolAvailable(), markToolUnavailable() (+6 more)
 
 ### Community 90 - "Module 90"
-Cohesion: 0.19
-Nodes (6): ApprovalDialog(), ApprovalDialogProps, RISK_COLORS, useCountdown(), ApprovalQueue(), DECISION_STYLE
+Cohesion: 0.06
+Nodes (13): BottomTab, NexusNode, NexusNodeData, NODE_ICON, NodeKind, ParsedReport, RiskPriority, STATUS_COPY (+5 more)
 
 ### Community 96 - "Module 96"
-Cohesion: 0.32
-Nodes (9): approvalTtlMs(), getApprovalService(), getApprovalTimeouts(), handleApprovalApprove(), handleApprovalList(), handleApprovalReject(), readDecisionPayload(), registerApprovalEventForwarding() (+1 more)
+Cohesion: 0.28
+Nodes (10): approvalTtlMs(), getApprovalService(), getApprovalTimeouts(), handleApprovalApprove(), handleApprovalList(), handleApprovalReject(), readDecisionPayload(), registerApprovalEventForwarding() (+2 more)
 
 ### Community 118 - "Module 118"
 Cohesion: 0.20
 Nodes (14): classifyExposure(), countBy(), dedupePorts(), formatBind(), formatSummaryRow(), IMPORTANT_PORTS, isPrivateIpv4(), normalizeAddress() (+6 more)
 
 ### Community 121 - "Module 121"
-Cohesion: 0.13
-Nodes (16): immediateError(), ALLOWED_ENV_KEYS, buildMinimalEnv(), DEFAULT_LIMITS, loadLimits(), normalizeLimits(), positiveOr(), resolveTimeout() (+8 more)
+Cohesion: 0.12
+Nodes (15): immediateError(), ALLOWED_ENV_KEYS, buildMinimalEnv(), DEFAULT_LIMITS, loadLimits(), normalizeLimits(), positiveOr(), resolveTimeout() (+7 more)
 
 ### Community 122 - "Module 122"
 Cohesion: 0.16
@@ -322,16 +333,16 @@ Cohesion: 0.16
 Nodes (7): ChatsRepository, MessagesRepository, Chat, ChatRole, CreateChatPayload, CreateMessagePayload, Message
 
 ### Community 124 - "Module 124"
-Cohesion: 0.12
-Nodes (11): AgentOrchestratorOptions, RunReactLoopOptions, DEFAULT_MODEL_CONFIG, ChatChunk, ModelInfo, ModelProvider, ModelProviderType, ModelRuntimeDevice (+3 more)
+Cohesion: 0.11
+Nodes (12): AgentOrchestratorOptions, RunReactLoopOptions, MODEL_CATALOG, DEFAULT_MODEL_CONFIG, ChatChunk, ModelCatalogEntry, ModelInfo, ModelProvider (+4 more)
 
 ### Community 125 - "Module 125"
-Cohesion: 0.13
-Nodes (27): accessibilityWeight(), cleanVersion(), CRITICAL_SERVICES, highestRiskPriority(), impactWeight(), isPrivateIp(), mergeRiskInputs(), normalizeService() (+19 more)
+Cohesion: 0.15
+Nodes (25): accessibilityWeight(), cleanVersion(), CRITICAL_SERVICES, highestRiskPriority(), impactWeight(), isPrivateIp(), mergeRiskInputs(), normalizeService() (+17 more)
 
 ### Community 126 - "Community 126"
-Cohesion: 0.24
-Nodes (7): ApprovalCapableExecutor, ApprovalCoordinator, ApprovalTimeouts, IntentExecutor, fakeExecutor(), intent, result()
+Cohesion: 0.52
+Nodes (5): classifyTarget(), extractHost(), isLocalTarget(), isPrivateIpv4(), TargetScope
 
 ### Community 128 - "Module 128"
 Cohesion: 0.18
@@ -342,32 +353,48 @@ Cohesion: 0.33
 Nodes (5): AnyChannel, EventChannel, EventChannels, InvokeChannel, InvokeChannels
 
 ### Community 160 - "Module 160"
-Cohesion: 0.22
-Nodes (4): ApprovalEmitter, ApprovalQueue, PendingEntry, ApprovalRequest
+Cohesion: 0.06
+Nodes (34): ApprovalDialog(), ApprovalDialogProps, RISK_COLORS, useCountdown(), DECISION_LABEL, DECISION_STYLE, ApprovalCapableExecutor, ApprovalCoordinator (+26 more)
 
 ### Community 161 - "Community 161"
 Cohesion: 0.21
-Nodes (17): buildGroundedFinal(), buildMaxStepsFinal(), buildNoToolFinal(), buildRecommendationBullets(), buildRiskBullets(), buildStructuredFinalReport(), dedupeReportRecommendations(), dedupeSocketsForDisplay() (+9 more)
+Nodes (17): buildGroundedFinal(), buildMaxStepsFinal(), buildObservedServiceRiskInputs(), buildRecommendationBullets(), buildRiskBullets(), buildStructuredFinalReport(), dedupeReportRecommendations(), extractNetstatSocketObservations() (+9 more)
 
-### Community 202 - "Community 202"
+### Community 177 - "Module 177"
+Cohesion: 0.17
+Nodes (13): AppShell(), AppShellProps, ThemeMode, ICONS, Sidebar(), SidebarProps, StatusBar(), StatusBarProps (+5 more)
+
+### Community 178 - "Module 178"
+Cohesion: 0.18
+Nodes (10): AGENT_LABEL, AgentUiState, getAgentBadge(), getModelBadge(), Header(), HeaderProps, ThemeMode, BadgeTone (+2 more)
+
+### Community 192 - "Module 192"
 Cohesion: 0.20
-Nodes (11): MODEL_CATALOG, api, Window, AgentStartPayload, AgentEventMap, ApprovalEventMap, ExposedApi, IpcChannel (+3 more)
+Nodes (7): SettingsProps, ThemeMode, Button(), ButtonProps, ButtonSize, ButtonVariant, DialogProps
+
+### Community 194 - "Module 194"
+Cohesion: 0.22
+Nodes (7): ModelRuntimeDevice, Input(), InputProps, Textarea(), TextareaProps, Select(), SelectProps
+
+### Community 198 - "Module 198"
+Cohesion: 0.50
+Nodes (3): TabItem, Tabs(), TabsProps
+
+### Community 208 - "Module 208"
+Cohesion: 0.10
+Nodes (22): agentNodeStatus(), AgentRuns(), AgentUiState, BOTTOM_TABS, BottomTab, buildGraphNodes(), duration(), EDGES (+14 more)
 
 ### Community 209 - "Community 209"
 Cohesion: 0.08
-Nodes (26): buildObservedServiceRiskInputs(), collectProviderResponse(), DEFAULT_OPTIONS, delay(), describeToolAction(), enforceGrounding(), enforceVulnerabilityGrounding(), extractBalancedJsonObjects() (+18 more)
-
-### Community 218 - "Community 218"
-Cohesion: 0.36
-Nodes (3): AgentOrchestrator, ReactLoopOptions, ModelConfigInput
+Nodes (25): buildNoToolFinal(), collectProviderResponse(), dedupeSocketsForDisplay(), DEFAULT_OPTIONS, delay(), describeToolAction(), enforceGrounding(), enforceVulnerabilityGrounding() (+17 more)
 
 ### Community 220 - "Community 220"
-Cohesion: 0.30
-Nodes (5): ApprovalService, useApproval, ApprovalStoreState, useApprovalStore, ApprovalRequestView
+Cohesion: 0.25
+Nodes (3): ApprovalInsert, ApprovalRow, ApprovalsRepository
 
 ### Community 229 - "Community 229"
-Cohesion: 0.23
-Nodes (8): ApprovalEventName, toApprovalView(), ApprovalOutcome, ApprovalPersistence, ApprovalRequestInput, noopAuditSink, summarizeIntent(), truncateForAudit()
+Cohesion: 0.29
+Nodes (8): agentTone(), App(), DashboardView(), ModelsView(), modelTone(), renderRoute(), riskTone(), viewTitle()
 
 ### Community 244 - "Community 244"
 Cohesion: 0.28
@@ -378,44 +405,60 @@ Cohesion: 0.43
 Nodes (4): db, migrationsDir, initDb(), runMigrations()
 
 ### Community 269 - "Community 269"
-Cohesion: 0.21
-Nodes (6): SandboxAuditSink, extractHost(), TcpPortProbeInput, TcpPortProber, TcpPortProbeResult, allowAll
+Cohesion: 0.32
+Nodes (4): extractHost(), TcpPortProbeInput, TcpPortProber, TcpPortProbeResult
+
+### Community 273 - "Community 273"
+Cohesion: 0.40
+Nodes (5): buildFlow(), createEdge(), createNode(), NexusGraphNode(), summarize()
 
 ### Community 275 - "Community 275"
-Cohesion: 0.13
-Nodes (9): initSettingsService(), settingsService, handleSettingsGet(), handleSettingsGetAll(), handleSettingsSet(), SettingsRepository, Result, SettingsGetPayloadSchema (+1 more)
+Cohesion: 0.22
+Nodes (3): initSettingsService(), settingsService, SettingsRepository
+
+### Community 279 - "Community 279"
+Cohesion: 0.50
+Nodes (4): ApprovalCard(), normalizePriority(), RiskBadge(), useCountdown()
+
+### Community 284 - "Community 284"
+Cohesion: 0.67
+Nodes (3): ObservedServiceRiskInput, RiskFinding, NetworkExposure
 
 ### Community 285 - "Community 285"
-Cohesion: 0.08
-Nodes (23): ModelDownloader, safeFilename(), findFreePort(), getActiveRuntimeModelConfig(), LlamaCppRuntime, sleep(), LocalModelRegistry, defaultLlamaServerCandidates() (+15 more)
+Cohesion: 0.06
+Nodes (32): ModelDownloader, safeFilename(), findFreePort(), getActiveRuntimeModelConfig(), LlamaCppRuntime, sleep(), LocalModelRegistry, defaultLlamaServerCandidates() (+24 more)
 
 ### Community 286 - "Community 286"
-Cohesion: 0.36
-Nodes (3): AgentRunRecord, AgentRunsRepository, AgentState
+Cohesion: 0.16
+Nodes (8): AgentRunRecord, AgentRunsRepository, AgentActionEntry, AgentCheckpoint, AgentMemoryEntry, AgentRiskFindingView, AgentStoreState, AgentState
+
+### Community 287 - "Community 287"
+Cohesion: 0.67
+Nodes (3): fallbackReportText(), highestRisk(), RiskReportView()
 
 ### Community 291 - "Community 291"
 Cohesion: 0.13
 Nodes (14): ⚠️ Cadre d'utilisation, Chaîne canonique, Documentation, Démarrage, Fonctionnalités, Installation, Licence, Nexus (+6 more)
 
 ## Knowledge Gaps
-- **344 isolated node(s):** `PreToolUse`, `allow`, `PreToolUse`, `defaultDecision`, `criticalPatterns` (+339 more)
+- **388 isolated node(s):** `PreToolUse`, `allow`, `PreToolUse`, `defaultDecision`, `criticalPatterns` (+383 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **62 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **65 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `LocalModelRecord` connect `Community 285` to `Agent Memory & Orchestration`, `Community 202`, `Module 90`, `Module 124`?**
-  _High betweenness centrality (0.016) - this node is a cross-community bridge._
-- **Why does `MemoryManager` connect `Local HTTP Provider` to `Module 124`, `Community 209`, `Community 218`, `Module 28`?**
+- **Why does `LocalModelRecord` connect `Community 285` to `Agent Memory & Orchestration`, `Module 194`, `Module 124`, `Module 90`?**
+  _High betweenness centrality (0.014) - this node is a cross-community bridge._
+- **Why does `ToolIntent` connect `Module 21` to `Module 160`, `Model Download & Runtime`, `Module 34`, `Approval & Sandbox Policy`, `Agent Tools Registry`, `Module 88`, `Module 121`?**
+  _High betweenness centrality (0.014) - this node is a cross-community bridge._
+- **Why does `MemoryManager` connect `Local HTTP Provider` to `Module 124`, `Community 209`, `Module 28`?**
   _High betweenness centrality (0.012) - this node is a cross-community bridge._
-- **Why does `LlamaCppRuntime` connect `Community 285` to `Agent Memory & Orchestration`?**
-  _High betweenness centrality (0.011) - this node is a cross-community bridge._
 - **What connects `PreToolUse`, `allow`, `PreToolUse` to the rest of the system?**
-  _344 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _388 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Model Download & Runtime` be split into smaller, more focused modules?**
-  _Cohesion score 0.11954022988505747 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.11742424242424243 - nodes in this community are weakly interconnected._
 - **Should `Approval & Sandbox Policy` be split into smaller, more focused modules?**
-  _Cohesion score 0.09523809523809523 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.11764705882352941 - nodes in this community are weakly interconnected._
 - **Should `Build Config & Renderer Lib` be split into smaller, more focused modules?**
   _Cohesion score 0.10666666666666667 - nodes in this community are weakly interconnected._

@@ -8,6 +8,8 @@ import { setDb } from './storage/db-client.js'
 import { getDbPath, getMigrationsDir } from './config/paths.js'
 import { registerIpcHandlers } from './ipc/router.js'
 
+app.setName('NEXUS')
+
 const configDir = join(app.getAppPath(), 'config')
 const config = loadConfig(configDir)
 console.log(`[init] config loaded — logLevel=${config.app.logLevel}`)

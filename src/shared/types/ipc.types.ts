@@ -43,6 +43,7 @@ export type IpcChannel =
   | 'model:list'
   | 'model:selectGguf'
   | 'model:selectLlamaServer'
+  | 'model:detectMmproj'
   | 'model:registerLocal'
   | 'model:download'
   | 'model:load'
@@ -93,6 +94,8 @@ export interface ExposedApi {
     list(): Promise<Result<LocalModelRecord[]>>
     selectGguf(): Promise<Result<{ path: string } | null>>
     selectLlamaServer(): Promise<Result<{ path: string } | null>>
+    /** Auto-detects an mmproj*.gguf projector next to the given GGUF model path. */
+    detectMmproj(ggufPath: string): Promise<Result<{ path: string } | null>>
     registerLocal(path: string, name?: string): Promise<Result<LocalModelRecord>>
     download(request: ModelDownloadRequest): Promise<Result<LocalModelRecord>>
     load(options: ModelLoadOptions): Promise<Result<ModelRuntimeStatus>>

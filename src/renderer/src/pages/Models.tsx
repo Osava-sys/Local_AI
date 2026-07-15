@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Cpu, FolderOpen, Package, Play, Square } from 'lucide-react'
 import type {
   LocalModelRecord,
@@ -17,6 +17,8 @@ export default function Models(): React.ReactElement {
   const [ggufPath, setGgufPath] = useState('')
   const [llamaServerPath, setLlamaServerPath] = useState('')
   const [mmprojPath, setMmprojPath] = useState('')
+  const [mmprojAuto, setMmprojAuto] = useState(false)
+  const mmprojTouchedRef = useRef(false)
   const [device, setDevice] = useState<ModelRuntimeDevice>('gpu')
   const [gpuLayers, setGpuLayers] = useState(35)
   const [contextLength, setContextLength] = useState(32768)
@@ -27,6 +29,27 @@ export default function Models(): React.ReactElement {
     const offRuntime = window.api.model.on('runtimeState', value => setRuntime(value))
     return () => offRuntime()
   }, [])
+
+  // Auto-detect the mmproj projector sitting next to the chosen GGUF (LM Studio
+  // pairs a vision model with its mmproj in the same folder). We never overwrite
+  // a path the user typed themselves.
+  useEffect(() => {
+    if (mmprojTouchedRef.current) return
+    if (!ggufPath.toLowerCase().endsWith('.gguf')) return
+    let cancelled = false
+    const timer = setTimeout(async () => {
+      const result = await window.api.model.detectMmproj(ggufPath)
+      if (cancelled || mmprojTouchedRef.current) return
+      if (result.ok && result.value) {
+        setMmprojPath(result.value.path)
+        setMmprojAuto(true)
+      }
+    }, 350)
+    return () => {
+      cancelled = true
+      clearTimeout(timer)
+    }
+  }, [ggufPath])
 
   async function refresh(): Promise<void> {
     const [listResult, statusResult] = await Promise.all([window.api.model.list(), window.api.model.status()])
@@ -40,7 +63,13 @@ export default function Models(): React.ReactElement {
 
   async function selectGguf(): Promise<void> {
     const result = await window.api.model.selectGguf()
-    if (result.ok && result.value) setGgufPath(result.value.path)
+    if (result.ok && result.value) {
+      // A fresh pick re-enables auto-detection for the sibling mmproj.
+      mmprojTouchedRef.current = false
+      setMmprojAuto(false)
+      setMmprojPath('')
+      setGgufPath(result.value.path)
+    }
   }
 
   async function selectLlamaServer(): Promise<void> {
@@ -181,7 +210,21 @@ export default function Models(): React.ReactElement {
                 <Input label="llama-server path" placeholder="optional" value={llamaServerPath} onChange={event => setLlamaServerPath(event.target.value)} />
               </div>
               <div style={{ gridColumn: 'span 3' }}>
-                <Input label="mmproj path" placeholder="optional" value={mmprojPath} onChange={event => setMmprojPath(event.target.value)} />
+                <Input
+                  label="mmproj path"
+                  placeholder="auto-détecté"
+                  value={mmprojPath}
+                  onChange={event => {
+                    mmprojTouchedRef.current = true
+                    setMmprojAuto(false)
+                    setMmprojPath(event.target.value)
+                  }}
+                />
+                {mmprojAuto && (
+                  <span className="muted" style={{ display: 'block', marginTop: 6, fontSize: 11 }}>
+                    ✓ projecteur vision détecté automatiquement
+                  </span>
+                )}
               </div>
             </div>
             <div className="toolbar-line" style={{ marginTop: 16, justifyContent: 'flex-start' }}>

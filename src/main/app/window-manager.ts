@@ -1,10 +1,23 @@
 import { BrowserWindow } from 'electron'
+import { existsSync } from 'fs'
 import { join } from 'path'
 
+/** Resolves the packaged app icon, tolerating dev (source tree) and prod (asar) layouts. */
+function resolveAppIcon(): string | undefined {
+  const candidates = [
+    join(import.meta.dirname, '../../resources/icon.png'),
+    join(process.resourcesPath ?? '', 'icon.png'),
+  ]
+  return candidates.find(candidate => candidate && existsSync(candidate))
+}
+
 export function createMainWindow(): BrowserWindow {
+  const icon = resolveAppIcon()
   const win = new BrowserWindow({
     width: 1280,
     height: 800,
+    title: 'NEXUS',
+    ...(icon ? { icon } : {}),
     webPreferences: {
       preload: join(import.meta.dirname, '../preload/index.cjs'),
       contextIsolation: true,

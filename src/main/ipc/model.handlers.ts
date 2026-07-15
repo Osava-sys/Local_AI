@@ -9,6 +9,7 @@ import {
 } from '@shared/validation/model.schema'
 import { listCatalogModels } from '../models/catalog'
 import { ModelDownloader } from '../models/downloader'
+import { detectMmproj } from '../models/mmproj'
 import { LlamaCppRuntime } from '../models/model-runtime'
 import { LocalModelRegistry } from '../models/registry'
 import { getDb } from '../storage/db-client'
@@ -41,6 +42,15 @@ export async function handleModelSelectGguf(): Promise<Result<{ path: string } |
 
   if (result.canceled || result.filePaths.length === 0) return { ok: true, value: null }
   return { ok: true, value: { path: result.filePaths[0] } }
+}
+
+export function handleModelDetectMmproj(_event: IpcMainInvokeEvent, payload: unknown): Result<{ path: string } | null> {
+  const ggufPath = (payload as { ggufPath?: unknown } | null)?.ggufPath
+  if (typeof ggufPath !== 'string' || ggufPath.trim().length === 0) {
+    return { ok: true, value: null }
+  }
+  const match = detectMmproj(ggufPath)
+  return { ok: true, value: match ? { path: match } : null }
 }
 
 export async function handleModelSelectLlamaServer(): Promise<Result<{ path: string } | null>> {
