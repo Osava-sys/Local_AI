@@ -41,6 +41,8 @@ export default defineConfig({
       'tests/unit/gobuster-tool.test.ts',
       'tests/unit/react-loop.test.ts',
       'tests/unit/curl-parser.test.ts',
+      'tests/unit/execution-graph.test.ts',
+      'tests/unit/mission-preferences.test.ts',
       'tests/integration/sandbox-runner.test.ts',
     ],
   },

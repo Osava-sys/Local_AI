@@ -34,6 +34,15 @@
   --node-done: #4dc088;
   --focus-ring: rgb(78 161 242 / 0.32);
   --scrollbar: #2b343d;
+  --sidebar-background: #0e1217;
+  --sidebar-foreground: #dce6ee;
+  --sidebar-muted: #71808d;
+  --sidebar-primary: #4ea1f2;
+  --sidebar-primary-foreground: #d9ecff;
+  --sidebar-accent: #13263d;
+  --sidebar-border: #202832;
+  --sidebar-ring: rgb(78 161 242 / 0.34);
+  --sidebar-rail-hover: #171e26;
 
   /* NEXUS brand gradient (sky → royal blue, sampled from the logo) */
   --brand-from: #6cc0f6;
@@ -91,6 +100,15 @@
   --node-done: #1d9a62;
   --focus-ring: rgb(31 110 245 / 0.28);
   --scrollbar: #c4cfd9;
+  --sidebar-background: #f8fafc;
+  --sidebar-foreground: #1b2733;
+  --sidebar-muted: #718091;
+  --sidebar-primary: #1f6ef5;
+  --sidebar-primary-foreground: #124ba9;
+  --sidebar-accent: #e5effd;
+  --sidebar-border: #d8e1e9;
+  --sidebar-ring: rgb(31 110 245 / 0.28);
+  --sidebar-rail-hover: #edf2f6;
 
   --brand-from: #6cc0f6;
   --brand-mid: #2f80ed;

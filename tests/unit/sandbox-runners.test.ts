@@ -88,6 +88,42 @@ describe('SandboxExecutor — workspace discovery runner', () => {
 })
 
 describe('SandboxExecutor — shell observation compaction', () => {
+  it('compacts ipconfig output into structured network evidence', async () => {
+    const { executor, run } = makeExecutor()
+    run.mockResolvedValue({
+      id: 'ipconfig-1',
+      kind: 'shell',
+      status: 'success',
+      stdout: [
+        'Configuration IP de Windows',
+        '',
+        '   Nom de l’hôte . . . . . . . . . . : LAPTOP-NEXUS',
+        '',
+        'Carte réseau sans fil Wi-Fi :',
+        '   DHCP activé. . . . . . . . . . . . : Oui',
+        '   Adresse IPv4. . . . . . . . . . . .: 192.168.1.42(préféré)',
+        '   Passerelle par défaut. . . . . . .  : 192.168.1.1',
+      ].join('\n'),
+      stderr: '',
+      observation: 'raw ipconfig output',
+      exitCode: 0,
+      startedAt: 'a',
+      endedAt: 'b',
+      durationMs: 4,
+    })
+
+    const result = await executor.execute({
+      id: 'ipconfig-1',
+      kind: 'shell',
+      command: 'ipconfig /all',
+    })
+
+    expect(result.observation).toContain('Windows network configuration summary')
+    expect(result.observation).toContain('Host: LAPTOP-NEXUS')
+    expect(result.observation).toContain('IPv4: 192.168.1.42')
+    expect(result.metadata).toHaveProperty('ipconfig.adapters.0.status', 'connected')
+  })
+
   it('keeps curl verbose headers emitted on stderr', async () => {
     const { executor, run } = makeExecutor()
     run.mockResolvedValue({

@@ -1,8 +1,10 @@
-import { FileWarning } from 'lucide-react'
+import { FileDown, FileWarning } from 'lucide-react'
 import type { AgentRunStep } from '@shared/types/agent.types'
 import { useAgentStore } from '../stores/agent.store'
 import { extractReport, riskTone } from '../lib/report'
+import { downloadReportWord } from '../lib/report-export'
 import { Badge } from '../components/ui/Badge'
+import { Button } from '../components/ui/Button'
 import { StructuredReport } from '../components/reports/StructuredReport'
 
 export default function RiskReports(): React.ReactElement {
@@ -28,10 +30,18 @@ export default function RiskReports(): React.ReactElement {
             <h1>Rapports de risque</h1>
             <p>Findings priorisés et recommandations issus des observations du run.</p>
           </div>
-          <Badge tone={count > 0 ? 'warning' : 'success'}>
-            <FileWarning size={13} />
-            {count} finding{count > 1 ? 's' : ''}
-          </Badge>
+          <div className="header-cluster">
+            <Badge tone={count > 0 ? 'warning' : 'success'}>
+              <FileWarning size={13} />
+              {count} finding{count > 1 ? 's' : ''}
+            </Badge>
+            {report && (
+              <Button variant="primary" onClick={() => downloadReportWord(report)}>
+                <FileDown size={15} />
+                Télécharger (Word)
+              </Button>
+            )}
+          </div>
         </div>
       </div>
 

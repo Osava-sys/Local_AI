@@ -2,8 +2,24 @@ import { AlertTriangle, Bot, ClipboardCheck, Package, ShieldCheck } from 'lucide
 import type { AgentRunStep, AgentState } from '@shared/types/agent.types'
 import type { ModelRuntimeStatus } from '@shared/types/model.types'
 import type { AppRouteId } from '../routes'
-import { Badge } from '../components/ui/Badge'
+import { Badge, type BadgeTone } from '../components/ui/Badge'
 import { Button } from '../components/ui/Button'
+import { StepContent } from '../components/reports/StructuredReport'
+
+const STEP_LABEL: Record<string, string> = {
+  thought: 'Raisonnement',
+  reason: 'Raisonnement',
+  action: 'Action',
+  act: 'Action',
+  observation: 'Observation',
+  observe: 'Observation',
+}
+
+function stepTone(type: string): BadgeTone {
+  if (type === 'action' || type === 'act') return 'accent'
+  if (type === 'observation' || type === 'observe') return 'success'
+  return 'neutral'
+}
 
 interface DashboardProps {
   agentState: AgentState | 'starting'
@@ -99,13 +115,33 @@ export default function Dashboard({
             </div>
           </div>
           <div className="panel-body">
-            {steps.slice(-5).reverse().map(step => (
-              <div className="dashboard-row" key={step.id ?? `${step.type}-${step.timestamp}`}>
-                <strong>{step.type}</strong>
-                <span className="muted">{step.content}</span>
-              </div>
-            ))}
-            {steps.length === 0 && <p className="muted">No live run events yet.</p>}
+            {steps.length === 0 ? (
+              <p className="muted">Aucun évènement de run.</p>
+            ) : (
+              <ol className="timeline">
+                {steps
+                  .slice(-5)
+                  .reverse()
+                  .map(step => (
+                    <li
+                      className="timeline-item"
+                      data-tone={stepTone(step.type)}
+                      key={step.id ?? `${step.type}-${step.timestamp}`}
+                    >
+                      <div className="timeline-marker" />
+                      <div className="timeline-body">
+                        <div className="timeline-head">
+                          <Badge tone={stepTone(step.type)}>{STEP_LABEL[step.type] ?? step.type}</Badge>
+                          <time className="mono muted">
+                            {new Date(step.timestamp).toLocaleTimeString('fr-FR', { hour12: false })}
+                          </time>
+                        </div>
+                        <StepContent content={step.content} />
+                      </div>
+                    </li>
+                  ))}
+              </ol>
+            )}
           </div>
         </section>
       </div>

@@ -3,6 +3,14 @@ import type { AgentState } from '@shared/types/agent.types'
 import type { ModelRuntimeStatus } from '@shared/types/model.types'
 import { AppShell } from './components/layout/AppShell'
 import { useApproval } from './hooks/use-approval'
+import {
+  DEFAULT_AGENT_PREFERENCES,
+  buildMissionPrompt,
+  readAgentPreferences,
+  resolveAgentExecutionOptions,
+  type AgentPreferences,
+  type PromptSubmission,
+} from './lib/mission-preferences'
 import { useAgentStore } from './stores/agent.store'
 import type { AppRouteId } from './routes'
 import AgentRuns from './pages/AgentRuns'
@@ -23,59 +31,66 @@ export default function App(): React.ReactElement {
   const [activeRoute, setActiveRoute] = useState<AppRouteId>('agent-runs')
   const [theme, setTheme] = useState<ThemeMode>('dark')
   const [prompt, setPrompt] = useState(DEFAULT_PROMPT)
+  const [agentPreferences, setAgentPreferences] =
+    useState<AgentPreferences>(DEFAULT_AGENT_PREFERENCES)
   const [modelStatus, setModelStatus] = useState<ModelRuntimeStatus | null>(null)
   const [lastMessage, setLastMessage] = useState<string | null>(null)
 
   const { pending, recent } = useApproval()
-  const currentRunId = useAgentStore(state => state.currentRunId)
-  const agentState = useAgentStore(state => state.state)
-  const steps = useAgentStore(state => state.steps)
-  const error = useAgentStore(state => state.error)
-  const setRun = useAgentStore(state => state.setRun)
-  const setAgentState = useAgentStore(state => state.setState)
-  const setError = useAgentStore(state => state.setError)
-  const appendStep = useAgentStore(state => state.appendStep)
-  const clearSteps = useAgentStore(state => state.clearSteps)
-  const resetSession = useAgentStore(state => state.resetSession)
+  const currentRunId = useAgentStore((state) => state.currentRunId)
+  const agentState = useAgentStore((state) => state.state)
+  const steps = useAgentStore((state) => state.steps)
+  const error = useAgentStore((state) => state.error)
+  const setRun = useAgentStore((state) => state.setRun)
+  const setAgentState = useAgentStore((state) => state.setState)
+  const setError = useAgentStore((state) => state.setError)
+  const appendStep = useAgentStore((state) => state.appendStep)
+  const clearSteps = useAgentStore((state) => state.clearSteps)
+  const resetSession = useAgentStore((state) => state.resetSession)
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme
   }, [theme])
 
   useEffect(() => {
-    window.api.settings.get('theme').then(result => {
-      if (result.ok && (result.value === 'light' || result.value === 'dark')) {
-        setTheme(result.value)
+    window.api.settings.getAll().then((result) => {
+      if (result.ok) {
+        if (result.value.theme === 'light' || result.value.theme === 'dark') {
+          setTheme(result.value.theme)
+        }
+        setAgentPreferences(readAgentPreferences(result.value))
       }
     })
-    window.api.model.status().then(result => {
+    window.api.model.status().then((result) => {
       if (result.ok) setModelStatus(result.value)
     })
 
-    const offStep = window.api.agent.on('step', step => {
+    const offStep = window.api.agent.on('step', (step) => {
       appendStep(step)
       if (step.runId) setRun(step.runId)
       setLastMessage(`${step.type}: ${step.content.slice(0, 120)}`)
     })
-    const offState = window.api.agent.on('state', payload => {
+    const offState = window.api.agent.on('state', (payload) => {
       setRun(payload.runId)
       setAgentState(asAgentState(payload.state))
       setLastMessage(`Agent state: ${payload.state}`)
     })
-    const offError = window.api.agent.on('error', payload => {
+    const offError = window.api.agent.on('error', (payload) => {
       setError(payload.error)
       setAgentState('error')
       setLastMessage(payload.error)
     })
-    const offRuntime = window.api.model.on('runtimeState', status => {
+    const offRuntime = window.api.model.on('runtimeState', (status) => {
       setModelStatus(status)
-      setLastMessage(status.state === 'running' ? `Model loaded: ${status.modelName}` : `Model ${status.state}`)
+      setLastMessage(
+        status.state === 'running' ? `Model loaded: ${status.modelName}` : `Model ${status.state}`
+      )
     })
-    const offDownload = window.api.model.on('downloadProgress', progress => {
+    const offDownload = window.api.model.on('downloadProgress', (progress) => {
       setLastMessage(
         progress.percent === null
           ? `Downloading ${progress.filename}`
-          : `Downloading ${progress.filename}: ${progress.percent}%`,
+          : `Downloading ${progress.filename}: ${progress.percent}%`
       )
     })
 
@@ -90,33 +105,34 @@ export default function App(): React.ReactElement {
 
   const handleThemeChange = useCallback((nextTheme: ThemeMode) => {
     setTheme(nextTheme)
-    void window.api.settings.set('theme', nextTheme).then(result => {
+    void window.api.settings.set('theme', nextTheme).then((result) => {
       if (!result.ok) setLastMessage(result.error)
     })
   }, [])
 
-  const handleStart = useCallback(async () => {
-    const runPrompt = prompt.trim() || DEFAULT_PROMPT
-    setActiveRoute('agent-runs')
-    clearSteps()
-    setError(null)
-    setAgentState('starting')
+  const handleStart = useCallback(
+    async (submission?: PromptSubmission) => {
+      const runPrompt = prompt.trim() || DEFAULT_PROMPT
+      const effectivePrompt = buildMissionPrompt(runPrompt, submission)
+      const executionOptions = resolveAgentExecutionOptions(agentPreferences, submission)
+      setActiveRoute('agent-runs')
+      clearSteps()
+      setError(null)
+      setAgentState('starting')
 
-    const result = await window.api.agent.start('default', runPrompt, {
-      maxSteps: 10,
-      timeoutPerStep: 30000,
-      totalTimeout: 300000,
-    })
+      const result = await window.api.agent.start('default', effectivePrompt, executionOptions)
 
-    if (result.ok) {
-      setRun(result.value.runId)
-      setLastMessage(`Agent run started: ${result.value.runId}`)
-    } else {
-      setError(result.error)
-      setAgentState('error')
-      setLastMessage(result.error)
-    }
-  }, [clearSteps, prompt, setAgentState, setError, setRun])
+      if (result.ok) {
+        setRun(result.value.runId)
+        setLastMessage(`Agent run started: ${result.value.runId}`)
+      } else {
+        setError(result.error)
+        setAgentState('error')
+        setLastMessage(result.error)
+      }
+    },
+    [agentPreferences, clearSteps, prompt, setAgentState, setError, setRun]
+  )
 
   const handleStop = useCallback(async () => {
     if (!currentRunId) return
@@ -139,11 +155,13 @@ export default function App(): React.ReactElement {
 
   const canStop = Boolean(
     currentRunId &&
-      ['running', 'planning', 'awaiting_approval', 'starting', 'paused'].includes(agentState),
+    ['running', 'planning', 'awaiting_approval', 'starting', 'paused'].includes(agentState)
   )
   const sandboxActive =
     pending.length > 0 ||
-    steps.some(step => step.toolCall?.status === 'running' || step.toolCall?.status === 'requires_approval')
+    steps.some(
+      (step) => step.toolCall?.status === 'running' || step.toolCall?.status === 'requires_approval'
+    )
 
   return (
     <AppShell
@@ -165,6 +183,7 @@ export default function App(): React.ReactElement {
     >
       {renderRoute(activeRoute, {
         agentState,
+        agentPreferences,
         currentRunId,
         error,
         modelStatus,
@@ -179,6 +198,7 @@ export default function App(): React.ReactElement {
         handleStart,
         handleStop,
         handleThemeChange,
+        setAgentPreferences,
       })}
     </AppShell>
   )
@@ -188,6 +208,7 @@ function renderRoute(
   activeRoute: AppRouteId,
   context: {
     agentState: AgentState | 'starting'
+    agentPreferences: AgentPreferences
     currentRunId: string | null
     error: string | null
     modelStatus: ModelRuntimeStatus | null
@@ -199,10 +220,11 @@ function renderRoute(
     steps: ReturnType<typeof useAgentStore.getState>['steps']
     theme: ThemeMode
     handleNewRun(): void
-    handleStart(): void
+    handleStart(submission?: PromptSubmission): void
     handleStop(): void
     handleThemeChange(theme: ThemeMode): void
-  },
+    setAgentPreferences(preferences: AgentPreferences): void
+  }
 ): React.ReactElement {
   switch (activeRoute) {
     case 'dashboard':
@@ -226,7 +248,14 @@ function renderRoute(
     case 'risk-reports':
       return <RiskReports />
     case 'settings':
-      return <Settings theme={context.theme} onThemeChange={context.handleThemeChange} />
+      return (
+        <Settings
+          preferences={context.agentPreferences}
+          theme={context.theme}
+          onPreferencesChange={context.setAgentPreferences}
+          onThemeChange={context.handleThemeChange}
+        />
+      )
     case 'agent-runs':
     default:
       return (
@@ -239,6 +268,7 @@ function renderRoute(
           recentApprovals={context.recent}
           state={context.agentState}
           steps={context.steps}
+          preferences={context.agentPreferences}
           onPromptChange={context.setPrompt}
           onStart={context.handleStart}
           onStop={context.handleStop}

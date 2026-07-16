@@ -12,6 +12,10 @@ import type {
   ToolResult,
 } from '@shared/types/sandbox.types'
 import type { ApprovalDecision } from '@shared/types/approval.types'
+import {
+  parseIpconfigOutput,
+  summarizeIpconfig,
+} from '@shared/observations/ipconfig'
 import { ApprovalGate } from './approval-gate'
 import { ChildProcessRunner } from './child-runner'
 import { FilesystemScope } from './filesystem-scope'
@@ -267,6 +271,16 @@ export class SandboxExecutor implements IntentExecutor {
         ...result,
         observation: summarizeWindowsVersion(version),
         metadata: { ...(result.metadata ?? {}), windowsVersion: version },
+      }
+    }
+
+    if (isIpconfig(command, normalized.args)) {
+      const configuration = parseIpconfigOutput(result.stdout)
+      if (configuration.adapters.length === 0 && !configuration.hostName) return result
+      return {
+        ...result,
+        observation: summarizeIpconfig(configuration),
+        metadata: { ...(result.metadata ?? {}), ipconfig: configuration },
       }
     }
 
@@ -615,6 +629,12 @@ function summarizeTcpProbe(
 function isCmdVer(command: string, args: string[]): boolean {
   if (command === 'ver') return true
   return command === 'cmd' && args[0]?.toLowerCase() === '/c' && args[1]?.toLowerCase() === 'ver'
+}
+
+function isIpconfig(command: string, args: string[]): boolean {
+  if (command === 'ipconfig') return true
+  if (command !== 'cmd' || args[0]?.toLowerCase() !== '/c') return false
+  return baseCommand(args[1] ?? '') === 'ipconfig'
 }
 
 function normalizeSearchPatterns(pattern: FilesystemToolIntent['pattern']): string[] {
